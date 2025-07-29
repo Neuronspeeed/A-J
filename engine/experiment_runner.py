@@ -1,6 +1,5 @@
 """
 Core experiment engine for the thinking transplant study.
-
 """
 
 import uuid

@@ -7,10 +7,8 @@ This module defines type-safe data structures using Pydantic for:
 - Experiment configurations
 - Error handling and validation
 
-Following SOLID principles:
-- Single Responsibility: Each model has one clear purpose
-- Interface Segregation: Models are focused and minimal
-- Dependency Inversion: Models don't depend on concrete implementations
+Each data model has a focused purpose and minimal interface for
+clear separation of concerns.
 """
 
 from pydantic import BaseModel, Field, field_validator, ConfigDict
