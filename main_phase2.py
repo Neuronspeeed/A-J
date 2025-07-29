@@ -92,7 +92,7 @@ async def main():
                 runner = ExperimentRunner(provider=provider, writer=writer)
                 
                 # Create config for this specific model
-                model_config = PHASE2_CONFIG.copy(deep=True)
+                model_config = PHASE2_CONFIG.model_copy(deep=True)
                 model_config.model_names = [model_name]
                 
                 # Run experiment

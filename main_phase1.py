@@ -105,8 +105,8 @@ async def main():
                 # Create experiment runner (dependency injection)
                 runner = ExperimentRunner(provider=provider, writer=writer)
                 
-                # Create config for this specific model
-                model_config = PHASE1_CONFIG.model_copy(deep=True)
+                # Create config for this specific model (use the test-mode modified config)
+                model_config = config.model_copy(deep=True)
                 model_config.model_names = [model_name]  # Test only this model
                 
                 # Run experiment
