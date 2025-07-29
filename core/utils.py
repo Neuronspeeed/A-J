@@ -135,20 +135,27 @@ def extract_numerical_answer(response: str) -> Optional[str]:
     
     # Look for common answer patterns (ordered by specificity)
     patterns = [
-        # "Therefore, $5,542.86 was invested" - most specific
+        # Mathematical expressions: "t ≈ 5.65", "x = 2.81", "t = 5.13 years"
+        r"[tx]\s*[≈=]\s*([+-]?\d+(?:\.\d+)?)",
+        # Time expressions: "4.7 hours", "8.78 hours after", "≈ 5.65 years"
+        r"≈\s*([+-]?\d+(?:\.\d+)?)\s*(?:hours?|years?|units?)",
+        r"([+-]?\d+(?:\.\d+)?)\s*hours?\s*(?:after|at)",
+        r"([+-]?\d+(?:\.\d+)?)\s*hours?(?:\s*$|\s*[^\d])",
+        # Speed expressions: "speed is 15 mph", "is 13.5 mph"
+        r"speed.*?is\s*([+-]?\d+(?:\.\d+)?)\s*mph",
+        r"is\s*([+-]?\d+(?:\.\d+)?)\s*mph",
+        # Investment expressions: "$5,542.86 was invested", "Therefore, $5,542.86"
         r"therefore,?\s*\$([+-]?\d+(?:,\d{3})*(?:\.\d+)?)\s*was invested",
-        # "Therefore, 8.78 hours" - time answers
-        r"therefore,?.*?([+-]?\d+(?:\.\d+)?)\s*hours?",
-        # "The faster train will overtake... 8.78 hours after"
-        r"overtake.*?([+-]?\d+(?:\.\d+)?)\s*hours?\s*after",
-        # "$5,542.86 was invested at" - investment answers
         r"\$([+-]?\d+(?:,\d{3})*(?:\.\d+)?)\s*was invested",
-        # "The answer is 42.5" or "answer = 42.5"
+        r"therefore,?\s*\$([+-]?\d+(?:,\d{3})*(?:\.\d+)?)",
+        # Train problems: "8.78 hours after", "overtake... X hours"
+        r"therefore,?.*?([+-]?\d+(?:\.\d+)?)\s*hours?",
+        r"overtake.*?([+-]?\d+(?:\.\d+)?)\s*hours?\s*after",
+        # Standard answer patterns: "The answer is 42.5", "Final answer: 123"
         r"(?:answer is|equals?|=)\s*\$?([+-]?\d+(?:,\d{3})*(?:\.\d+)?)",
-        # "Final answer: 123.456"
         r"final answer:?\s*\$?([+-]?\d+(?:,\d{3})*(?:\.\d+)?)",
-        # Last resort: "Therefore, X" (any number after therefore)
-        r"therefore,?\s*\$?([+-]?\d+(?:,\d{3})*(?:\.\d+)?)",
+        # Catch isolated numbers at end of response
+        r"([+-]?\d+(?:\.\d+)?)\s*$",
     ]
     
     for pattern in patterns:

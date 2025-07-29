@@ -34,10 +34,14 @@ The project is organized into separate parts to make the code clean and easy to 
     uv sync
     ```
 
-2.  Set up API keys by creating a `.env` file in the project root:
-    ```
-    OPENAI_API_KEY="your_openai_key_here"
-    ANTHROPIC_API_KEY="your_anthropic_key_here"
+2.  Set up API keys:
+    ```bash
+    # Copy the example file and edit it
+    cp env.example .env
+    
+    # Edit .env with your actual API keys:
+    # OPENAI_API_KEY=sk-your-openai-api-key-here
+    # ANTHROPIC_API_KEY=sk-ant-your-anthropic-api-key-here
     ```
 
 ### Running the Experiments
