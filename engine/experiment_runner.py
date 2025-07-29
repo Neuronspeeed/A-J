@@ -1,15 +1,6 @@
 """
 Core experiment engine for the thinking transplant study.
 
-This module implements the main experimental logic while following SOLID principles:
-- Single Responsibility: Handles only experiment execution
-- Open/Closed: Easy to extend with new conditions without modifying existing code
-- Liskov Substitution: Works with any LLMProvider implementation
-- Interface Segregation: Depends only on the interfaces it needs
-- Dependency Inversion: Depends on abstractions, not concrete implementations
-
-The engine preserves 100% of your friend's experimental logic while making it
-testable, maintainable, and extensible.
 """
 
 import uuid
