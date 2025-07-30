@@ -277,3 +277,19 @@ def find_latest_results_file(pattern: str) -> Optional[str]:
 
     # Return the most recently modified file
     return max(files, key=lambda f: Path(f).stat().st_mtime)
+
+
+def find_all_results_files(pattern: str) -> List[str]:
+    """
+    Find all results files matching a pattern, sorted by modification time.
+    
+    Ensures that data is processed in a consistent, chronological order.
+    """
+    import glob
+    
+    files = glob.glob(pattern)
+    if not files:
+        return []
+        
+    # Sort files by modification time (oldest first)
+    return sorted(files, key=lambda f: Path(f).stat().st_mtime)
