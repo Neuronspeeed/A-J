@@ -1,7 +1,6 @@
 """
 Unit tests for the ExperimentRunner.
 
-These tests demonstrate the testability benefits of the SOLID architecture.
 We can test the core experimental logic without making any real API calls
 or writing to disk.
 """

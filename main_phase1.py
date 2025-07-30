@@ -3,7 +3,7 @@ Main entry point for Phase 1 of the thinking transplant experiment.
 
 This script implements the Composition Root pattern, where all dependencies
 are constructed and injected. This is the ONLY place where concrete classes
-are instantiated, following the Dependency Inversion Principle.
+are instantiated using dependency injection.
 
 Phase 1 tests: "Do the models think while talking about something unrelated?"
 
@@ -13,6 +13,10 @@ Usage:
 
 import asyncio
 import sys
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 from datetime import datetime
 from pathlib import Path
 

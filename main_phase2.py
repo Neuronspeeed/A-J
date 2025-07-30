@@ -13,6 +13,10 @@ Usage:
 import asyncio
 import sys
 from datetime import datetime
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 from pathlib import Path
 
 # Add project root to path for imports

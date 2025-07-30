@@ -1,11 +1,7 @@
 """
 Persistence layer for experiment results.
 
-This module handles saving and loading experiment data, implementing:
-- Interface Segregation: Separate interfaces for reading and writing
-- Single Responsibility: Each class handles one type of persistence
-- Open/Closed: Easy to add new storage formats without changing existing code
-- Dependency Inversion: Core engine depends on interfaces, not concrete implementations
+CSV persistence for experiment results.
 """
 
 import csv

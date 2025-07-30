@@ -1,14 +1,7 @@
 """
 Core data models for the thinking transplant experiment.
 
-This module defines type-safe data structures using Pydantic for:
-- Math problems with ground truth answers
-- Trial results from individual experiments
-- Experiment configurations
-- Error handling and validation
-
-Each data model has a focused purpose and minimal interface for
-clear separation of concerns.
+Pydantic data models for experiment configuration, math problems, and results.
 """
 
 from pydantic import BaseModel, Field, field_validator, ConfigDict

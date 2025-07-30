@@ -1,19 +1,13 @@
 """
 LLM Provider interfaces and implementations.
 
-This module implements the Interface Segregation and Dependency Inversion principles
-by defining a clear Protocol for LLM interactions and concrete implementations.
-
-Key benefits:
-- Easy to add new providers (Open/Closed Principle)
-- Core engine doesn't depend on specific LLM APIs (Dependency Inversion)
-- Each provider handles only its own logic (Single Responsibility)
-- Testable through interface mocking
+LLM interface and implementations for OpenAI and Anthropic APIs.
 """
 
 import asyncio
 import functools
 import os
+import time
 from typing import Protocol, Optional
 from abc import ABC, abstractmethod
 
@@ -21,6 +15,41 @@ from openai import OpenAI
 from anthropic import Anthropic
 
 from .data_models import ProviderConfig
+
+
+class CircuitBreaker:
+    """Simple circuit breaker for API failures."""
+
+    def __init__(self, failure_threshold: int = 5, timeout: float = 60.0):
+        self.failure_threshold = failure_threshold
+        self.timeout = timeout
+        self.failure_count = 0
+        self.last_failure_time = 0
+        self.state = "CLOSED"  # CLOSED, OPEN, HALF_OPEN
+
+    def can_execute(self) -> bool:
+        """Check if request can be executed."""
+        if self.state == "CLOSED":
+            return True
+        elif self.state == "OPEN":
+            if time.time() - self.last_failure_time > self.timeout:
+                self.state = "HALF_OPEN"
+                return True
+            return False
+        else:  # HALF_OPEN
+            return True
+
+    def record_success(self):
+        """Record successful request."""
+        self.failure_count = 0
+        self.state = "CLOSED"
+
+    def record_failure(self):
+        """Record failed request."""
+        self.failure_count += 1
+        self.last_failure_time = time.time()
+        if self.failure_count >= self.failure_threshold:
+            self.state = "OPEN"
 
 
 class LLMProvider(Protocol):
@@ -150,18 +179,6 @@ class OpenAIProvider(BaseLLMProvider):
         """Initialize OpenAI client with API key from environment or .env file."""
         api_key = os.getenv(self.config.api_key_env_var)
 
-        # Try to read from .env file if not in environment
-        if not api_key:
-            try:
-                with open('.env', 'r') as f:
-                    for line in f:
-                        line = line.strip()
-                        if line.startswith(f'{self.config.api_key_env_var}='):
-                            api_key = line.split('=', 1)[1].strip()
-                            break
-            except FileNotFoundError:
-                pass
-
         if not api_key:
             raise LLMProviderError(
                 f"API key not found in environment variable: {self.config.api_key_env_var}",
@@ -214,10 +231,6 @@ class AnthropicProvider(BaseLLMProvider):
                     for line in f:
                         line = line.strip()
                         if line.startswith(f'{self.config.api_key_env_var}='):
-                            api_key = line.split('=', 1)[1].strip()
-                            break
-                        # Also try CLAUDE_API_KEY as alternative
-                        if self.config.api_key_env_var == "ANTHROPIC_API_KEY" and line.startswith('CLAUDE_API_KEY='):
                             api_key = line.split('=', 1)[1].strip()
                             break
             except FileNotFoundError:

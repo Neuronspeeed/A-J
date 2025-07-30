@@ -2,7 +2,7 @@
 Data management utilities for the thinking transplant experiment.
 
 This module handles file organization, naming conventions, and metadata
-for experimental results, following best practices for data management.
+for experimental results.
 """
 
 import os

@@ -96,7 +96,8 @@ PHASE1_CONFIG = ExperimentConfig(
     math_problems=MATH_PROBLEMS,
     model_names=[
         "gpt-4.1", "gpt-4.1-mini", "gpt-4.1-nano", "gpt-4o", "gpt-4o-mini",  # OpenAI
-        "claude-sonnet-4-20250514"  # Anthropic
+        "claude-sonnet-4-20250514",  # Anthropic
+        "claude-4-opus-20250514"  # Claude 4 Opus
     ],
     iterations_per_condition=3,  # Increased for better statistical power
     max_retries=3,
@@ -124,7 +125,8 @@ PHASE2_CONFIG = ExperimentConfig(
     math_problems=MATH_PROBLEMS,  # Same problems as Phase 1
     model_names=[
         "gpt-4.1", "gpt-4.1-mini", "gpt-4.1-nano", "gpt-4o", "gpt-4o-mini",  # OpenAI
-        "claude-sonnet-4-20250514"  # Anthropic
+        "claude-sonnet-4-20250514",  # Anthropic
+        "claude-4-opus-20250514"  # Claude 4 Opus
     ],
     iterations_per_condition=3,  # Increased for better statistical power
     max_retries=3,
@@ -175,6 +177,13 @@ PROVIDER_CONFIGS = [
     ProviderConfig(
         provider_type="anthropic",
         model_name="claude-sonnet-4-20250514",
+        api_key_env_var="ANTHROPIC_API_KEY",
+        max_tokens=2000,
+        temperature=0.7
+    ),
+    ProviderConfig(
+        provider_type="anthropic",
+        model_name="claude-4-opus-20250514",
         api_key_env_var="ANTHROPIC_API_KEY",
         max_tokens=2000,
         temperature=0.7

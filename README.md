@@ -24,7 +24,7 @@ The project is organized into separate parts to make the code clean and easy to 
 
 ### Prerequisites
 
--   Python 3.13+
+-   Python 3.11+
 -   An active virtual environment (e.g., via `uv venv`)
 
 ### Installation

@@ -1,9 +1,9 @@
 [project]
 name = "a-j"
 version = "0.1.0"
-description = "Add your description here"
+description = "Experimental framework testing AI thinking and performance hypotheses"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11"
 dependencies = [
     "ipykernel>=6.30.0",
     "pandas>=2.3.1",
@@ -17,4 +17,27 @@ dependencies = [
     "pytest>=8.4.1",
     "pytest-asyncio>=0.24.0",
     "pydantic>=2.10.3",
+    "python-dotenv>=1.1.1",
 ]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "T20"]
+ignore = ["E501"]  # Line too long (handled by formatter)
+
+[tool.pyright]
+include = ["core", "engine", "config", "tests"]
+exclude = ["**/__pycache__"]
+typeCheckingMode = "basic"
+reportMissingImports = true
+reportMissingTypeStubs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
