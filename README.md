@@ -199,7 +199,19 @@ The test suite runs automatically on all code changes to ensure reliability and 
 
 ## Results
 
-Phase 2 completed. 630 trials tested number transplant effect.
+### Phase 1: Thinking While Distracted
+
+1346 trials tested whether unrelated tasks affect math performance.
+
+**Core finding:** +24.9% improvement when asked to "think about solution"
+**Best condition:** memorized (4.261 digits correct)
+**Worst condition:** baseline (3.180 digits correct)
+
+**Conclusion:** Models do think about problems while appearing to work on unrelated tasks.
+
+### Phase 2: Thinking Transplant
+
+630 trials tested whether AI-generated numbers improve performance.
 
 **Overall:** +1.1% improvement with transplanted numbers
 **Best performers:** gpt-4.1-mini (+45.3%), gpt-4o-mini (+61.3%)
@@ -211,6 +223,7 @@ Phase 2 completed. 630 trials tested number transplant effect.
 
 ```bash
 cd analysis
+python generate_phase1_reports.py --summary-only
 python generate_phase2_reports.py --summary-only
 ```
 
@@ -236,7 +249,8 @@ The organized design makes extensions simple and safe.
 ```
 .
 ├── analysis/
-│   ├── generate_phase2_reports.py  # Analysis script
+│   ├── generate_phase1_reports.py  # Phase 1 analysis script
+│   ├── generate_phase2_reports.py  # Phase 2 analysis script
 │   └── README.md                   # Analysis documentation
 ├── config/
 │   ├── experiments.py         # Defines Phase 1 & 2 configurations

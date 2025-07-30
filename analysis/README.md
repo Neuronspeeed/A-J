@@ -1,6 +1,6 @@
 # Analysis Tools and Reports
 
-This directory contains analysis tools and reports for the Phase 2 thinking transplant experiment.
+This directory contains analysis tools and reports for both Phase 1 and Phase 2 experiments.
 
 ## Files Overview
 
@@ -9,27 +9,29 @@ This directory contains analysis tools and reports for the Phase 2 thinking tran
 - **`ANALYSIS_USAGE.md`** - Usage guide for analysis tools and interpretation
 
 ### Analysis Scripts
-- **`generate_phase2_reports.py`** - Comprehensive report generator with verification
-- **`analyze_phase2_results.py`** - Original analysis script with visualization support
+- **`generate_phase1_reports.py`** - Phase 1 analysis and report generator
+- **`generate_phase2_reports.py`** - Phase 2 analysis and report generator
+- **`analyze_phase2_results.py`** - Original Phase 2 analysis script
 
 ## Quick Start
 
-### Generate Summary Report
+### Phase 1 Analysis
+```bash
+cd analysis
+python generate_phase1_reports.py --summary-only
+```
+
+### Phase 2 Analysis
 ```bash
 cd analysis
 python generate_phase2_reports.py --summary-only
 ```
 
-### Quick Verification
+### Full Reports
 ```bash
 cd analysis
-python -c "from generate_phase2_reports import quick_verification; quick_verification()"
-```
-
-### Full Analysis Report
-```bash
-cd analysis
-python generate_phase2_reports.py --output detailed_report.txt
+python generate_phase1_reports.py
+python generate_phase2_reports.py
 ```
 
 ## Key Results Summary
