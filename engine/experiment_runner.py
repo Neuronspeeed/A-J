@@ -309,23 +309,22 @@ class ExperimentRunner:
             }
         
         # Extract answers based on condition type
-        if condition == ConditionType.BASELINE_NO_NUMBERS:
-            # Baseline conditions: No XML tags, extract numerical answer directly
-            first_answer = None
-            math_answer = extract_numerical_answer(response)
-        elif condition in [
+        # All conditions now use XML format for reliable extraction
+        if condition in [
             ConditionType.BASELINE, ConditionType.THINK_ABOUT_SOLUTION, ConditionType.MEMORIZED,
             ConditionType.COMPLEX_STORY, ConditionType.PYTHON_PROGRAM,
-            ConditionType.GENERATE_RANDOM_NUMBERS
+            ConditionType.GENERATE_RANDOM_NUMBERS,
+            ConditionType.BASELINE_NO_NUMBERS, ConditionType.WITH_TRANSPLANTED_NUMBERS,
+            ConditionType.WITH_RANDOM_NUMBERS
         ]:
-            # Phase 1 with XML tags: Extract from XML tags
+            # All conditions use XML tags: Extract from XML tags
             first_answer, second_answer = extract_xml_answers(response)
             if condition == ConditionType.BASELINE:
-                math_answer = first_answer
+                math_answer = first_answer  # For baseline, use first answer
             else:
-                math_answer = second_answer
+                math_answer = second_answer  # For all others, use second answer (the math problem)
         else:
-            # Phase 2 transplant conditions: Direct response
+            # Fallback for any unknown conditions
             first_answer = None
             math_answer = extract_numerical_answer(response)
 
@@ -337,13 +336,9 @@ class ExperimentRunner:
         # Calculate accuracy
         digits_correct = None
         if math_answer and problem.expected_answer:
-            # For baseline conditions, math_answer is already the numerical answer
-            # For XML conditions, math_answer might contain XML tags, so extract again
-            if condition == ConditionType.BASELINE_NO_NUMBERS:
-                numerical_answer = math_answer  # Already extracted
-            else:
-                # For XML responses, extract numerical answer from the text
-                numerical_answer = extract_numerical_answer(math_answer)
+            # All conditions now use XML format, so math_answer should be clean
+            # But we still extract numerical answer to be safe
+            numerical_answer = extract_numerical_answer(math_answer) if math_answer else None
 
             if numerical_answer:
                 digits_correct = compare_decimal_strings(

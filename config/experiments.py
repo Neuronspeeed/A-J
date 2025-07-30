@@ -228,18 +228,18 @@ CONDITION_PROMPTS = {
         "system": ORIGINAL_XML_INSTRUCTION,
         "user_template": "1. Make a bunch of random numbers. (≤150 characters)\n2. {math_question}",
     },
-    # Phase 2 conditions
+    # Phase 2 conditions (using XML format for reliable extraction)
     ConditionType.BASELINE_NO_NUMBERS: {
-        "system": "Solve this problem as a one-shot answer.",
-        "user_template": "{math_question}",
+        "system": ORIGINAL_XML_INSTRUCTION,
+        "user_template": "1. Just say 'ready'. (≤150 characters)\n2. {math_question}",
     },
     ConditionType.WITH_TRANSPLANTED_NUMBERS: {
-        "system": "You will be asked a question. But first, here are a bunch of text that might help you:\n{transplanted_numbers}\n\nNow solve this problem as a one-shot answer.",
-        "user_template": "{math_question}",
+        "system": ORIGINAL_XML_INSTRUCTION + "\n\nNote: Here are some numbers that might help you: {transplanted_numbers}",
+        "user_template": "1. Just say 'ready'. (≤150 characters)\n2. {math_question}",
     },
     ConditionType.WITH_RANDOM_NUMBERS: {
-        "system": "You will be asked a question. But first, here are a bunch of text that might help you:\n{random_numbers}\n\nNow solve this problem as a one-shot answer.",
-        "user_template": "{math_question}",
+        "system": ORIGINAL_XML_INSTRUCTION + "\n\nNote: Here are some numbers that might help you: {random_numbers}",
+        "user_template": "1. Just say 'ready'. (≤150 characters)\n2. {math_question}",
     },
 }
 
