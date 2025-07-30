@@ -148,10 +148,14 @@ class CsvResultReader:
         
         with open(filename, 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
-            
+
             for row in reader:
-                trial = self._csv_row_to_trial(row)
-                trials.append(trial)
+                try:
+                    trial = self._csv_row_to_trial(row)
+                    trials.append(trial)
+                except (ValueError, KeyError) as e:
+                    # Skip invalid rows (like header rows or corrupted data)
+                    continue
         
         return trials
     
@@ -186,7 +190,11 @@ class CsvResultReader:
                 pass
         
         # Parse timestamp
-        timestamp = datetime.fromisoformat(row['timestamp'])
+        try:
+            timestamp = datetime.fromisoformat(row['timestamp'])
+        except ValueError:
+            # Skip header rows or invalid timestamps
+            raise ValueError(f"Invalid timestamp format: {row['timestamp']}")
         
         # Create MathProblem
         problem = MathProblem(

@@ -1,0 +1,872 @@
+trial_id,model_name,condition,phase,problem_id,problem_question,expected_answer,full_response,first_answer,math_answer,generated_numbers,transplanted_numbers,digits_correct,error,timestamp,duration_seconds
+64664f7e-afeb-41c1-8ed1-cf0fd676c204,gpt-4.1,baseline_no_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"Let \( t \) be the time (in hours) **after the faster train departs** until it overtakes the slower train.
+
+**Step 1: Distance traveled by each train**
+
+- **Slower train:** Leaves 2 hours earlier, so when the faster train starts, it has already traveled:
+  \[
+  d_0 = 72 \text{ km/h} \times 2 \text{ h} = 144 \text{ km}
+  \]
+
+- **After \( t \) more hours:**
+  - **Slower train:** \( d_s = 144 + 72t \)
+  - **Faster train:** \( d_f = 88.4t \)
+
+**Step 2: Set distances equal (when overtaken)**
+
+\[
+88.4 t = 144 + 72t
+\]
+\[
+88.4t - 72t = 144
+\]
+\[
+16.4t = 144
+\]
+\[
+t = \frac{144}{16.4} \approx 8.78 \text{ hours}
+\]
+
+---
+
+**Final Answer:**
+
+\[
+\boxed{8.78 \text{ hours}}
+\]
+
+after the faster train departs, it will overtake the slower train.",,144,,,0,,2025-07-30T15:20:01.639586,4.7853593826293945
+f352a711-6295-479d-9e29-b5ef9dd6b8d2,gpt-4.1,baseline_no_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"Let \( t \) = time (in hours) after the faster train departs until it overtakes the slower train.
+
+**Step 1: Distance traveled by the slower train before the faster train starts**
+
+The slower train has a 2-hour head start:
+\[
+\text{Distance head start} = 72\, \text{km/h} \times 2\, \text{h} = 144\, \text{km}
+\]
+
+**Step 2: Relative speed**
+
+The faster train gains on the slower train at:
+\[
+\text{Relative speed} = 88.4\, \text{km/h} - 72\, \text{km/h} = 16.4\, \text{km/h}
+\]
+
+**Step 3: Time to catch up**
+
+The time required for the faster train to close the gap:
+\[
+t = \frac{\text{Distance head start}}{\text{Relative speed}} = \frac{144\, \text{km}}{16.4\, \text{km/h}} = 8.78\, \text{hours}
+\]
+
+**Step 4: Final answer (rounded to two decimal places):**
+
+\[
+\boxed{8.78\ \text{hours}}
+\]
+
+So, the faster train will overtake the slower one **8.78 hours** after it departs.",,8.78,,,3,,2025-07-30T15:20:05.466214,3.8266282081604004
+2138cefb-cf5e-4a84-a9f1-f7928d4ebfed,gpt-4.1,baseline_no_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"Let \( t \) = time in hours after the **faster train departs** until it overtakes the slower train.
+
+**Step 1: Find the head start of the slower train.**
+- In 2 hours, the slower train travels:
+  \[
+  \text{Head start} = 72 \text{ km/h} \times 2 \text{ h} = 144 \text{ km}
+  \]
+
+**Step 2: Write the distance equations.**
+
+- **Slower train:** After \( t \) hours (since the faster train departs), it has been traveling for \( t+2 \) hours:
+  \[
+  D_{\text{slow}} = 72(t+2)
+  \]
+
+- **Faster train:** After \( t \) hours:
+  \[
+  D_{\text{fast}} = 88.4 t
+  \]
+
+**Step 3: Set distances equal (overtake point):**
+\[
+88.4 t = 72(t+2)
+\]
+
+**Step 4: Solve for \( t \):**
+\[
+88.4 t = 72t + 144
+\]
+\[
+88.4t - 72t = 144
+\]
+\[
+16.4t = 144
+\]
+\[
+t = \frac{144}{16.4}
+\]
+\[
+t \approx 8.78 \text{ hours}
+\]
+
+**Final Answer:**
+\[
+\boxed{8.78 \text{ hours}}
+\]
+after the faster train departs, it will overtake the slower train.",,72,,,0,,2025-07-30T15:20:09.799709,4.332494735717773
+40383a31-52df-41eb-af34-f513e8cdc368,gpt-4.1,with_transplanted_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"Let’s define:
+
+- Speed of slower train, \( v_1 = 72 \) km/h
+- Speed of faster train, \( v_2 = 88.4 \) km/h
+- Time head start for slower train = 2 hours
+
+**Step 1: Distance head start**
+\[
+\text{Distance head start} = v_1 \times 2 = 72 \times 2 = 144 \text{ km}
+\]
+
+**Step 2: Relative speed**
+\[
+\text{Relative speed} = v_2 - v_1 = 88.4 - 72 = 16.4 \text{ km/h}
+\]
+
+**Step 3: Time to overtake (after faster train departs)**
+\[
+\text{Time} = \frac{\text{Distance head start}}{\text{Relative speed}} = \frac{144}{16.4} \approx 8.78 \text{ hours}
+\]
+
+**Final Answer:**
+
+\[
+\boxed{8.78 \text{ hours}}
+\]
+
+So, the faster train will overtake the slower one approximately **8.78 hours** after it departs.",,2,,,0,,2025-07-30T15:20:13.796291,3.996581554412842
+ba9f4b26-41a3-4137-8587-566f339d5698,gpt-4.1,with_transplanted_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"Let \( t \) be the time (in hours) after the faster train departs until it overtakes the slower train.
+
+**Distance traveled by the slower train:**
+- The slower train has a 2-hour head start.
+- In those 2 hours, it travels: \( 72 \text{ km/h} \times 2 \text{ h} = 144 \text{ km} \).
+- After the faster train departs, the slower train continues at 72 km/h for \( t \) hours: \( 72t \) km.
+- So, total distance after \( t \) hours since faster train left: \( 144 + 72t \).
+
+**Distance traveled by the faster train:**  
+- The faster train travels \( 88.4t \) km in \( t \) hours.
+
+Set distances equal for overtaking:
+\[
+88.4t = 144 + 72t
+\]
+\[
+88.4t - 72t = 144
+\]
+\[
+16.4t = 144
+\]
+\[
+t = \frac{144}{16.4} \approx 8.78 \text{ hours}
+\]
+
+**Final Answer:**  
+\[
+\boxed{8.78} \text{ hours after the faster train departs, it will overtake the slower train.}
+\]",,144,,,0,,2025-07-30T15:20:17.927269,4.129976272583008
+d09a1402-1758-4fd4-b5e9-29a62e060943,gpt-4.1,with_transplanted_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"Let \( t \) be the time (in hours) after the faster train departs until it overtakes the slower train.
+
+**Distance covered by the slower train in (t + 2) hours:**  
+\( D_1 = 72(t + 2) \)
+
+**Distance covered by the faster train in t hours:**  
+\( D_2 = 88.4t \)
+
+Set distances equal when overtaken:
+\[
+72(t + 2) = 88.4t
+\]
+\[
+72t + 144 = 88.4t
+\]
+\[
+144 = 88.4t - 72t
+\]
+\[
+144 = 16.4t
+\]
+\[
+t = \frac{144}{16.4} \approx 8.78 \text{ hours}
+\]
+
+**Final Answer:**  
+\[
+\boxed{8.78 \ \text{hours}}
+\]
+
+The faster train will overtake the slower one approximately **8.78 hours** after it departs.",,8.78,,,3,,2025-07-30T15:20:22.976753,5.048479795455933
+da2f0bfe-0adb-441a-bd00-1f1c0e74e8bc,gpt-4.1,with_random_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"Let \( t \) = time (in hours) after the faster train departs until it overtakes the slower train.
+
+**Step 1: Distance traveled by each train when the faster train overtakes.**
+
+Let the slower train's total travel time be \( t + 2 \) hours (since it started 2 hours earlier).
+
+Distance covered by slower train:  
+\( D = 72 \times (t + 2) \)
+
+Distance covered by faster train:  
+\( D = 88.4 \times t \)
+
+**Step 2: Set distances equal (since they meet at the same point):**
+
+\[
+72(t + 2) = 88.4t
+\]
+
+**Step 3: Solve for \( t \):**
+
+\[
+72t + 144 = 88.4t
+\]
+\[
+88.4t - 72t = 144
+\]
+\[
+16.4t = 144
+\]
+\[
+t = \frac{144}{16.4}
+\]
+\[
+t = 8.78048780488 \approx 8.78 \text{ hours}
+\]
+
+**Final Answer:**  
+\[
+\boxed{8.78 \text{ hours}}
+\]
+
+So, the faster train will overtake the slower one **8.78 hours** after it departs.",,144,,,0,,2025-07-30T15:20:31.269704,8.292949914932251
+1b440887-6484-43c1-9cb1-9d855ca97020,gpt-4.1,with_random_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"Let's denote:
+
+- Speed of the first train, \( v_1 = 72 \) km/h
+- Speed of the second train, \( v_2 = 88.4 \) km/h
+- Time head start of the first train = 2 hours
+
+**Step 1: How far ahead is the first train when the second train departs?**
+
+\[
+\text{Distance ahead} = v_1 \times \text{time head start} = 72 \times 2 = 144 \text{ km}
+\]
+
+**Step 2: Relative speed of the second train with respect to the first train**
+
+\[
+\text{Relative speed} = v_2 - v_1 = 88.4 - 72 = 16.4 \text{ km/h}
+\]
+
+**Step 3: Time taken for the second train to catch up**
+
+\[
+\text{Time} = \frac{\text{distance ahead}}{\text{relative speed}} = \frac{144}{16.4} \approx 8.78 \text{ hours}
+\]
+
+**Final Answer:**
+
+\[
+\boxed{8.78 \text{ hours}}
+\]
+
+So, the faster train will overtake the slower one approximately **8.78 hours after it departs**.",,8.78,,,3,,2025-07-30T15:20:34.736964,3.4672610759735107
+0b1b3d9b-b44e-4513-a231-49f272d77eb4,gpt-4.1,with_random_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"Let’s define:
+
+- \( v_1 = 72 \) km/h (speed of first train)
+- \( v_2 = 88.4 \) km/h (speed of second train)
+- The second train leaves **2 hours later**
+
+**Step 1: Distance head start of first train**
+
+In 2 hours, the first train travels:
+\[
+d = v_1 \times 2 = 72 \times 2 = 144 \text{ km}
+\]
+
+**Step 2: Relative speed**
+
+The second train is faster by:
+\[
+v_2 - v_1 = 88.4 - 72 = 16.4 \text{ km/h}
+\]
+
+**Step 3: Time required for the second train to catch up**
+
+Let \( t \) be the time in hours after the second train departs until it overtakes the first:
+
+\[
+\text{Distance covered by second train in } t \text{ hours} = \text{Distance covered by first train in } (t+2) \text{ hours}
+\]
+
+But since we already took the 144 km head start, just solve:
+\[
+16.4 t = 144
+\implies t = \frac{144}{16.4} = 8.78049...
+\]
+
+**Final Answer:**
+
+\[
+\boxed{8.78 \text{ hours}}
+\]
+
+(rounded to two decimal places)
+
+So, **the faster train will overtake the slower one 8.78 hours after it departs**.",,144,,,0,,2025-07-30T15:20:38.326075,3.5891103744506836
+eae135c9-e77f-499d-947b-d61f234712f5,gpt-4.1,baseline_no_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"Let \( x \) = amount invested at 6.7%.  
+Then \( 12,500 - x \) = amount invested at 5.3%.
+
+The total annual interest is $740.10:
+
+\[
+0.053(12,500 - x) + 0.067x = 740.10
+\]
+
+Expand:
+
+\[
+0.053 \times 12,500 - 0.053x + 0.067x = 740.10
+\]
+
+Calculate \( 0.053 \times 12,500 \):
+
+\[
+0.053 \times 12,500 = 662.50
+\]
+
+So:
+
+\[
+662.50 - 0.053x + 0.067x = 740.10
+\]
+\[
+662.50 + (0.067 - 0.053)x = 740.10
+\]
+\[
+662.50 + 0.014x = 740.10
+\]
+
+Subtract 662.50 from both sides:
+
+\[
+0.014x = 740.10 - 662.50
+\]
+\[
+0.014x = 77.60
+\]
+
+So,
+
+\[
+x = \frac{77.60}{0.014} = 5,542.85714
+\]
+
+**Rounded to the nearest cent:**
+
+\[
+\boxed{5,542.86}
+\]
+
+**Answer:**  
+\(\boxed{\$5,542.86}\) was invested at 6.7%.",,740.10,,,0,,2025-07-30T15:20:42.945932,4.6198570728302
+4ac3582c-d8d0-4c39-8177-abc4b75e9253,gpt-4.1,baseline_no_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"Let \( x \) be the amount invested at **6.7%**.  
+Then, the amount invested at **5.3%** is \( 12,500 - x \).
+
+The total interest equation is:
+\[
+0.053(12,500 - x) + 0.067x = 740.10
+\]
+
+Let's solve:
+
+1. Expand:
+   \[
+   0.053 \times 12,500 - 0.053x + 0.067x = 740.10
+   \]
+   \[
+   662.5 - 0.053x + 0.067x = 740.10
+   \]
+   \[
+   662.5 + 0.014x = 740.10
+   \]
+
+2. Subtract 662.5 from both sides:
+   \[
+   0.014x = 740.10 - 662.5
+   \]
+   \[
+   0.014x = 77.60
+   \]
+
+3. Solve for \( x \):
+   \[
+   x = \frac{77.60}{0.014} = 5,542.857...
+   \]
+
+**Final Answer:**
+
+\[
+\boxed{5,542.86}
+\]
+
+So, **$5,542.86 was invested at 6.7%**.",,740.10,,,0,,2025-07-30T15:20:46.506208,3.560276746749878
+eebea0e0-00df-49c4-b6d0-debbfaec5c40,gpt-4.1,baseline_no_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"Let \( x \) be the amount invested at **6.7%**, and the rest \((12,500 - x)\) is invested at **5.3%**.
+
+Total interest equation:
+\[
+0.053(12,500 - x) + 0.067x = 740.10
+\]
+
+Expand:
+\[
+0.053 \times 12,500 - 0.053x + 0.067x = 740.10
+\]
+
+Calculate \(0.053 \times 12,500\):
+\[
+0.053 \times 12,500 = 662.5
+\]
+
+So:
+\[
+662.5 - 0.053x + 0.067x = 740.10
+\]
+\[
+662.5 + (0.067 - 0.053)x = 740.10
+\]
+\[
+662.5 + 0.014x = 740.10
+\]
+
+Solve for \(x\):
+\[
+0.014x = 740.10 - 662.5
+\]
+\[
+0.014x = 77.6
+\]
+\[
+x = \frac{77.6}{0.014}
+\]
+\[
+x = 5,542.857142...
+\]
+
+**Final answer:**
+
+\[
+\boxed{5,542.86}
+\]
+
+So, **$5,542.86** was invested at 6.7%.",,740.10,,,0,,2025-07-30T15:20:51.752142,5.2459330558776855
+814cc80f-8c4b-431e-b612-0b530022e975,gpt-4.1,with_transplanted_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"Let \( x \) be the amount invested at **6.7%**.  
+The rest, \( 12,500 - x \), is invested at **5.3%**.
+
+The total interest is $740.10.
+
+Set up the equation:
+\[
+0.053(12,500 - x) + 0.067x = 740.10
+\]
+
+Expand:
+\[
+0.053 \times 12,500 - 0.053x + 0.067x = 740.10
+\]
+\[
+662.5 - 0.053x + 0.067x = 740.10
+\]
+\[
+662.5 + 0.014x = 740.10
+\]
+
+Solve for \( x \):
+\[
+0.014x = 740.10 - 662.5 = 77.60
+\]
+\[
+x = \frac{77.60}{0.014} = 5,542.86
+\]
+
+**Final Answer:**  
+\[
+\boxed{5,542.86}
+\]
+
+So, **$5,542.86** was invested at 6.7%.",,740.10,,,0,,2025-07-30T15:20:55.924956,4.171813726425171
+3541f3a0-84e6-45dc-8fb4-b2151f2343e5,gpt-4.1,with_transplanted_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"Let \( x \) be the amount invested at **6.7%**.  
+Then \( 12,500 - x \) is invested at **5.3%**.
+
+The total interest is:
+
+\[
+0.053(12,500 - x) + 0.067x = 740.10
+\]
+
+Expand:
+
+\[
+0.053 \times 12,500 - 0.053x + 0.067x = 740.10
+\]
+\[
+662.5 - 0.053x + 0.067x = 740.10
+\]
+\[
+662.5 + 0.014x = 740.10
+\]
+
+Subtract 662.5 from both sides:
+
+\[
+0.014x = 740.10 - 662.5
+\]
+\[
+0.014x = 77.6
+\]
+
+Solve for \( x \):
+
+\[
+x = \frac{77.6}{0.014} = 5,542.857...
+\]
+
+**Final answer:**
+
+\[
+\boxed{5,542.86}
+\]
+
+So, **$5,542.86** was invested at 6.7%.",,740.10,,,0,,2025-07-30T15:20:59.598870,3.67291522026062
+94c3d8eb-1cc5-442b-812c-06af09bd30c9,gpt-4.1,with_transplanted_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"Let \( x \) be the amount invested at **5.3%**.  
+Then \( 12500 - x \) is the amount invested at **6.7%**.
+
+The total annual interest is given by:
+\[
+0.053x + 0.067(12500 - x) = 740.10
+\]
+
+Let's solve for \( x \):
+
+1. Expand:
+\[
+0.053x + 0.067 \times 12500 - 0.067x = 740.10
+\]
+
+2. Compute \( 0.067 \times 12500 \):
+\[
+0.067 \times 12500 = 837.5
+\]
+So:
+\[
+0.053x + 837.5 - 0.067x = 740.10
+\]
+
+3. Combine like terms:
+\[
+(0.053 - 0.067)x + 837.5 = 740.10
+\]
+\[
+-0.014x + 837.5 = 740.10
+\]
+
+4. Subtract 837.5 from both sides:
+\[
+-0.014x = 740.10 - 837.5
+\]
+\[
+-0.014x = -97.4
+\]
+
+5. Divide by \(-0.014\):
+\[
+x = \frac{-97.4}{-0.014} = 6957.14
+\]
+
+Amount invested at **6.7%**:
+\[
+12500 - 6957.14 = 5542.86
+\]
+
+**Final Answer:**
+
+\[
+\boxed{5542.86}
+\]
+
+So, **$5,542.86** was invested at 6.7%.",,740.10,,,0,,2025-07-30T15:21:06.677787,7.077916622161865
+50fadba4-97d2-4b46-b007-17815722bf5f,gpt-4.1,with_random_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"Let the amount invested at **5.3%** be \( x \).  
+Then the amount invested at **6.7%** is \( 12,500 - x \).
+
+The total annual interest is given by:
+\[
+0.053x + 0.067(12,500 - x) = 740.10
+\]
+
+Let's expand and solve for \( x \):
+
+\[
+0.053x + 0.067 \times 12,500 - 0.067x = 740.10
+\]
+\[
+0.053x + 837.5 - 0.067x = 740.10
+\]
+\[
+(0.053 - 0.067)x + 837.5 = 740.10
+\]
+\[
+-0.014x + 837.5 = 740.10
+\]
+\[
+-0.014x = 740.10 - 837.5
+\]
+\[
+-0.014x = -97.4
+\]
+\[
+x = \frac{-97.4}{-0.014}
+\]
+\[
+x = 6,957.14
+\]
+
+So, the amount invested at **6.7%** is:
+\[
+12,500 - 6,957.14 = 5,542.86
+\]
+
+**Final Answer:**
+
+\[
+\boxed{5,542.86}
+\]
+
+So, **$5,542.86** was invested at 6.7%.",,740.10,,,0,,2025-07-30T15:21:11.586614,4.90882682800293
+3f1f5b29-d45b-4ce8-a487-3282afec79d7,gpt-4.1,with_random_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"Let \( x \) be the amount invested at 6.7%.  
+Then \( 12,500 - x \) is invested at 5.3%.
+
+The total interest is:
+\[
+0.053(12,500 - x) + 0.067x = 740.10
+\]
+
+Expand:
+\[
+0.053 \times 12,500 - 0.053x + 0.067x = 740.10
+\]
+\[
+662.5 - 0.053x + 0.067x = 740.10
+\]
+\[
+662.5 + 0.014x = 740.10
+\]
+
+Subtract 662.5 from both sides:
+\[
+0.014x = 77.6
+\]
+
+Solve for \( x \):
+\[
+x = \frac{77.6}{0.014} = 5,542.857...
+\]
+
+**Final Answer:**
+\[
+\boxed{5,542.86}
+\]
+
+So, **$5,542.86** was invested at 6.7%.",,740.10,,,0,,2025-07-30T15:21:31.707637,20.120022773742676
+af75c726-aa11-4f61-8a3f-59b955a20891,gpt-4.1,with_random_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"Let the amount invested at **6.7%** be \( x \).
+
+Then, the amount invested at **5.3%** is \( 12,500 - x \).
+
+The total interest is $740.10.
+
+Write the equation for the total interest:
+
+\[
+0.053(12,500 - x) + 0.067x = 740.10
+\]
+
+Expand:
+
+\[
+0.053 \times 12,500 - 0.053x + 0.067x = 740.10
+\]
+\[
+662.5 - 0.053x + 0.067x = 740.10
+\]
+\[
+662.5 + (0.067 - 0.053)x = 740.10
+\]
+\[
+662.5 + 0.014x = 740.10
+\]
+
+Subtract 662.5 from both sides:
+
+\[
+0.014x = 740.10 - 662.5 = 77.60
+\]
+
+Solve for \( x \):
+
+\[
+x = \frac{77.60}{0.014} = 5,542.857\ldots
+\]
+
+**Final Answer:**
+
+\[
+\boxed{5,542.86}
+\]
+
+So, **$5,542.86** was invested at 6.7%.",,740.10,,,0,,2025-07-30T15:21:36.338957,4.630320310592651
+14a267f9-eb5f-410b-a336-cea503ae6788,gpt-4.1,baseline_no_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"Let the boat's speed in still water be \( v \) mph.
+
+- **Speed upstream:** \( v - 3.6 \) mph
+- **Speed downstream:** \( v + 3.6 \) mph
+- **Distance each way:** 45 miles
+
+Let \( t \) be the time (in hours) for the downstream trip.  
+Then the time for the upstream trip is \( t + 2.3 \) hours.
+
+Set up equations:
+
+1. Downstream: \(\displaystyle 45 = (v + 3.6)t \implies t = \frac{45}{v + 3.6}\)
+2. Upstream: \(\displaystyle 45 = (v - 3.6)(t + 2.3) \implies t + 2.3 = \frac{45}{v - 3.6}\)
+
+Plug the value of \( t \) from (1) into (2):
+
+\[
+t + 2.3 = \frac{45}{v - 3.6}
+\]
+\[
+\frac{45}{v + 3.6} + 2.3 = \frac{45}{v - 3.6}
+\]
+
+Now solve for \( v \):
+
+\[
+\frac{45}{v + 3.6} + 2.3 = \frac{45}{v - 3.6}
+\]
+\[
+2.3 = \frac{45}{v - 3.6} - \frac{45}{v + 3.6}
+\]
+\[
+2.3 = 45 \left( \frac{1}{v - 3.6} - \frac{1}{v + 3.6} \right )
+\]
+\[
+2.3 = 45 \left( \frac{v + 3.6 - (v - 3.6)}{(v - 3.6)(v + 3.6)} \right )
+\]
+\[
+2.3 = 45 \left( \frac{7.2}{v^2 - (3.6)^2} \right )
+\]
+\[
+2.3 = \frac{324}{v^2 - 12.96}
+\]
+\[
+2.3(v^2 - 12.96) = 324
+\]
+\[
+2.3v^2 - 29.808 = 324
+\]
+\[
+2.3v^2 = 324 + 29.808 = 353.808
+\]
+\[
+v^2 = \frac{353.808}{2.3} \approx 153.83
+\]
+\[
+v \approx \sqrt{153.83} \approx 12.4
+\]
+
+**Final answer:**
+
+\[
+\boxed{12.4\text{ mph}}
+\]
+
+The boat's speed in still water is **12.4 mph**.",,45,,,0,,2025-07-30T15:21:44.064052,7.725095272064209
+fc334849-ad44-4537-a0f0-9f4cee7d2dde,gpt-4.1,baseline_no_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"Let \( v \) be the boat's speed in still water (in mph).
+
+- Upstream speed = \( v - 3.6 \) mph
+- Downstream speed = \( v + 3.6 \) mph
+- Distance one way = 45 miles
+
+Let \( t_u \) = time upstream, \( t_d \) = time downstream.
+
+We know:
+
+\[
+t_u = t_d + 2.3
+\]
+
+But:
+
+\[
+t_u = \frac{45}{v - 3.6}
+\]
+\[
+t_d = \frac{45}{v + 3.6}
+\]
+
+So:
+
+\[
+\frac{45}{v - 3.6} = \frac{45}{v + 3.6} + 2.3
+\]
+
+Solve for \( v \):
+
+\[
+\frac{45}{v - 3.6} - \frac{45}{v + 3.6} = 2.3
+\]
+
+Combine:
+
+\[
+45 \left( \frac{1}{v - 3.6} - \frac{1}{v + 3.6} \right) = 2.3
+\]
+\[
+45 \left( \frac{(v + 3.6) - (v - 3.6)}{(v - 3.6)(v + 3.6)} \right) = 2.3
+\]
+\[
+45 \left( \frac{7.2}{v^2 - (3.6)^2} \right) = 2.3
+\]
+\[
+\frac{324}{v^2 - 12.96} = 2.3
+\]
+\[
+324 = 2.3(v^2 - 12.96)
+\]
+\[
+324 = 2.3v^2 - 29.808
+\]
+\[
+324 + 29.808 = 2.3v^2
+\]
+\[
+353.808 = 2.3v^2
+\]
+\[
+v^2 = \frac{353.808}{2.3}
+\]
+\[
+v^2 \approx 153.83
+\]
+\[
+v \approx \sqrt{153.83} \approx 12.4
+\]
+
+**Final Answer:**
+
+\[
+\boxed{12.4\ \text{mph}}
+\]
+
+So, the boat's speed in still water is **12.4 mph**.",,45,,,0,,2025-07-30T15:21:49.261030,5.196977615356445
