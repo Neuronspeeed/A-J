@@ -197,6 +197,23 @@ pytest --cov=core --cov=engine --cov-report=term-missing
 
 The test suite runs automatically on all code changes to ensure reliability and prevent regressions.
 
+## Results
+
+Phase 2 completed. 630 trials tested number transplant effect.
+
+**Overall:** +1.1% improvement with transplanted numbers
+**Best performers:** gpt-4.1-mini (+45.3%), gpt-4o-mini (+61.3%)
+**Worst performer:** gpt-4.1 (-50.0%)
+
+**Conclusion:** Effect is model-dependent. Smaller models benefit, larger models show interference.
+
+### Analysis
+
+```bash
+cd analysis
+python generate_phase2_reports.py --summary-only
+```
+
 ## How to Extend the Experiment
 
 The organized design makes extensions simple and safe.
@@ -218,6 +235,9 @@ The organized design makes extensions simple and safe.
 
 ```
 .
+├── analysis/
+│   ├── generate_phase2_reports.py  # Analysis script
+│   └── README.md                   # Analysis documentation
 ├── config/
 │   ├── experiments.py         # Defines Phase 1 & 2 configurations
 │   └── __init__.py
@@ -226,6 +246,9 @@ The organized design makes extensions simple and safe.
 │   ├── llm_providers.py       # Code for calling different LLMs
 │   ├── persistence.py         # Code for saving results
 │   └── __init__.py
+├── data/
+│   ├── phase1/                # Phase 1 results
+│   └── phase2/                # Phase 2 results
 ├── engine/
 │   ├── experiment_runner.py   # Main experiment logic
 │   └── __init__.py
