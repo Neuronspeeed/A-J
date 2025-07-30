@@ -103,10 +103,12 @@ def extract_random_numbers(text: str) -> Optional[List[int]]:
     if not text:
         return None
     
-    # Look for sequences of large numbers (6+ digits)
-    numbers = re.findall(r'\b\d{6,}\b', text)
-    if len(numbers) >= 3:  # Need at least 3 numbers
-        return [int(n) for n in numbers[:10]]  # Take up to 10 numbers
+    # Look for sequences of numbers (1+ digits, excluding decimal numbers)
+    numbers = re.findall(r'\b\d+\b', text)
+    # Filter out very small numbers (single digits) and very large numbers (likely not random)
+    valid_numbers = [n for n in numbers if 2 <= len(n) <= 10]
+    if len(valid_numbers) >= 3:  # Need at least 3 numbers
+        return [int(n) for n in valid_numbers[:10]]  # Take up to 10 numbers
     
     return None
 

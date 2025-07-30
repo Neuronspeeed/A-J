@@ -41,8 +41,10 @@ async def main():
     print("Phase 2: Can you transplant thinking and have it still work?")
     print("=" * 70)
     
-    # Check for Phase 1 results
-    phase1_file = find_latest_results_file("phase1_results_*.csv")
+    # Check for Phase 1 results (prefer FIXED file with recovered data)
+    phase1_file = find_latest_results_file("data/phase1/phase1_thinking-experiment_*_FIXED.csv")
+    if not phase1_file:
+        phase1_file = find_latest_results_file("data/phase1/phase1_thinking-experiment_*.csv")
     if not phase1_file:
         print("❌ No Phase 1 results found!")
         print("Please run Phase 1 first:")
