@@ -1,0 +1,287 @@
+trial_id,model_name,condition,phase,problem_id,problem_question,expected_answer,full_response,first_answer,math_answer,generated_numbers,transplanted_numbers,digits_correct,error,timestamp,duration_seconds
+826d7b0e-16f2-40e5-b50b-99f72c25a1b4,gpt-4.1,baseline_no_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>9.00000000000000000000000000000000000000000000000000</answer2>",ready,9.00000000000000000000000000000000000000000000000000,,,0,,2025-07-30T17:11:50.006004,1.773087978363037
+e067e003-a98b-47ca-8e55-b7f7d11a9e7e,gpt-4.1,baseline_no_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>9.04761904761904761904761904761904761904761904761904</answer2>",ready,9.04761904761904761904761904761904761904761904761904,,,0,,2025-07-30T17:11:51.080756,1.0737519264221191
+115e8f31-6790-46f6-9483-941ca9606a99,gpt-4.1,baseline_no_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>9.00000000000000000000000000000000000000000000000000</answer2>",ready,9.00000000000000000000000000000000000000000000000000,,,0,,2025-07-30T17:11:52.019597,0.938840389251709
+58993a62-4061-46c1-9d17-c97e8492ab15,gpt-4.1,with_transplanted_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>9.04761904761904761904761904761904761904761904761904</answer2>",ready,9.04761904761904761904761904761904761904761904761904,,,0,,2025-07-30T17:11:53.251044,1.2314472198486328
+2d492ac4-8055-436a-9b81-4689cf32ebdd,gpt-4.1,with_transplanted_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>9.00000000000000000000000000000000000000000000000000</answer2>",ready,9.00000000000000000000000000000000000000000000000000,,,0,,2025-07-30T17:11:54.409947,1.158902883529663
+ee0f750f-ae38-4352-a1d8-3caa2f27eee8,gpt-4.1,with_transplanted_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>9.04761904761904761904761904761904761904761904761904</answer2>",ready,9.04761904761904761904761904761904761904761904761904,,,0,,2025-07-30T17:11:57.984156,3.573208808898926
+dc90e585-3f87-446f-95ee-824b88e91e07,gpt-4.1,with_random_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>9.15384615384615384615384615384615384615384615384615</answer2>",ready,9.15384615384615384615384615384615384615384615384615,,,0,,2025-07-30T17:11:59.053134,1.067978858947754
+c832cca2-9578-41c8-9fe6-70fc863a1b36,gpt-4.1,with_random_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>9.03571428571428571428571428571428571428571428571428</answer2>",ready,9.03571428571428571428571428571428571428571428571428,,,0,,2025-07-30T17:11:59.994320,0.941185712814331
+61f1c0b2-8a69-4ad1-8383-7d0796fe0da5,gpt-4.1,with_random_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>9.09090909090909090909090909090909090909090909090909</answer2>",ready,9.09090909090909090909090909090909090909090909090909,,,0,,2025-07-30T17:12:01.089932,1.0946106910705566
+ed8f8cf0-eb0e-4cb6-be6a-0cfa4a4f7e1e,gpt-4.1,baseline_no_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>4250.00000000000000000000000000000000000000000000000000</answer2>",ready,4250.00000000000000000000000000000000000000000000000000,,,0,,2025-07-30T17:12:01.892012,0.8010797500610352
+87647173-8cb3-4525-9284-007eb4b3cd01,gpt-4.1,baseline_no_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>5125.00000000000000000000000000000000000000000000000000</answer2>",ready,5125.00000000000000000000000000000000000000000000000000,,,1,,2025-07-30T17:12:02.702631,0.8106184005737305
+b06fd339-c60a-4aaa-9ec9-8ec42e76027e,gpt-4.1,baseline_no_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>5000.00000000000000000000000000000000000000000000000000</answer2>",ready,5000.00000000000000000000000000000000000000000000000000,,,1,,2025-07-30T17:12:03.617736,0.9151051044464111
+fe66d205-5c19-4343-8852-f2aa17e75493,gpt-4.1,with_transplanted_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>7100</answer2>",ready,7100,,,0,,2025-07-30T17:12:04.339393,0.7206568717956543
+23c94039-70c4-4bda-8389-68faa0b3f791,gpt-4.1,with_transplanted_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>5835</answer2>",ready,5835,,,1,,2025-07-30T17:12:05.018815,0.677422046661377
+7029cc0f-2e9a-45fd-9c9f-52d4946857fb,gpt-4.1,with_transplanted_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>6200.00000000000000000000000000000000000000000000000000</answer2>",ready,6200.00000000000000000000000000000000000000000000000000,,,0,,2025-07-30T17:12:07.109733,2.089921712875366
+3830e8ff-30ce-422b-87bf-063618e19f77,gpt-4.1,with_random_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>4750.00000000000000000000000000000000000000000000000000</answer2>",ready,4750.00000000000000000000000000000000000000000000000000,,,0,,2025-07-30T17:12:08.323468,1.2137351036071777
+3ca0e930-c421-40a5-92ae-c8a4fb1f8b56,gpt-4.1,with_random_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>5000.00000000000000000000000000000000000000000000000000</answer2>",ready,5000.00000000000000000000000000000000000000000000000000,,,1,,2025-07-30T17:12:09.561449,1.2379810810089111
+27775e05-767a-46a9-9b41-691eed93d971,gpt-4.1,with_random_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>4705.07177300000000000000000000000000000000000000000000</answer2>",ready,4705.07177300000000000000000000000000000000000000000000,,,0,,2025-07-30T17:12:10.424996,0.8635475635528564
+2076dce0-ba51-44a6-a170-7eed9b77033f,gpt-4.1,baseline_no_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>14.4</answer2>",ready,14.4,,,1,,2025-07-30T17:12:11.036839,0.610844612121582
+57b2c14f-b707-4c69-9d11-946cb315a10a,gpt-4.1,baseline_no_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>13.18461538461538461538461538461538461538461538461538</answer2>",ready,13.18461538461538461538461538461538461538461538461538,,,1,,2025-07-30T17:12:12.144395,1.1075568199157715
+17033367-5191-4213-a7dc-d71d9803f83e,gpt-4.1,baseline_no_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>13.35652173913043478260869565217391304347826086956521</answer2>",ready,13.35652173913043478260869565217391304347826086956521,,,1,,2025-07-30T17:12:13.661051,1.5166552066802979
+8b32f761-57bd-4970-928c-88ccadb895aa,gpt-4.1,with_transplanted_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>14.4</answer2>",ready,14.4,,,1,,2025-07-30T17:12:14.676212,1.014162302017212
+8b0fffff-dab4-4e25-a3df-fd86f59966bc,gpt-4.1,with_transplanted_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>16.2</answer2>",ready,16.2,,,1,,2025-07-30T17:12:15.955378,1.2791664600372314
+afcdfe39-a0cc-4839-986d-f30c9d438bb2,gpt-4.1,with_transplanted_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>14.4</answer2>",ready,14.4,,,1,,2025-07-30T17:12:17.144621,1.1892428398132324
+f8ca3353-ac18-4f0e-af8d-9815f84fda19,gpt-4.1,with_random_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>13.43043478260869565217391304347826086956521739130434</answer2>",ready,13.43043478260869565217391304347826086956521739130434,,,1,,2025-07-30T17:12:18.409484,1.2648625373840332
+251d19c8-a68e-4d21-873a-437e8978044f,gpt-4.1,with_random_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>14.49600000000000000000000000000000000000000000000000</answer2>",ready,14.49600000000000000000000000000000000000000000000000,,,1,,2025-07-30T17:12:19.476562,1.0670781135559082
+f698fc02-3bf5-4f21-888b-d97723a71ab3,gpt-4.1,with_random_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>14.4</answer2>",ready,14.4,,,1,,2025-07-30T17:12:20.523063,1.0465011596679688
+77132e1c-f369-4156-bc52-eff4f8161f4d,gpt-4.1,baseline_no_numbers,phase_2,pipe_problem,"A pipe fills a tank in 5.2 hours. It operates at full capacity for 2 hours and then at 65% capacity. If the tank is full in 6.7 hours total, how long did it run at reduced capacity?",4.9230769230769233502087445231154561042785644531250,"<answer1>ready</answer1>
+<answer2>4.7</answer2>",ready,4.7,,,1,,2025-07-30T17:12:21.536770,1.0125093460083008
+aa87c824-8352-4ae1-a5b5-d39d33375acd,gpt-4.1,baseline_no_numbers,phase_2,pipe_problem,"A pipe fills a tank in 5.2 hours. It operates at full capacity for 2 hours and then at 65% capacity. If the tank is full in 6.7 hours total, how long did it run at reduced capacity?",4.9230769230769233502087445231154561042785644531250,"<answer1>ready</answer1>
+<answer2>4.7</answer2>",ready,4.7,,,1,,2025-07-30T17:12:22.500333,0.9625613689422607
+c3671949-e32f-4df1-b9c5-133037a1e4c9,gpt-4.1,baseline_no_numbers,phase_2,pipe_problem,"A pipe fills a tank in 5.2 hours. It operates at full capacity for 2 hours and then at 65% capacity. If the tank is full in 6.7 hours total, how long did it run at reduced capacity?",4.9230769230769233502087445231154561042785644531250,"<answer1>ready</answer1>
+<answer2>4.7</answer2>",ready,4.7,,,1,,2025-07-30T17:12:23.922920,1.4225866794586182
+eb7e94d8-1142-4082-80f0-c2b73b664ef0,gpt-4.1,with_transplanted_numbers,phase_2,pipe_problem,"A pipe fills a tank in 5.2 hours. It operates at full capacity for 2 hours and then at 65% capacity. If the tank is full in 6.7 hours total, how long did it run at reduced capacity?",4.9230769230769233502087445231154561042785644531250,"<answer1>ready</answer1>
+<answer2>4.7</answer2>",ready,4.7,,,1,,2025-07-30T17:12:26.281575,2.357571601867676
+5b534246-60ab-40bd-8e88-ad9d44347dda,gpt-4.1,with_transplanted_numbers,phase_2,pipe_problem,"A pipe fills a tank in 5.2 hours. It operates at full capacity for 2 hours and then at 65% capacity. If the tank is full in 6.7 hours total, how long did it run at reduced capacity?",4.9230769230769233502087445231154561042785644531250,"<answer1>ready</answer1>
+<answer2>4.7</answer2>",ready,4.7,,,1,,2025-07-30T17:12:27.357925,1.076350450515747
+4942b12d-cfc0-477f-94db-34394dfa1327,gpt-4.1,with_transplanted_numbers,phase_2,pipe_problem,"A pipe fills a tank in 5.2 hours. It operates at full capacity for 2 hours and then at 65% capacity. If the tank is full in 6.7 hours total, how long did it run at reduced capacity?",4.9230769230769233502087445231154561042785644531250,"<answer1>ready</answer1>
+<answer2>4.7</answer2>",ready,4.7,,,1,,2025-07-30T17:12:28.263666,0.9057402610778809
+33674ec8-b54d-4be0-ae44-4601051d6046,gpt-4.1,with_random_numbers,phase_2,pipe_problem,"A pipe fills a tank in 5.2 hours. It operates at full capacity for 2 hours and then at 65% capacity. If the tank is full in 6.7 hours total, how long did it run at reduced capacity?",4.9230769230769233502087445231154561042785644531250,"<answer1>ready</answer1>
+<answer2>4.7</answer2>",ready,4.7,,,1,,2025-07-30T17:12:29.070971,0.8063063621520996
+5985114a-a94a-4c30-bad2-90dbcd6c5b38,gpt-4.1,with_random_numbers,phase_2,pipe_problem,"A pipe fills a tank in 5.2 hours. It operates at full capacity for 2 hours and then at 65% capacity. If the tank is full in 6.7 hours total, how long did it run at reduced capacity?",4.9230769230769233502087445231154561042785644531250,"<answer1>ready</answer1>
+<answer2>4.7</answer2>",ready,4.7,,,1,,2025-07-30T17:12:30.089277,1.0183053016662598
+f082ca43-de64-442f-b768-6dcfac7c95f6,gpt-4.1,with_random_numbers,phase_2,pipe_problem,"A pipe fills a tank in 5.2 hours. It operates at full capacity for 2 hours and then at 65% capacity. If the tank is full in 6.7 hours total, how long did it run at reduced capacity?",4.9230769230769233502087445231154561042785644531250,"<answer1>ready</answer1>
+<answer2>4.7</answer2>",ready,4.7,,,1,,2025-07-30T17:12:30.770785,0.6815078258514404
+404684c6-1e91-479a-8af1-fb201ca35049,gpt-4.1,baseline_no_numbers,phase_2,population_growth,"A population follows the model \( P(t) = 1500 \cdot e^{0.23t} \).
+When the population reaches 5500, how much time \( t \) has passed?",5.6490564527402646888276649406179785728454589843750,"<answer1>ready</answer1>
+<answer2>6.57333190747695525187203476630280825575911390333225</answer2>",ready,6.57333190747695525187203476630280825575911390333225,,,0,,2025-07-30T17:12:31.796832,1.0260469913482666
+89f88615-5e8f-4e98-86cc-9c813372424c,gpt-4.1,baseline_no_numbers,phase_2,population_growth,"A population follows the model \( P(t) = 1500 \cdot e^{0.23t} \).
+When the population reaches 5500, how much time \( t \) has passed?",5.6490564527402646888276649406179785728454589843750,"<answer1>ready</answer1>
+<answer2>6.56920758780310338260539477321601115779273048822</answer2>",ready,6.56920758780310338260539477321601115779273048822,,,0,,2025-07-30T17:12:33.327757,1.5299253463745117
+cfad69f3-6df7-4749-8a32-5fe12cd9f82a,gpt-4.1,baseline_no_numbers,phase_2,population_growth,"A population follows the model \( P(t) = 1500 \cdot e^{0.23t} \).
+When the population reaches 5500, how much time \( t \) has passed?",5.6490564527402646888276649406179785728454589843750,"<answer1>ready</answer1>
+<answer2>6.75693920421124538894166197005737250187964605712890</answer2>",ready,6.75693920421124538894166197005737250187964605712890,,,0,,2025-07-30T17:12:34.402393,1.0736348628997803
+ece1de84-6c1f-4589-809b-e0036669ebb4,gpt-4.1,with_transplanted_numbers,phase_2,population_growth,"A population follows the model \( P(t) = 1500 \cdot e^{0.23t} \).
+When the population reaches 5500, how much time \( t \) has passed?",5.6490564527402646888276649406179785728454589843750,"<answer1>ready</answer1>
+<answer2>6.96360579960179261900783885459651687605943024146605</answer2>",ready,6.96360579960179261900783885459651687605943024146605,,,0,,2025-07-30T17:12:35.675434,1.273040533065796
+83e79755-dc34-4463-b324-b5999d5a1d3c,gpt-4.1,with_transplanted_numbers,phase_2,population_growth,"A population follows the model \( P(t) = 1500 \cdot e^{0.23t} \).
+When the population reaches 5500, how much time \( t \) has passed?",5.6490564527402646888276649406179785728454589843750,"<answer1>ready</answer1>
+<answer2>6.80417258222409183855794331137987476990702648473059</answer2>",ready,6.80417258222409183855794331137987476990702648473059,,,0,,2025-07-30T17:12:36.555452,0.8800182342529297
+4777c3ff-d229-4006-8860-722c58807114,gpt-4.1,with_transplanted_numbers,phase_2,population_growth,"A population follows the model \( P(t) = 1500 \cdot e^{0.23t} \).
+When the population reaches 5500, how much time \( t \) has passed?",5.6490564527402646888276649406179785728454589843750,"<answer1>ready</answer1>
+<answer2>6.99654009493216364987303262651093615415349790325997</answer2>",ready,6.99654009493216364987303262651093615415349790325997,,,0,,2025-07-30T17:12:37.535188,0.9797365665435791
+b069a456-93fe-4177-a730-da7e603f1baf,gpt-4.1,with_random_numbers,phase_2,population_growth,"A population follows the model \( P(t) = 1500 \cdot e^{0.23t} \).
+When the population reaches 5500, how much time \( t \) has passed?",5.6490564527402646888276649406179785728454589843750,"<answer1>ready</answer1>
+<answer2>6.42926382032705454128228741384316266042565441132819</answer2>",ready,6.42926382032705454128228741384316266042565441132819,,,0,,2025-07-30T17:12:38.933256,1.3980677127838135
+ff342e26-656f-4026-a691-df5a9e5c1dc7,gpt-4.1,with_random_numbers,phase_2,population_growth,"A population follows the model \( P(t) = 1500 \cdot e^{0.23t} \).
+When the population reaches 5500, how much time \( t \) has passed?",5.6490564527402646888276649406179785728454589843750,"<answer1>ready</answer1>
+<answer2>6.54677228482881297008691124209574081529549684763</answer2>",ready,6.54677228482881297008691124209574081529549684763,,,0,,2025-07-30T17:12:39.834642,0.901386022567749
+d6a746bb-023a-42b5-8b41-5145de5b06b1,gpt-4.1,with_random_numbers,phase_2,population_growth,"A population follows the model \( P(t) = 1500 \cdot e^{0.23t} \).
+When the population reaches 5500, how much time \( t \) has passed?",5.6490564527402646888276649406179785728454589843750,"<answer1>ready</answer1>
+<answer2>6.44600667298464756840956965583080729221003323974709</answer2>",ready,6.44600667298464756840956965583080729221003323974709,,,0,,2025-07-30T17:12:40.985051,1.15040922164917
+138cfa1d-a485-4968-a853-4c4a57d2277a,gpt-4.1,baseline_no_numbers,phase_2,decay_problem,"A substance decays as \( A(t) = 100 \cdot e^{-0.326t} \).
+When only 40 grams remain, how long has it been decaying?",2.8107077664851383147492924763355404138565063476563,"<answer1>ready</answer1>
+<answer2>2.81355932203389830508474576271186440677966101694915</answer2>",ready,2.81355932203389830508474576271186440677966101694915,,,3,,2025-07-30T17:12:41.813888,0.8278360366821289
+fd743c1f-3b6c-4d29-aad1-2eee40ff9ae6,gpt-4.1,baseline_no_numbers,phase_2,decay_problem,"A substance decays as \( A(t) = 100 \cdot e^{-0.326t} \).
+When only 40 grams remain, how long has it been decaying?",2.8107077664851383147492924763355404138565063476563,"<answer1>ready</answer1>
+<answer2>2.81553485758719716025414249836570352444269725568711</answer2>",ready,2.81553485758719716025414249836570352444269725568711,,,3,,2025-07-30T17:12:43.351273,1.5373849868774414
+c7e87fca-32c5-400c-baf3-5cd3ba0f4dbd,gpt-4.1,baseline_no_numbers,phase_2,decay_problem,"A substance decays as \( A(t) = 100 \cdot e^{-0.326t} \).
+When only 40 grams remain, how long has it been decaying?",2.8107077664851383147492924763355404138565063476563,"<answer1>ready</answer1>
+<answer2>2.81708563488518581856348851818563488</answer2>",ready,2.81708563488518581856348851818563488,,,3,,2025-07-30T17:12:44.481368,1.1295843124389648
+2ab774cc-407b-4514-bc1f-918037c0d8fb,gpt-4.1,with_transplanted_numbers,phase_2,decay_problem,"A substance decays as \( A(t) = 100 \cdot e^{-0.326t} \).
+When only 40 grams remain, how long has it been decaying?",2.8107077664851383147492924763355404138565063476563,"<answer1>ready</answer1>
+<answer2>2.81892105887780477203186082969813459861347678870804</answer2>",ready,2.81892105887780477203186082969813459861347678870804,,,3,,2025-07-30T17:12:46.477375,1.9960076808929443
+763d8b2a-e611-41d5-a17e-f696cc416bb5,gpt-4.1,with_transplanted_numbers,phase_2,decay_problem,"A substance decays as \( A(t) = 100 \cdot e^{-0.326t} \).
+When only 40 grams remain, how long has it been decaying?",2.8107077664851383147492924763355404138565063476563,"<answer1>ready</answer1>
+<answer2>2.81690140845070422535211267605633802816901408450746</answer2>",ready,2.81690140845070422535211267605633802816901408450746,,,3,,2025-07-30T17:12:48.521983,2.0446081161499023
+88dea52a-3a18-4b76-b4c1-e8412246c639,gpt-4.1,with_transplanted_numbers,phase_2,decay_problem,"A substance decays as \( A(t) = 100 \cdot e^{-0.326t} \).
+When only 40 grams remain, how long has it been decaying?",2.8107077664851383147492924763355404138565063476563,"<answer1>ready</answer1>
+<answer2>2.80898876404494382022471910112359550561797752808988</answer2>",ready,2.80898876404494382022471910112359550561797752808988,,,2,,2025-07-30T17:12:51.377037,2.855053186416626
+11175fb9-5713-40ff-9d4e-8889cfca4772,gpt-4.1,with_random_numbers,phase_2,decay_problem,"A substance decays as \( A(t) = 100 \cdot e^{-0.326t} \).
+When only 40 grams remain, how long has it been decaying?",2.8107077664851383147492924763355404138565063476563,"<answer1>ready</answer1>
+<answer2>2.81805908784325802185911529654539444417705732324541</answer2>",ready,2.81805908784325802185911529654539444417705732324541,,,3,,2025-07-30T17:12:52.966960,1.5899238586425781
+6f12b9d1-48b7-40d3-a78f-14a9e189eb70,gpt-4.1,with_random_numbers,phase_2,decay_problem,"A substance decays as \( A(t) = 100 \cdot e^{-0.326t} \).
+When only 40 grams remain, how long has it been decaying?",2.8107077664851383147492924763355404138565063476563,"<answer1>ready</answer1>
+<answer2>2.81892193983062063694599390811265902196739245437984</answer2>",ready,2.81892193983062063694599390811265902196739245437984,,,3,,2025-07-30T17:12:55.079023,2.112062931060791
+54c6b01e-018d-4d98-a479-a0dec07c820d,gpt-4.1,with_random_numbers,phase_2,decay_problem,"A substance decays as \( A(t) = 100 \cdot e^{-0.326t} \).
+When only 40 grams remain, how long has it been decaying?",2.8107077664851383147492924763355404138565063476563,"<answer1>ready</answer1>
+<answer2>2.818490461</answer2>",ready,2.818490461,,,3,,2025-07-30T17:12:55.736039,0.6560118198394775
+8d9b7df5-3ece-49ec-950d-f688bb263dcb,gpt-4.1,baseline_no_numbers,phase_2,logarithm_problem,"Solve for \( x \) in:
+\( \ln(x + 7) = 3 \)",13.085536923187667740928529654581717896987907838554,"<answer1>ready</answer1>
+<answer2>13.085536923187667740928529654581717897127759143655</answer2>",ready,13.085536923187667740928529654581717897127759143655,,,37,,2025-07-30T17:12:58.186718,2.450679063796997
+7b61cda1-c489-4aba-8241-d04e90a86bdd,gpt-4.1,baseline_no_numbers,phase_2,logarithm_problem,"Solve for \( x \) in:
+\( \ln(x + 7) = 3 \)",13.085536923187667740928529654581717896987907838554,"<answer1>ready</answer1>
+<answer2>13.085536923187667740928529654581717038523459208327</answer2>",ready,13.085536923187667740928529654581717038523459208327,,,35,,2025-07-30T17:12:59.241719,1.0550014972686768
+252d3bc4-dc0f-4af6-8d3d-8770f1a6ee11,gpt-4.1,baseline_no_numbers,phase_2,logarithm_problem,"Solve for \( x \) in:
+\( \ln(x + 7) = 3 \)",13.085536923187667740928529654581717896987907838554,"<answer1>ready</answer1>
+<answer2>13.08553692318766821808848657448165057324491127997015</answer2>",ready,13.08553692318766821808848657448165057324491127997015,,,16,,2025-07-30T17:13:00.342480,1.1007609367370605
+81989394-ec5e-48b4-b5ec-55fa6c559ec7,gpt-4.1,with_transplanted_numbers,phase_2,logarithm_problem,"Solve for \( x \) in:
+\( \ln(x + 7) = 3 \)",13.085536923187667740928529654581717896987907838554,"<answer1>ready</answer1>
+<answer2>12.08553692318766774092852965458171790040958631193306</answer2>",ready,12.08553692318766774092852965458171790040958631193306,,,1,,2025-07-30T17:13:02.853040,2.5089876651763916
+c979fc92-1d2f-46a4-8c0f-7aae55ecfd62,gpt-4.1,with_transplanted_numbers,phase_2,logarithm_problem,"Solve for \( x \) in:
+\( \ln(x + 7) = 3 \)",13.085536923187667740928529654581717896987907838554,"<answer1>ready</answer1>
+<answer2>13.085536923187667740928529654581717896263059975973</answer2>",ready,13.085536923187667740928529654581717896263059975973,,,38,,2025-07-30T17:13:04.106305,1.253265142440796
+14a43038-8f49-4065-9d2c-4c690e2685d4,gpt-4.1,with_transplanted_numbers,phase_2,logarithm_problem,"Solve for \( x \) in:
+\( \ln(x + 7) = 3 \)",13.085536923187667740928529654581717896987907838554,"<answer1>ready</answer1>
+<answer2>12.085536923187668218088486993100294826737530916986</answer2>",ready,12.085536923187668218088486993100294826737530916986,,,1,,2025-07-30T17:13:05.202418,1.0961124897003174
+b3337f79-59d5-4a84-82d9-b25d8e47211b,gpt-4.1,with_random_numbers,phase_2,logarithm_problem,"Solve for \( x \) in:
+\( \ln(x + 7) = 3 \)",13.085536923187667740928529654581717896987907838554,"<answer1>ready</answer1>
+<answer2>13.08553692318766774092852965458171790034486502772012</answer2>",ready,13.08553692318766774092852965458171790034486502772012,,,35,,2025-07-30T17:13:06.332256,1.1278395652770996
+1ec3c5bb-b014-4e65-b26c-65bba47ac3c8,gpt-4.1,with_random_numbers,phase_2,logarithm_problem,"Solve for \( x \) in:
+\( \ln(x + 7) = 3 \)",13.085536923187667740928529654581717896987907838554,"<answer1>ready</answer1>
+<answer2>13.085536923187667740928529654581717900970003654066</answer2>",ready,13.085536923187667740928529654581717900970003654066,,,35,,2025-07-30T17:13:07.365512,1.032254695892334
+5ac721bf-e8c0-4f0d-99a0-eff3d95e8343,gpt-4.1,with_random_numbers,phase_2,logarithm_problem,"Solve for \( x \) in:
+\( \ln(x + 7) = 3 \)",13.085536923187667740928529654581717896987907838554,"<answer1>ready</answer1>
+<answer2>13.08553692318766821843079386103751444105891429211644</answer2>",ready,13.08553692318766821843079386103751444105891429211644,,,16,,2025-07-30T17:13:08.282038,0.9145255088806152
+33a3e103-4209-49a0-bdc1-970ef893f091,gpt-4.1,baseline_no_numbers,phase_2,compound_interest,"$3000 grows to $5000 at a 6% annual interest compounded monthly.
+How long (in years) does it take?",8.5350271042920393682607027585618197917938232421875,"<answer1>ready</answer1>
+<answer2>8.99458141293405782927228885695987934855930637490524</answer2>",ready,8.99458141293405782927228885695987934855930637490524,,,1,,2025-07-30T17:13:09.823038,1.540999412536621
+ed9e04eb-b10b-4009-b9a0-94074968b240,gpt-4.1,baseline_no_numbers,phase_2,compound_interest,"$3000 grows to $5000 at a 6% annual interest compounded monthly.
+How long (in years) does it take?",8.5350271042920393682607027585618197917938232421875,"<answer1>ready</answer1>
+<answer2>8.99786349547233439205342808586582964544316394009409</answer2>",ready,8.99786349547233439205342808586582964544316394009409,,,1,,2025-07-30T17:13:11.159221,1.3361835479736328
+0492b9c0-f43a-4f11-a176-3cb9c38fd28a,gpt-4.1,baseline_no_numbers,phase_2,compound_interest,"$3000 grows to $5000 at a 6% annual interest compounded monthly.
+How long (in years) does it take?",8.5350271042920393682607027585618197917938232421875,"<answer1>ready</answer1>
+<answer2>8.75557941553087895575491640531662209927581808740028</answer2>",ready,8.75557941553087895575491640531662209927581808740028,,,1,,2025-07-30T17:13:13.691041,2.529813766479492
+13876e71-13ed-4265-bf2e-f7d385eb7dce,gpt-4.1,with_transplanted_numbers,phase_2,compound_interest,"$3000 grows to $5000 at a 6% annual interest compounded monthly.
+How long (in years) does it take?",8.5350271042920393682607027585618197917938232421875,"<answer1>ready</answer1>
+<answer2>8.88608855314765242865149268282978571047429000434</answer2>",ready,8.88608855314765242865149268282978571047429000434,,,1,,2025-07-30T17:13:15.063560,1.3715195655822754
+ebb292ac-fec0-4862-a090-a17719ef1ec9,gpt-4.1,with_transplanted_numbers,phase_2,compound_interest,"$3000 grows to $5000 at a 6% annual interest compounded monthly.
+How long (in years) does it take?",8.5350271042920393682607027585618197917938232421875,"<answer1>ready</answer1>
+<answer2>8.81315015349806588325771014013933563265935804578</answer2>",ready,8.81315015349806588325771014013933563265935804578,,,1,,2025-07-30T17:13:17.772326,2.708765745162964
+72c20634-1f07-4f05-a56f-cf909461c42c,gpt-4.1,with_transplanted_numbers,phase_2,compound_interest,"$3000 grows to $5000 at a 6% annual interest compounded monthly.
+How long (in years) does it take?",8.5350271042920393682607027585618197917938232421875,"<answer1>ready</answer1>
+<answer2>8.48125912428754470105339258748981566073467610595685</answer2>",ready,8.48125912428754470105339258748981566073467610595685,,,1,,2025-07-30T17:13:18.984277,1.2119510173797607
+cdceee3b-7e16-4e07-8b4b-f29d75838626,gpt-4.1,with_random_numbers,phase_2,compound_interest,"$3000 grows to $5000 at a 6% annual interest compounded monthly.
+How long (in years) does it take?",8.5350271042920393682607027585618197917938232421875,"<answer1>ready</answer1>
+<answer2>8.98381548990043612266865943478093061283330094434</answer2>",ready,8.98381548990043612266865943478093061283330094434,,,1,,2025-07-30T17:13:19.887522,0.9002258777618408
+1af0afac-e2d4-4e73-8c32-44189f5a2156,gpt-4.1,with_random_numbers,phase_2,compound_interest,"$3000 grows to $5000 at a 6% annual interest compounded monthly.
+How long (in years) does it take?",8.5350271042920393682607027585618197917938232421875,"<answer1>ready</answer1>
+<answer2>8.83512911083786472393417572636199874616469651183</answer2>",ready,8.83512911083786472393417572636199874616469651183,,,1,,2025-07-30T17:13:21.031907,1.1443846225738525
+b642087e-535d-4e37-8c63-215d7c3d420a,gpt-4.1,with_random_numbers,phase_2,compound_interest,"$3000 grows to $5000 at a 6% annual interest compounded monthly.
+How long (in years) does it take?",8.5350271042920393682607027585618197917938232421875,"<answer1>ready</answer1>
+<answer2>8.91625210885758806672603912658286993893946751155</answer2>",ready,8.91625210885758806672603912658286993893946751155,,,1,,2025-07-30T17:13:22.158124,1.1262173652648926
+9fb4b6b3-2600-42dc-b714-16df0269bc12,gpt-4.1,baseline_no_numbers,phase_2,cosine_problem_1,"Solve for \( x \in \left[0, \frac{\pi}{2}\right] \) such that:
+\( \cos(x) = 0.92 \)",0.40271584158066159320199517424043733626604080200195,"<answer1>ready</answer1>
+<answer2>0.39269908169872415480783042290993786098560480429610</answer2>",ready,0.39269908169872415480783042290993786098560480429610,,,1,,2025-07-30T17:13:23.588240,1.4301154613494873
+6fbea727-76fd-4a38-8144-e3296ae549c9,gpt-4.1,baseline_no_numbers,phase_2,cosine_problem_1,"Solve for \( x \in \left[0, \frac{\pi}{2}\right] \) such that:
+\( \cos(x) = 0.92 \)",0.40271584158066159320199517424043733626604080200195,"<answer1>ready</answer1>
+<answer2>0.39852244401407534532258036237607021248345460128749</answer2>",ready,0.39852244401407534532258036237607021248345460128749,,,1,,2025-07-30T17:13:24.467247,0.8790075778961182
+3d214350-bc18-4bc1-baf2-e4d0565bfcd3,gpt-4.1,baseline_no_numbers,phase_2,cosine_problem_1,"Solve for \( x \in \left[0, \frac{\pi}{2}\right] \) such that:
+\( \cos(x) = 0.92 \)",0.40271584158066159320199517424043733626604080200195,"<answer1>ready</answer1>
+<answer2>0.39269908169872415480783042290993786052464617492114</answer2>",ready,0.39269908169872415480783042290993786052464617492114,,,1,,2025-07-30T17:13:25.986498,1.5192506313323975
+74d57fda-7891-4632-9e81-4fce965d81e4,gpt-4.1,with_transplanted_numbers,phase_2,cosine_problem_1,"Solve for \( x \in \left[0, \frac{\pi}{2}\right] \) such that:
+\( \cos(x) = 0.92 \)",0.40271584158066159320199517424043733626604080200195,"<answer1>ready</answer1>
+<answer2>0.39852244566650286101974985089933858954811096191</answer2>",ready,0.39852244566650286101974985089933858954811096191,,,1,,2025-07-30T17:13:27.650041,1.6625440120697021
+f5a02063-deb6-48b9-8ddf-8cb2b4c14628,gpt-4.1,with_transplanted_numbers,phase_2,cosine_problem_1,"Solve for \( x \in \left[0, \frac{\pi}{2}\right] \) such that:
+\( \cos(x) = 0.92 \)",0.40271584158066159320199517424043733626604080200195,"<answer1>ready</answer1>
+<answer2>0.39292034626483423069382654653356587868903919506044</answer2>",ready,0.39292034626483423069382654653356587868903919506044,,,1,,2025-07-30T17:13:29.461888,1.8108477592468262
+a1812411-491f-4d31-b47c-b6b6bc7f0ff4,gpt-4.1,with_transplanted_numbers,phase_2,cosine_problem_1,"Solve for \( x \in \left[0, \frac{\pi}{2}\right] \) such that:
+\( \cos(x) = 0.92 \)",0.40271584158066159320199517424043733626604080200195,"<answer1>ready</answer1>
+<answer2>0.39269908169872415480783042290993786052464617492199</answer2>",ready,0.39269908169872415480783042290993786052464617492199,,,1,,2025-07-30T17:13:30.516580,1.0546915531158447
+0f0bee12-5f52-40ce-95bb-bec3e45b84d2,gpt-4.1,with_random_numbers,phase_2,cosine_problem_1,"Solve for \( x \in \left[0, \frac{\pi}{2}\right] \) such that:
+\( \cos(x) = 0.92 \)",0.40271584158066159320199517424043733626604080200195,"<answer1>ready</answer1>
+<answer2>0.39852244415220097349121789518794419148659753799438</answer2>",ready,0.39852244415220097349121789518794419148659753799438,,,1,,2025-07-30T17:13:31.784052,1.2674717903137207
+24bd127a-bd13-404e-b5c7-91d5176c4f9d,gpt-4.1,with_random_numbers,phase_2,cosine_problem_1,"Solve for \( x \in \left[0, \frac{\pi}{2}\right] \) such that:
+\( \cos(x) = 0.92 \)",0.40271584158066159320199517424043733626604080200195,"<answer1>ready</answer1>
+<answer2>0.3971975511965976459076945273357492612762451171875</answer2>",ready,0.3971975511965976459076945273357492612762451171875,,,1,,2025-07-30T17:13:33.221537,1.4374849796295166
+d8c9d3a4-66dc-4ffb-91e6-2c8744af4eff,gpt-4.1,with_random_numbers,phase_2,cosine_problem_1,"Solve for \( x \in \left[0, \frac{\pi}{2}\right] \) such that:
+\( \cos(x) = 0.92 \)",0.40271584158066159320199517424043733626604080200195,"<answer1>ready</answer1>
+<answer2>0.39518641274062704789322398139372798269503211975097</answer2>",ready,0.39518641274062704789322398139372798269503211975097,,,1,,2025-07-30T17:13:34.413911,1.1923742294311523
+152689e3-c175-4991-b934-705fb467f910,gpt-4.1,baseline_no_numbers,phase_2,cosine_problem_2,"Solve for \( x \in [0, \pi] \) such that:
+\( \cos(x) = 0.3 \)",1.2661036727794992007289920366019941866397857666016,"<answer1>ready</answer1>
+<answer2>x=1.2661036727794991113087320061928 x=1.875488980810294371499751147396</answer2>",ready,x=1.2661036727794991113087320061928 x=1.875488980810294371499751147396,,,16,,2025-07-30T17:13:35.743437,1.3295254707336426
+cfe92a50-9fd1-42da-b82e-3b96e18d2982,gpt-4.1,baseline_no_numbers,phase_2,cosine_problem_2,"Solve for \( x \in [0, \pi] \) such that:
+\( \cos(x) = 0.3 \)",1.2661036727794992007289920366019941866397857666016,"<answer1>ready</answer1>
+<answer2>1.2661036727794992 1.875488980810294</answer2>",ready,1.2661036727794992 1.875488980810294,,,1,,2025-07-30T17:13:36.836121,1.092684030532837
+27f75cdd-2d66-47b7-9c3e-540ccd6ff9f6,gpt-4.1,baseline_no_numbers,phase_2,cosine_problem_2,"Solve for \( x \in [0, \pi] \) such that:
+\( \cos(x) = 0.3 \)",1.2661036727794992007289920366019941866397857666016,"<answer1>ready</answer1>
+<answer2>x=arccos(0.3),x=2*3.1415926535897932384626433832795028841971693993751-arccos(0.3)</answer2>",ready,"x=arccos(0.3),x=2*3.1415926535897932384626433832795028841971693993751-arccos(0.3)",,,0,,2025-07-30T17:13:38.683058,1.8459362983703613
+afd8f4e1-0429-43fd-8bb1-c74e4237abff,gpt-4.1,with_transplanted_numbers,phase_2,cosine_problem_2,"Solve for \( x \in [0, \pi] \) such that:
+\( \cos(x) = 0.3 \)",1.2661036727794992007289920366019941866397857666016,"<answer1>ready</answer1>
+<answer2>1.266103672779499,1.875488980810294</answer2>",ready,"1.266103672779499,1.875488980810294",,,1,,2025-07-30T17:13:40.215180,1.5321223735809326
+12d3b122-0dac-49c3-a5ae-170cf9f0012e,gpt-4.1,with_transplanted_numbers,phase_2,cosine_problem_2,"Solve for \( x \in [0, \pi] \) such that:
+\( \cos(x) = 0.3 \)",1.2661036727794992007289920366019941866397857666016,"<answer1>ready</answer1>
+<answer2>1.26610367277949911133362654479422188878011042605971 1.87548898081029412712955910879587196437950622753087</answer2>",ready,1.26610367277949911133362654479422188878011042605971 1.87548898081029412712955910879587196437950622753087,,,1,,2025-07-30T17:13:42.251736,2.0365560054779053
+44e9a7b6-4fca-4ef9-8e85-1d5e75b55a6c,gpt-4.1,with_transplanted_numbers,phase_2,cosine_problem_2,"Solve for \( x \in [0, \pi] \) such that:
+\( \cos(x) = 0.3 \)",1.2661036727794992007289920366019941866397857666016,"<answer1>ready</answer1>
+<answer2>1.26610367277949911130810092497414153814315819739715 1.87548898081029412715354272861565137866643445619201</answer2>",ready,1.26610367277949911130810092497414153814315819739715 1.87548898081029412715354272861565137866643445619201,,,1,,2025-07-30T17:13:43.785844,1.5327329635620117
+c2b2474c-3c53-4aa3-be0f-f0da8240cbc0,gpt-4.1,with_random_numbers,phase_2,cosine_problem_2,"Solve for \( x \in [0, \pi] \) such that:
+\( \cos(x) = 0.3 \)",1.2661036727794992007289920366019941866397857666016,"<answer1>ready</answer1>
+<answer2>1.26610367277949911105554653309952014643277647749357 1.87548898081029412740609612009047824415981617609607</answer2>",ready,1.26610367277949911105554653309952014643277647749357 1.87548898081029412740609612009047824415981617609607,,,1,,2025-07-30T17:13:45.577859,1.7920153141021729
+cbff27cf-de7c-4fbd-85a3-7c5ae58ac498,gpt-4.1,with_random_numbers,phase_2,cosine_problem_2,"Solve for \( x \in [0, \pi] \) such that:
+\( \cos(x) = 0.3 \)",1.2661036727794992007289920366019941866397857666016,"<answer1>ready</answer1>
+<answer2>x=arccos(0.3),x=2*3.14159265358979323846264338327950288419716939937510-arccos(0.3)</answer2>",ready,"x=arccos(0.3),x=2*3.14159265358979323846264338327950288419716939937510-arccos(0.3)",,,0,,2025-07-30T17:13:46.915047,1.3371880054473877
+9489833c-9fa8-4d3b-acdd-e2251269fddb,gpt-4.1,with_random_numbers,phase_2,cosine_problem_2,"Solve for \( x \in [0, \pi] \) such that:
+\( \cos(x) = 0.3 \)",1.2661036727794992007289920366019941866397857666016,"<answer1>ready</answer1>
+<answer2>x=arccos(0.3), x=2*3.14159265358979323846264338327950288419716939937510-arccos(0.3)</answer2>",ready,"x=arccos(0.3), x=2*3.14159265358979323846264338327950288419716939937510-arccos(0.3)",,,0,,2025-07-30T17:13:48.533313,1.6182653903961182
+12b2dfb1-0210-4942-8ecb-fb0e51597167,gpt-4.1-mini,baseline_no_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>11.76470588235294117647058823529411764705882352941176</answer2>",ready,11.76470588235294117647058823529411764705882352941176,,,0,,2025-07-30T17:13:50.561153,1.6838371753692627
+d0c6951f-ac43-477c-b6eb-1d0a29657a4d,gpt-4.1-mini,baseline_no_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>15.38461538461538461538461538461538461538461538461538</answer2>",ready,15.38461538461538461538461538461538461538461538461538,,,0,,2025-07-30T17:13:51.971714,1.4105608463287354
+9229e99a-3af7-4b2a-853f-2648490ba106,gpt-4.1-mini,baseline_no_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>20.45454545454545454545454545454545454545454545454545</answer2>",ready,20.45454545454545454545454545454545454545454545454545,,,0,,2025-07-30T17:13:53.841440,1.8697254657745361
+9e82f4cc-cb82-44f8-9d1c-6c10b9762df3,gpt-4.1-mini,with_transplanted_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>18.33333333333333333333333333333333333333333333333333</answer2>",ready,18.33333333333333333333333333333333333333333333333333,,,0,,2025-07-30T17:13:55.381938,1.539499044418335
+6023647e-fd9a-467b-85e8-75eeb812b1a4,gpt-4.1-mini,with_transplanted_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>12.72727272727272727272727272727272727272727272727273</answer2>",ready,12.72727272727272727272727272727272727272727272727273,,,0,,2025-07-30T17:13:56.660957,1.2790186405181885
+9ec71b6e-b7c0-43ca-9553-5ab73a2b78c4,gpt-4.1-mini,with_transplanted_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>13.84615384615384615384615384615384615384615384615385</answer2>",ready,13.84615384615384615384615384615384615384615384615385,,,0,,2025-07-30T17:13:57.795576,1.1346194744110107
+12c08719-783a-4926-843d-3909794fe422,gpt-4.1-mini,with_random_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>12.77777777777777777777777777777777777777777777777778</answer2>",ready,12.77777777777777777777777777777777777777777777777778,,,0,,2025-07-30T17:13:58.966203,1.1696264743804932
+582dc1a2-c90f-4f19-b3a8-62503b7c2edb,gpt-4.1-mini,with_random_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>16.36363636363636363636363636363636363636363636363636</answer2>",ready,16.36363636363636363636363636363636363636363636363636,,,0,,2025-07-30T17:14:00.011248,1.0445213317871094
+932a4a2b-47df-4b28-a72a-9289840a5f66,gpt-4.1-mini,with_random_numbers,phase_2,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>ready</answer1>
+<answer2>11.36363636363636363636363636363636363636363636363636</answer2>",ready,11.36363636363636363636363636363636363636363636363636,,,0,,2025-07-30T17:14:01.206732,1.1954832077026367
+0d048e9e-1b66-4ce6-b389-9dff8a276eec,gpt-4.1-mini,baseline_no_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>8000.00000000000000000000000000000000000000000000000000</answer2>",ready,8000.00000000000000000000000000000000000000000000000000,,,0,,2025-07-30T17:14:02.581654,1.373922348022461
+8c68fcd7-ca49-4a56-9139-7fa46e21460a,gpt-4.1-mini,baseline_no_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>7000</answer2>",ready,7000,,,0,,2025-07-30T17:14:03.454021,0.8713672161102295
+a055778c-3492-47ff-baeb-0be7830952fd,gpt-4.1-mini,baseline_no_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>7000</answer2>",ready,7000,,,0,,2025-07-30T17:14:04.285480,0.8304593563079834
+b3b8c571-7231-43ec-b737-94e72195d1a8,gpt-4.1-mini,with_transplanted_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>10300</answer2>",ready,10300,,,0,,2025-07-30T17:14:05.147558,0.8620777130126953
+dfd34656-09a1-4d3a-ac70-cb3741356df4,gpt-4.1-mini,with_transplanted_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>8900</answer2>",ready,8900,,,0,,2025-07-30T17:14:06.176511,1.0289525985717773
+77e7bc51-4a0b-4ab2-b9b2-82479324aee6,gpt-4.1-mini,with_transplanted_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>10300</answer2>",ready,10300,,,0,,2025-07-30T17:14:07.060624,0.8841137886047363
+c0cdcc07-2cef-413f-a062-405f7b846d43,gpt-4.1-mini,with_random_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>10600</answer2>",ready,10600,,,0,,2025-07-30T17:14:07.928815,0.8671913146972656
+404fad45-3698-41e7-8f51-58e8dca09f63,gpt-4.1-mini,with_random_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>9400</answer2>",ready,9400,,,0,,2025-07-30T17:14:08.843674,0.9148585796356201
+326696bb-ccde-40a1-be1c-000b01e3b1fd,gpt-4.1-mini,with_random_numbers,phase_2,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>ready</answer1>
+<answer2>7300</answer2>",ready,7300,,,0,,2025-07-30T17:14:09.816857,0.9721827507019043
+7622dccc-e7cb-44b2-8b7d-0e6a1a208e75,gpt-4.1-mini,baseline_no_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>13.79999999999999715782905695959925651550388336181641</answer2>",ready,13.79999999999999715782905695959925651550388336181641,,,1,,2025-07-30T17:14:11.271728,1.4538705348968506
+5a8398e0-01b8-4ba4-bed9-56b1b85ae930,gpt-4.1-mini,baseline_no_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>14.46938775510204081632653061224489795918367346939</answer2>",ready,14.46938775510204081632653061224489795918367346939,,,1,,2025-07-30T17:14:12.591120,1.318392276763916
+4a3438f4-efc9-4ed6-99bb-91176a970378,gpt-4.1-mini,baseline_no_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>11.39999999999999946672223799574765586853027343750000</answer2>",ready,11.39999999999999946672223799574765586853027343750000,,,1,,2025-07-30T17:14:13.934240,1.3431198596954346
+5571d767-9ef0-4797-9db7-1cbc951b85b1,gpt-4.1-mini,with_transplanted_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>18.19999999999999928945726423989981412887573242187500</answer2>",ready,18.19999999999999928945726423989981412887573242187500,,,1,,2025-07-30T17:14:15.626610,1.6923696994781494
+800465ee-94dd-414c-9862-0c929083fea5,gpt-4.1-mini,with_transplanted_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>19.79999999999999715782905695959925651550292968750000</answer2>",ready,19.79999999999999715782905695959925651550292968750000,,,1,,2025-07-30T17:14:16.770885,1.1432740688323975
+7ed9c535-04db-4f64-b674-48ff8ff5c39b,gpt-4.1-mini,with_transplanted_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>20.40000000000000568434188608080148696899414062500000</answer2>",ready,20.40000000000000568434188608080148696899414062500000,,,0,,2025-07-30T17:14:18.349052,1.5781676769256592
+50fc1206-0f8e-41f7-900d-eca6814dd24a,gpt-4.1-mini,with_random_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>11.40000000000000341060513164848124265670776367187500</answer2>",ready,11.40000000000000341060513164848124265670776367187500,,,1,,2025-07-30T17:14:21.178963,2.8289098739624023
+b0849b69-d29d-4aae-bb75-cdd642a713a6,gpt-4.1-mini,with_random_numbers,phase_2,boat_problem,"A boat travels 45 miles upstream and back. The upstream trip takes 2.3 hours longer than the downstream trip. If the current flows at 3.6 mph, what is the boat's speed in still water?",12.402804731889933265165382181294262409210205078125,"<answer1>ready</answer1>
+<answer2>18.60000000000000526325641401473499208641052246093750</answer2>",ready,18.60000000000000526325641401473499208641052246093750,,,1,,2025-07-30T17:14:22.353537,1.1745741367340088
