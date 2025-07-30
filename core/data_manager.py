@@ -270,38 +270,6 @@ class DataManager:
         # Return the most recently modified file
         return max(all_files, key=lambda f: Path(f).stat().st_mtime)
     
-    def find_all_results(self, phase: ExperimentPhase, pattern_suffix: str = ".csv") -> List[str]:
-        """
-        Find all results files for a given phase, sorted chronologically.
-        
-        Args:
-            phase: Experiment phase to search for
-            pattern_suffix: Suffix to filter files (e.g., "_FIXED.csv")
-            
-        Returns:
-            List of result file paths, oldest first
-        """
-        if phase == ExperimentPhase.PHASE_1:
-            search_dir = DataPaths.PHASE1_DIR
-            patterns = [f"phase1_*{pattern_suffix}", f"phase1_thinking-experiment_*{pattern_suffix}"]
-        elif phase == ExperimentPhase.PHASE_2:
-            search_dir = DataPaths.PHASE2_DIR
-            patterns = [f"phase2_*{pattern_suffix}", f"phase2_transplant-test_*{pattern_suffix}"]
-        elif phase == ExperimentPhase.PHASE_3:
-            search_dir = DataPaths.PHASE3_DIR
-            patterns = [f"phase3_*{pattern_suffix}", f"phase3_cross-problem_*{pattern_suffix}"]
-        else:
-            return []
-            
-        import glob
-        all_files = []
-        for pattern in patterns:
-            files = glob.glob(str(search_dir / pattern))
-            all_files.extend(files)
-            
-        # Return sorted by modification time (oldest first)
-        return sorted(list(set(all_files)), key=lambda f: Path(f).stat().st_mtime)
-    
     def list_all_experiments(self) -> Dict[str, List[str]]:
         """
         List all experiment files organized by phase.

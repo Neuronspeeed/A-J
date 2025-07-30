@@ -148,14 +148,10 @@ class CsvResultReader:
         
         with open(filename, 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
-
+            
             for row in reader:
-                try:
-                    trial = self._csv_row_to_trial(row)
-                    trials.append(trial)
-                except (ValueError, KeyError) as e:
-                    # Skip invalid rows (like header rows or corrupted data)
-                    continue
+                trial = self._csv_row_to_trial(row)
+                trials.append(trial)
         
         return trials
     
@@ -190,11 +186,7 @@ class CsvResultReader:
                 pass
         
         # Parse timestamp
-        try:
-            timestamp = datetime.fromisoformat(row['timestamp'])
-        except ValueError:
-            # Skip header rows or invalid timestamps
-            raise ValueError(f"Invalid timestamp format: {row['timestamp']}")
+        timestamp = datetime.fromisoformat(row['timestamp'])
         
         # Create MathProblem
         problem = MathProblem(
@@ -285,19 +277,3 @@ def find_latest_results_file(pattern: str) -> Optional[str]:
 
     # Return the most recently modified file
     return max(files, key=lambda f: Path(f).stat().st_mtime)
-
-
-def find_all_results_files(pattern: str) -> List[str]:
-    """
-    Find all results files matching a pattern, sorted by modification time.
-    
-    Ensures that data is processed in a consistent, chronological order.
-    """
-    import glob
-    
-    files = glob.glob(pattern)
-    if not files:
-        return []
-        
-    # Sort files by modification time (oldest first)
-    return sorted(files, key=lambda f: Path(f).stat().st_mtime)

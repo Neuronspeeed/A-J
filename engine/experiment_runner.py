@@ -6,7 +6,6 @@ import uuid
 import asyncio
 from datetime import datetime
 from typing import List, Dict, Any
-from pathlib import Path
 import time
 
 from core.llm_providers import LLMProvider, LLMProviderError
@@ -353,49 +352,34 @@ class ExperimentRunner:
     # Utility methods moved to core.utils for DRY principle
     
     async def _load_harvested_numbers(self) -> None:
-        """Load harvested random numbers from all available Phase 1 results."""
-        print("Loading harvested numbers from all Phase 1 result files...")
+        """Load harvested random numbers from Phase 1 results."""
+        print("Loading harvested numbers from Phase 1...")
 
-        # Find all Phase 1 result files, prioritizing FIXED versions
-        fixed_files = self.data_manager.find_all_results(ExperimentPhase.PHASE_1, pattern_suffix="_FIXED.csv")
-        original_files = self.data_manager.find_all_results(ExperimentPhase.PHASE_1)
-
-        # Use a set to avoid processing the same original file if a FIXED version exists
-        processed_stems = {Path(f).stem.replace('_FIXED', '') for f in fixed_files}
-        
-        # Combine lists, ensuring original files are only added if no FIXED version was found
-        all_files = fixed_files + [f for f in original_files if Path(f).stem not in processed_stems]
-
-        if not all_files:
+        # Find the most recent Phase 1 results using data manager
+        phase1_file = self.data_manager.find_latest_results(ExperimentPhase.PHASE_1)
+        if not phase1_file:
             print("  ❌ No Phase 1 results found!")
             print("  Please run Phase 1 first: uv run python main_phase1.py")
+            # Don't set fallback numbers - this is scientifically invalid
             return
-
-        print(f"  Found {len(all_files)} Phase 1 result file(s) to process.")
-
-        # Load trials from all found files
-        reader = CsvResultReader()
-        all_trials = []
-        for file_path in all_files:
-            try:
-                print(f"    - Loading from: {Path(file_path).name}")
-                all_trials.extend(reader.load_trials(file_path))
-            except Exception as e:
-                print(f"    - WARNING: Could not load file {Path(file_path).name}. Error: {e}")
         
-        print(f"  Total trials loaded from all files: {len(all_trials)}")
+        print(f"  Loading from: {phase1_file}")
+        
+        # Load Phase 1 results
+        reader = CsvResultReader()
+        trials = reader.load_trials(phase1_file)
         
         # Extract numbers from generate_random_numbers condition
-        for trial in all_trials:
+        for trial in trials:
             if (trial.condition == ConditionType.GENERATE_RANDOM_NUMBERS and 
                 trial.generated_numbers):
                 self._harvested_numbers.append(trial.generated_numbers)
         
         if not self._harvested_numbers:
-            print("  ❌ No AI-generated numbers found in any Phase 1 results!")
+            print("  ❌ No AI-generated numbers found in Phase 1 results!")
             print("  Phase 2 transplant condition will fail without real AI numbers.")
             print("  Please ensure Phase 1 'generate_random_numbers' condition produced valid numbers.")
+            # Don't set fallback - let the experiment fail properly
         else:
-            print(f"  ✅ Harvested {len(self._harvested_numbers)} total sets of AI-generated numbers.")
-            if self._harvested_numbers:
-                print(f"     Example: {self._harvested_numbers[0][:3]}...")
+            print(f"  ✅ Harvested {len(self._harvested_numbers)} sets of AI-generated numbers")
+            print(f"  Example: {self._harvested_numbers[0][:3]}...")
