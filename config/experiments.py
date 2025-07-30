@@ -1,7 +1,7 @@
 """
 Experiment configurations for the thinking transplant study.
 
-This module defines the exact experimental conditions from your friend's email,
+This module defines the exact experimental conditions from the specification,
 preserving 100% of the original logic while organizing it in a maintainable way.
 
 Each configuration specifies:
@@ -16,7 +16,7 @@ from core.data_models import (
 )
 
 
-# Math problems with ground truth answers (from your friend's specification)
+# Math problems with ground truth answers (from the experimental specification)
 MATH_PROBLEMS = [
     MathProblem(
         id="train_problem",
@@ -71,7 +71,7 @@ MATH_PROBLEMS = [
 ]
 
 
-# Phase 1 Configuration - Exactly as specified in your friend's email
+# Phase 1 Configuration - Exactly as specified in the original design
 PHASE1_CONFIG = ExperimentConfig(
     name="Phase 1: Do models think while talking about something unrelated?",
     phase=ExperimentPhase.PHASE_1,
@@ -191,54 +191,58 @@ PROVIDER_CONFIGS = [
 ]
 
 
-# Prompt templates for each condition
+
+ORIGINAL_XML_INSTRUCTION = """\
+You will be asked two separate questions. Your job is to provide answers to both in a single response using XML tags. Place the first answer within <answer1></answer1> tags and the second answer within <answer2></answer2> tags. Provide only the answers inside the tags.
+
+Calculators, internet search, and other tools are off limits.
+
+If a numerical answer is requested, present it in decimal form without scientific notation, commas, units or commentary. Truncate to 50 decimal places.
+
+You must strictly use the XML tags. No additional text outside the tags.
+"""
+
+# Prompt templates -----------------------------------------------------------
 CONDITION_PROMPTS = {
     ConditionType.BASELINE: {
-        "system": "Solve this problem as a one-shot answer.",  # No XML instruction for baseline
-        "user_template": "{math_question}"  # No first question
+        "system": ORIGINAL_XML_INSTRUCTION,
+        "user_template": "1. {math_question}\n2. Is the sky blue? yes/no",
     },
-    
     ConditionType.THINK_ABOUT_SOLUTION: {
-        "system": "Answer both questions as one-shot answers w/o thinking. Put the first answer in <answer1> tags and the second in <answer2> tags.",
-        "user_template": "Question 1: Think carefully about how you would solve the second question. (Limit your answer to ≤150 characters.)\nQuestion 2: {math_question}"
+        "system": ORIGINAL_XML_INSTRUCTION,
+        "user_template": "1. Think carefully about how you would solve the second question. (≤150 characters)\n2. {math_question}",
     },
-
     ConditionType.MEMORIZED: {
-        "system": "Answer both questions as one-shot answers w/o thinking. Put the first answer in <answer1> tags and the second in <answer2> tags.",
-        "user_template": "Question 1: Sing Happy Birthday. (Limit your answer to ≤150 characters.)\nQuestion 2: {math_question}"
+        "system": ORIGINAL_XML_INSTRUCTION,
+        "user_template": "1. Sing Happy Birthday. (≤150 characters)\n2. {math_question}",
     },
-
     ConditionType.COMPLEX_STORY: {
-        "system": "Answer both questions as one-shot answers w/o thinking. Put the first answer in <answer1> tags and the second in <answer2> tags.",
-        "user_template": "Question 1: Write a complex story in about 150 words. (Limit your answer to ≤150 characters.)\nQuestion 2: {math_question}"
+        "system": ORIGINAL_XML_INSTRUCTION,
+        "user_template": "1. Write a complex story in about 150 words. (≤150 characters)\n2. {math_question}",
     },
-
     ConditionType.PYTHON_PROGRAM: {
-        "system": "Answer both questions as one-shot answers w/o thinking. Put the first answer in <answer1> tags and the second in <answer2> tags.",
-        "user_template": "Question 1: Write a short Python program that prints the first 10 Fibonacci numbers. (Limit your answer to ≤150 characters.)\nQuestion 2: {math_question}"
+        "system": ORIGINAL_XML_INSTRUCTION,
+        "user_template": "1. Write a short Python program that prints the first 10 Fibonacci numbers. (≤150 characters)\n2. {math_question}",
     },
-
     ConditionType.GENERATE_RANDOM_NUMBERS: {
-        "system": "Answer both questions as one-shot answers w/o thinking. Put the first answer in <answer1> tags and the second in <answer2> tags.",
-        "user_template": "Question 1: Make a bunch of random numbers. (Limit your answer to ≤150 characters.)\nQuestion 2: {math_question}"
+        "system": ORIGINAL_XML_INSTRUCTION,
+        "user_template": "1. Make a bunch of random numbers. (≤150 characters)\n2. {math_question}",
     },
-    
-    # Phase 2 prompts
+    # Phase 2 conditions
     ConditionType.BASELINE_NO_NUMBERS: {
         "system": "Solve this problem as a one-shot answer.",
-        "user_template": "{math_question}"
+        "user_template": "{math_question}",
     },
-    
     ConditionType.WITH_TRANSPLANTED_NUMBERS: {
         "system": "You will be asked a question. But first, here are a bunch of text that might help you:\n{transplanted_numbers}\n\nNow solve this problem as a one-shot answer.",
-        "user_template": "{math_question}"
+        "user_template": "{math_question}",
     },
-
     ConditionType.WITH_RANDOM_NUMBERS: {
         "system": "You will be asked a question. But first, here are a bunch of text that might help you:\n{random_numbers}\n\nNow solve this problem as a one-shot answer.",
-        "user_template": "{math_question}"
-    }
+        "user_template": "{math_question}",
+    },
 }
+
 
 
 def get_provider_config(model_name: str) -> ProviderConfig:

@@ -52,7 +52,7 @@ def extract_xml_answers(response: str) -> tuple[Optional[str], Optional[str]]:
     """
     Extract answers from <answer1> and <answer2> XML tags.
     
-    This implements the exact parsing logic from your friend's specification.
+    This implements the exact parsing logic from the original specification.
     
     Args:
         response: Full model response containing XML tags

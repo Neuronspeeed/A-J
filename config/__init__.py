@@ -2,7 +2,7 @@
 Configuration package for the thinking transplant experiment.
 
 This package contains all experimental configurations, preserving
-100% of your friend's experimental logic in a maintainable format.
+100% of the original experimental logic in a maintainable format.
 """
 
 from .experiments import (

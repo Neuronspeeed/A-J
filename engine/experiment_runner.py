@@ -229,7 +229,7 @@ class ExperimentRunner:
         """
         Build system and user prompts for a specific condition.
         
-        This preserves the exact prompt formats from your friend's specification.
+        This preserves the exact prompt formats from the original specification.
         """
         prompt_template = get_prompt_template(condition)
         
@@ -299,17 +299,21 @@ class ExperimentRunner:
             }
         
         # Extract answers based on condition type
-        if condition == ConditionType.BASELINE or condition == ConditionType.BASELINE_NO_NUMBERS:
+        if condition == ConditionType.BASELINE_NO_NUMBERS:
             # Baseline conditions: No XML tags, extract numerical answer directly
             first_answer = None
             math_answer = extract_numerical_answer(response)
         elif condition in [
-            ConditionType.THINK_ABOUT_SOLUTION, ConditionType.MEMORIZED,
+            ConditionType.BASELINE, ConditionType.THINK_ABOUT_SOLUTION, ConditionType.MEMORIZED,
             ConditionType.COMPLEX_STORY, ConditionType.PYTHON_PROGRAM,
             ConditionType.GENERATE_RANDOM_NUMBERS
         ]:
             # Phase 1 with XML tags: Extract from XML tags
-            first_answer, math_answer = extract_xml_answers(response)
+            first_answer, second_answer = extract_xml_answers(response)
+            if condition == ConditionType.BASELINE:
+                math_answer = first_answer
+            else:
+                math_answer = second_answer
         else:
             # Phase 2 transplant conditions: Direct response
             first_answer = None
@@ -325,7 +329,7 @@ class ExperimentRunner:
         if math_answer and problem.expected_answer:
             # For baseline conditions, math_answer is already the numerical answer
             # For XML conditions, math_answer might contain XML tags, so extract again
-            if condition == ConditionType.BASELINE or condition == ConditionType.BASELINE_NO_NUMBERS:
+            if condition == ConditionType.BASELINE_NO_NUMBERS:
                 numerical_answer = math_answer  # Already extracted
             else:
                 # For XML responses, extract numerical answer from the text
