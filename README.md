@@ -113,7 +113,7 @@ Test whether AI models can "think" about a problem while appearing to work on so
 - If it fails: All conditions perform similarly
 - Breakthrough result: AI models encode meaningful patterns in seemingly random output
 
-** Implications**:
+**Implications**:
 - Could reveal hidden structure in AI reasoning
 - Might enable new techniques for AI performance enhancement
 - Tests fundamental questions about machine cognition
