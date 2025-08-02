@@ -45,9 +45,9 @@ Test whether AI models can "think" about a problem while appearing to work on so
    - Harvests AI-generated numbers for transplant experiment
 
 **Math Problems**: 10 challenging word problems requiring multi-step reasoning:
-- Train overtaking problems (kinematics)
-- Investment problems (algebra)
-- Boat/current problems (relative motion)
+- Train overtaking problems 
+- Investment problems
+- Boat/current problems 
 - Exponential growth/decay
 - Logarithmic equations
 - Trigonometric equations
