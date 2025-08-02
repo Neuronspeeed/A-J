@@ -1,6 +1,6 @@
 # Latent Thinking Experiment
 
-This project implements a experiment to test whether AI models can "think" about a problem while appearing to work on something completely unrelated. It explores whether hidden cognitive processes can be captured and transferred between AI sessions.
+Test whether AI models can "think" about a problem while appearing to work on something completely unrelated. Hidden cognitive processes can be captured and transferred between AI sessions?
 
 ## 🧠 What is "Latent Thinking"?
 
@@ -122,8 +122,6 @@ This project implements a experiment to test whether AI models can "think" about
 
 ## How the Code is Organized
 
-The project is organized into separate parts to make the code clean and easy to work with.
-
 -   **`core/`**: Contains the project's main components:
     -   `data_models.py`: Defines the data structures for the project (e.g., `TrialResult`, `ExperimentConfig`).
     -   `llm_providers.py`: Contains the code for interacting with different LLM providers like OpenAI and Anthropic.
@@ -181,6 +179,35 @@ python main_phase2.py
 
 This will create a results file named `phase2_results_<timestamp>.csv`.
 
+### Analyzing Results
+
+After running experiments, use the analysis scripts to generate reports:
+
+**Comprehensive Verification (Recommended):**
+```bash
+python analysis/comprehensive_verification.py
+```
+Generates complete verification with all calculations, data quality checks, and visualizations saved to `data/` folder.
+
+**Individual Analysis:**
+```bash
+python analysis/generate_phase1_reports.py --summary-only
+python analysis/generate_phase1_reports.py --visualize  # With charts
+python analysis/generate_phase2_reports.py --summary-only
+python analysis/generate_phase2_reports.py --visualize  # With charts
+```
+
+**Generated Visualizations:**
+- `data/comprehensive_analysis.png` - Complete overview
+- `data/phase1_detailed_analysis.png` - Phase 1 detailed charts
+- `data/phase2_detailed_analysis.png` - Phase 2 detailed charts
+- `data/model_comparison.png` - Model performance comparison
+
+**Key Verified Results:**
+- **Phase 1**: +24.9% improvement when models "think about solution"
+- **Phase 2**: +1.1% overall, +61.3% for gpt-4o-mini, +45.3% for gpt-4.1-mini
+- **Data Quality**: 98.4% Phase 1 completion, 96.2% Phase 2 completion
+
 ## Testing
 
 To run the automated tests:
@@ -201,31 +228,38 @@ The test suite runs automatically on all code changes to ensure reliability and 
 
 ### Phase 1: Thinking While Distracted
 
-1346 trials tested whether unrelated tasks affect math performance.
+1,346 valid trials (98.4% completion) tested whether unrelated tasks affect math performance.
 
 **Core finding:** +24.9% improvement when asked to "think about solution"
 **Best condition:** memorized (4.261 digits correct)
-**Worst condition:** baseline (3.180 digits correct)
+**Baseline:** 3.180 digits correct
 
 **Conclusion:** Models do think about problems while appearing to work on unrelated tasks.
 
 ### Phase 2: Thinking Transplant
 
-630 trials tested whether AI-generated numbers improve performance.
+606 valid trials (96.2% completion) tested whether AI-generated numbers improve performance.
 
 **Overall:** +1.1% improvement with transplanted numbers
-**Best performers:** gpt-4.1-mini (+45.3%), gpt-4o-mini (+61.3%)
-**Worst performer:** gpt-4.1 (-50.0%)
+**Best performers:** gpt-4o-mini (+61.3%), gpt-4.1-mini (+45.3%)
+**Interference effects:** gpt-4.1 (-50.0%), gpt-4.1-nano (-19.5%)
 
 **Conclusion:** Effect is model-dependent. Smaller models benefit, larger models show interference.
 
-### Analysis
+### Verification and Analysis
 
+**Complete verification with visualizations:**
 ```bash
-cd analysis
-python generate_phase1_reports.py --summary-only
-python generate_phase2_reports.py --summary-only
+python analysis/comprehensive_verification.py
 ```
+
+**Individual analysis:**
+```bash
+python analysis/generate_phase1_reports.py --summary-only
+python analysis/generate_phase2_reports.py --summary-only
+```
+
+**Generated files:** All visualizations saved to `data/` folder
 
 ## How to Extend the Experiment
 
@@ -249,29 +283,40 @@ The organized design makes extensions simple and safe.
 ```
 .
 ├── analysis/
-│   ├── generate_phase1_reports.py  # Phase 1 analysis script
-│   ├── generate_phase2_reports.py  # Phase 2 analysis script
+│   ├── generate_phase1_reports.py  # Phase 1 analysis and reports
+│   ├── generate_phase2_reports.py  # Phase 2 analysis and reports
+│   ├── analyze_phase2_results.py   # Legacy Phase 2 analysis
+│   ├── ANALYSIS_USAGE.md           # Analysis usage guide
+│   ├── PHASE2_RESULTS_REPORT.md    # Phase 2 results summary
 │   └── README.md                   # Analysis documentation
 ├── config/
-│   ├── experiments.py         # Defines Phase 1 & 2 configurations
+│   ├── experiments.py              # Phase 1 & 2 configurations
 │   └── __init__.py
 ├── core/
-│   ├── data_models.py         # Data structures for the experiment
-│   ├── llm_providers.py       # Code for calling different LLMs
-│   ├── persistence.py         # Code for saving results
+│   ├── data_models.py              # Data structures
+│   ├── llm_providers.py            # LLM API interfaces
+│   ├── persistence.py              # Result storage
+│   ├── data_manager.py             # Data utilities
+│   ├── utils.py                    # Helper functions
 │   └── __init__.py
 ├── data/
-│   ├── phase1/                # Phase 1 results
-│   └── phase2/                # Phase 2 results
+│   ├── phase1/                     # Phase 1 experimental results
+│   ├── phase2/                     # Phase 2 experimental results
+│   └── README.md                   # Data documentation
 ├── engine/
-│   ├── experiment_runner.py   # Main experiment logic
+│   ├── experiment_runner.py        # Core experiment logic
 │   └── __init__.py
+├── old/                            # Original friend's experiments
 ├── tests/
-│   ├── conftest.py            # Test helpers
-│   └── test_experiment_runner.py # Automated tests for the engine
-├── main_phase1.py             # Script to run Phase 1
-├── main_phase2.py             # Script to run Phase 2
-├── .env.example               # Example environment file
-├── pyproject.toml             # Dependencies and project configuration
-└── README.md                  # This documentation
+│   ├── test_experiment_runner.py   # Engine tests
+│   ├── test_core_modules.py        # Core module tests
+│   └── __init__.py
+├── main_phase1.py                  # Run Phase 1 experiment
+├── main_phase2.py                  # Run Phase 2 experiment
+├── pyproject.toml                  # Dependencies and config
+└── README.md                       # Project documentation
+
+Analysis Commands:
+  python analysis/generate_phase1_reports.py [--summary-only]
+  python analysis/generate_phase2_reports.py [--summary-only]
 ```

@@ -7,6 +7,8 @@ Generates reports for Phase 1 thinking experiment results.
 
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 from pathlib import Path
 import glob
 import argparse
@@ -173,6 +175,93 @@ class Phase1ReportGenerator:
         
         print("=" * 80)
 
+    def generate_visualizations(self, save_path: str = "phase1_analysis.png") -> None:
+        """Generate visualizations for Phase 1 results."""
+        plt.style.use('default')
+        fig, axes = plt.subplots(2, 2, figsize=(15, 10))
+        fig.suptitle('Phase 1: Thinking While Distracted - Analysis', fontsize=16, fontweight='bold')
+
+        # 1. Performance by condition (bar plot)
+        condition_means = self.df_clean.groupby('condition')['digits_correct_num'].mean().sort_values(ascending=False)
+        condition_std = self.df_clean.groupby('condition')['digits_correct_num'].std()
+
+        bars = axes[0,0].bar(range(len(condition_means)), condition_means.values,
+                            yerr=condition_std[condition_means.index].values,
+                            capsize=5, alpha=0.8, color='steelblue')
+        axes[0,0].set_xticks(range(len(condition_means)))
+        axes[0,0].set_xticklabels(condition_means.index, rotation=45, ha='right')
+        axes[0,0].set_ylabel('Mean Digits Correct')
+        axes[0,0].set_title('Performance by Condition')
+        axes[0,0].grid(axis='y', alpha=0.3)
+
+        # Add value labels on bars
+        for i, (bar, value) in enumerate(zip(bars, condition_means.values)):
+            axes[0,0].text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.1,
+                          f'{value:.2f}', ha='center', va='bottom', fontweight='bold')
+
+        # 2. Distribution by condition (box plot)
+        conditions_ordered = condition_means.index.tolist()
+        condition_data = [self.df_clean[self.df_clean['condition'] == cond]['digits_correct_num'].values
+                         for cond in conditions_ordered]
+
+        bp = axes[0,1].boxplot(condition_data, labels=conditions_ordered, patch_artist=True)
+        for patch in bp['boxes']:
+            patch.set_facecolor('lightblue')
+            patch.set_alpha(0.7)
+        axes[0,1].set_xticklabels(conditions_ordered, rotation=45, ha='right')
+        axes[0,1].set_ylabel('Digits Correct')
+        axes[0,1].set_title('Performance Distribution by Condition')
+        axes[0,1].grid(axis='y', alpha=0.3)
+
+        # 3. Model performance comparison
+        if 'model_name' in self.df_clean.columns:
+            model_means = self.df_clean.groupby('model_name')['digits_correct_num'].mean().sort_values(ascending=True)
+            y_pos = range(len(model_means))
+
+            bars = axes[1,0].barh(y_pos, model_means.values, alpha=0.8, color='lightcoral')
+            axes[1,0].set_yticks(y_pos)
+            axes[1,0].set_yticklabels([name.replace('-', '-\n') for name in model_means.index], fontsize=9)
+            axes[1,0].set_xlabel('Mean Digits Correct')
+            axes[1,0].set_title('Performance by Model')
+            axes[1,0].grid(axis='x', alpha=0.3)
+
+            # Add value labels
+            for i, (bar, value) in enumerate(zip(bars, model_means.values)):
+                axes[1,0].text(bar.get_width() + 0.05, bar.get_y() + bar.get_height()/2,
+                              f'{value:.2f}', ha='left', va='center', fontweight='bold')
+
+        # 4. Improvement analysis
+        baseline_mean = self.df_clean[self.df_clean['condition'] == 'baseline']['digits_correct_num'].mean()
+        improvements = []
+        condition_names = []
+
+        for condition in condition_means.index:
+            if condition != 'baseline':
+                improvement = ((condition_means[condition] - baseline_mean) / baseline_mean) * 100
+                improvements.append(improvement)
+                condition_names.append(condition)
+
+        colors = ['green' if imp > 0 else 'red' for imp in improvements]
+        bars = axes[1,1].bar(range(len(improvements)), improvements, color=colors, alpha=0.7)
+        axes[1,1].set_xticks(range(len(improvements)))
+        axes[1,1].set_xticklabels(condition_names, rotation=45, ha='right')
+        axes[1,1].set_ylabel('Improvement over Baseline (%)')
+        axes[1,1].set_title('Improvement Analysis')
+        axes[1,1].axhline(y=0, color='black', linestyle='-', alpha=0.5)
+        axes[1,1].grid(axis='y', alpha=0.3)
+
+        # Add value labels
+        for i, (bar, value) in enumerate(zip(bars, improvements)):
+            axes[1,1].text(bar.get_x() + bar.get_width()/2,
+                          bar.get_height() + (1 if value > 0 else -3),
+                          f'{value:+.1f}%', ha='center', va='bottom' if value > 0 else 'top',
+                          fontweight='bold')
+
+        plt.tight_layout()
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        print(f"Visualizations saved to: {save_path}")
+        plt.show()
+
 
 def find_latest_phase1_file() -> Optional[str]:
     """Find the most recent Phase 1 results file."""
@@ -191,6 +280,7 @@ def main():
     parser = argparse.ArgumentParser(description='Generate Phase 1 experiment reports')
     parser.add_argument('file', nargs='?', help='Path to Phase 1 results CSV file')
     parser.add_argument('--summary-only', action='store_true', help='Print only summary')
+    parser.add_argument('--visualize', action='store_true', help='Generate visualizations')
     
     args = parser.parse_args()
     
@@ -218,6 +308,10 @@ def main():
         print(f"Best condition: {summary['best_condition']} ({summary['best_mean']:.3f})")
     else:
         generator.print_comprehensive_report()
+
+    # Generate visualizations if requested
+    if args.visualize:
+        generator.generate_visualizations()
 
 
 if __name__ == "__main__":

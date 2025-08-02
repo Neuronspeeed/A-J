@@ -4,58 +4,68 @@ This directory contains analysis tools and reports for both Phase 1 and Phase 2 
 
 ## Files Overview
 
-### Reports
+### Main Analysis Scripts
+- **`comprehensive_verification.py`** - Complete verification with visualizations (recommended)
+- **`generate_phase1_reports.py`** - Phase 1 analysis and report generator
+- **`generate_phase2_reports.py`** - Phase 2 analysis and report generator
+
+### Documentation
 - **`PHASE2_RESULTS_REPORT.md`** - Professional markdown report with complete experimental results
 - **`ANALYSIS_USAGE.md`** - Usage guide for analysis tools and interpretation
 
-### Analysis Scripts
-- **`generate_phase1_reports.py`** - Phase 1 analysis and report generator
-- **`generate_phase2_reports.py`** - Phase 2 analysis and report generator
+### Legacy Scripts
 - **`analyze_phase2_results.py`** - Original Phase 2 analysis script
 
 ## Quick Start
 
-### Phase 1 Analysis
+### Complete Verification (Recommended)
 ```bash
-cd analysis
-python generate_phase1_reports.py --summary-only
+python analysis/comprehensive_verification.py
 ```
+Generates complete verification with all calculations, data quality checks, and visualizations saved to `data/` folder.
 
-### Phase 2 Analysis
+### Individual Analysis
 ```bash
-cd analysis
-python generate_phase2_reports.py --summary-only
+python analysis/generate_phase1_reports.py --summary-only
+python analysis/generate_phase1_reports.py --visualize  # With charts
+python analysis/generate_phase2_reports.py --summary-only
+python analysis/generate_phase2_reports.py --visualize  # With charts
 ```
 
 ### Full Reports
 ```bash
-cd analysis
-python generate_phase1_reports.py
-python generate_phase2_reports.py
+python analysis/generate_phase1_reports.py
+python analysis/generate_phase2_reports.py
 ```
 
-## Key Results Summary
+## Verified Results Summary
 
-### Overall Performance
-- **Baseline**: 4.451 ± 10.057 digits correct
-- **Transplanted**: 4.500 ± 10.233 digits correct (+1.1%)
-- **Random**: 4.436 ± 9.491 digits correct (-0.3%)
+### Phase 1: Thinking While Distracted
+- **1,346 valid trials** (98.4% completion rate)
+- **Baseline**: 3.180 digits correct
+- **Think about solution**: 3.973 digits correct (+24.9% improvement)
+- **Best condition**: memorized (4.261 digits correct)
 
-### Top Performing Models
-- **gpt-4.1-mini**: +45.3% improvement with transplanted numbers
-- **gpt-4o-mini**: +61.3% improvement with transplanted numbers
+### Phase 2: Thinking Transplant
+- **606 valid trials** (96.2% completion rate)
+- **Overall improvement**: +1.1% with transplanted numbers
+- **Top performers**: gpt-4o-mini (+61.3%), gpt-4.1-mini (+45.3%)
+- **Interference effects**: gpt-4.1 (-50.0%), gpt-4.1-nano (-19.5%)
 
-### Data Quality
-- **96.2%** completion rate (606/630 trials)
-- **98.6%** valid XML responses
-- **9** failed trials due to missing number sets
+### Generated Visualizations
+- `data/comprehensive_analysis.png` - Complete 4-panel overview
+- `data/phase1_detailed_analysis.png` - Phase 1 detailed analysis
+- `data/phase2_detailed_analysis.png` - Phase 2 detailed analysis
+- `data/model_comparison.png` - Cross-phase model comparison
 
 ## Scientific Conclusion
 
-The thinking transplant hypothesis is **partially validated**:
+**Phase 1**: Models do think about problems while working on unrelated tasks (+24.9% improvement)
+
+**Phase 2**: Thinking transplant hypothesis is **partially validated**:
 - Mechanism works for specific model architectures
 - Smaller models show significant positive effects
-- Larger models show minimal or negative effects
+- Larger models show interference effects
 - Overall effect is measurable but model-dependent
 
 ## File Dependencies

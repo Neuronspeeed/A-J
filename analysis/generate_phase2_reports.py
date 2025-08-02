@@ -13,6 +13,8 @@ If no file path is provided, it will automatically find the latest Phase 2 resul
 
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 from pathlib import Path
 import glob
 import argparse
@@ -237,6 +239,131 @@ class Phase2ReportGenerator:
         print(f"Manual calculation - Improvement: {manual['improvement']:+.3f} digits")
         
         print("=" * 80)
+
+    def generate_visualizations(self, save_path: str = "phase2_analysis.png") -> None:
+        """Generate visualizations for Phase 2 results."""
+        plt.style.use('default')
+        fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+        fig.suptitle('Phase 2: Thinking Transplant Experiment - Analysis', fontsize=16, fontweight='bold')
+
+        # 1. Overall performance by condition
+        condition_order = ['baseline_no_numbers', 'with_transplanted_numbers', 'with_random_numbers']
+        condition_means = []
+        condition_stds = []
+        condition_labels = []
+
+        for condition in condition_order:
+            data = self.df_clean[self.df_clean['condition'] == condition]['digits_correct']
+            if len(data) > 0:
+                condition_means.append(data.mean())
+                condition_stds.append(data.std())
+                condition_labels.append(condition.replace('_', ' ').title())
+
+        colors = ['lightcoral', 'lightgreen', 'lightblue']
+        bars = axes[0,0].bar(range(len(condition_means)), condition_means,
+                            yerr=condition_stds, capsize=5, alpha=0.8, color=colors[:len(condition_means)])
+        axes[0,0].set_xticks(range(len(condition_means)))
+        axes[0,0].set_xticklabels(condition_labels, rotation=15, ha='right')
+        axes[0,0].set_ylabel('Mean Digits Correct')
+        axes[0,0].set_title('Overall Performance by Condition')
+        axes[0,0].grid(axis='y', alpha=0.3)
+
+        # Add value labels and improvement percentages
+        baseline_mean = condition_means[0] if condition_means else 0
+        for i, (bar, value) in enumerate(zip(bars, condition_means)):
+            axes[0,0].text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.1,
+                          f'{value:.2f}', ha='center', va='bottom', fontweight='bold')
+            if i > 0 and baseline_mean > 0:
+                improvement = ((value - baseline_mean) / baseline_mean) * 100
+                axes[0,0].text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.3,
+                              f'({improvement:+.1f}%)', ha='center', va='bottom',
+                              fontsize=9, style='italic')
+
+        # 2. Model-specific improvements
+        model_improvements = []
+        model_names = []
+
+        for model in self.df_clean['model_name'].unique():
+            model_data = self.df_clean[self.df_clean['model_name'] == model]
+            baseline = model_data[model_data['condition'] == 'baseline_no_numbers']['digits_correct']
+            transplant = model_data[model_data['condition'] == 'with_transplanted_numbers']['digits_correct']
+
+            if len(baseline) > 0 and len(transplant) > 0:
+                baseline_mean = baseline.mean()
+                transplant_mean = transplant.mean()
+                if baseline_mean > 0:
+                    improvement = ((transplant_mean - baseline_mean) / baseline_mean) * 100
+                    model_improvements.append(improvement)
+                    model_names.append(model.replace('-', '-\n'))
+
+        # Sort by improvement
+        sorted_data = sorted(zip(model_improvements, model_names), reverse=True)
+        model_improvements, model_names = zip(*sorted_data) if sorted_data else ([], [])
+
+        colors = ['green' if imp > 0 else 'red' for imp in model_improvements]
+        bars = axes[0,1].barh(range(len(model_improvements)), model_improvements,
+                             color=colors, alpha=0.7)
+        axes[0,1].set_yticks(range(len(model_improvements)))
+        axes[0,1].set_yticklabels(model_names, fontsize=9)
+        axes[0,1].set_xlabel('Improvement over Baseline (%)')
+        axes[0,1].set_title('Model-Specific Transplant Effects')
+        axes[0,1].axvline(x=0, color='black', linestyle='-', alpha=0.5)
+        axes[0,1].grid(axis='x', alpha=0.3)
+
+        # Add value labels
+        for i, (bar, value) in enumerate(zip(bars, model_improvements)):
+            axes[0,1].text(bar.get_width() + (1 if value > 0 else -1),
+                          bar.get_y() + bar.get_height()/2,
+                          f'{value:+.1f}%', ha='left' if value > 0 else 'right',
+                          va='center', fontweight='bold', fontsize=9)
+
+        # 3. Distribution comparison (violin plot)
+        condition_data = []
+        condition_names = []
+        for condition in condition_order:
+            data = self.df_clean[self.df_clean['condition'] == condition]['digits_correct']
+            if len(data) > 0:
+                condition_data.append(data.values)
+                condition_names.append(condition.replace('_', ' ').title())
+
+        if condition_data:
+            parts = axes[1,0].violinplot(condition_data, positions=range(len(condition_data)),
+                                        showmeans=True, showmedians=True)
+            for i, pc in enumerate(parts['bodies']):
+                pc.set_facecolor(colors[i])
+                pc.set_alpha(0.7)
+
+            axes[1,0].set_xticks(range(len(condition_names)))
+            axes[1,0].set_xticklabels(condition_names, rotation=15, ha='right')
+            axes[1,0].set_ylabel('Digits Correct')
+            axes[1,0].set_title('Performance Distribution by Condition')
+            axes[1,0].grid(axis='y', alpha=0.3)
+
+        # 4. Sample size and data quality
+        condition_counts = self.df_clean['condition'].value_counts()
+        error_counts = self.df['error'].notna().sum() if 'error' in self.df.columns else 0
+
+        # Data quality metrics
+        quality_metrics = ['Valid Trials', 'Error Trials', 'Missing Data']
+        quality_values = [len(self.df_clean), error_counts, len(self.df) - len(self.df_clean)]
+        quality_colors = ['green', 'red', 'orange']
+
+        wedges, texts, autotexts = axes[1,1].pie(quality_values, labels=quality_metrics,
+                                                colors=quality_colors, autopct='%1.1f%%',
+                                                startangle=90)
+        axes[1,1].set_title('Data Quality Overview')
+
+        # Add sample size info
+        total_trials = len(self.df)
+        completion_rate = (len(self.df_clean) / total_trials) * 100
+        axes[1,1].text(0, -1.3, f'Total Trials: {total_trials}\nCompletion Rate: {completion_rate:.1f}%',
+                      ha='center', va='center', fontsize=10,
+                      bbox=dict(boxstyle="round,pad=0.3", facecolor="lightgray", alpha=0.5))
+
+        plt.tight_layout()
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        print(f"Visualizations saved to: {save_path}")
+        plt.show()
     
     def save_detailed_report(self, output_file: str) -> None:
         """Save detailed analysis to a text file."""
@@ -287,6 +414,7 @@ def main():
     parser.add_argument('file', nargs='?', help='Path to Phase 2 results CSV file')
     parser.add_argument('--output', '-o', help='Output file for detailed report')
     parser.add_argument('--summary-only', action='store_true', help='Print only summary to console')
+    parser.add_argument('--visualize', action='store_true', help='Generate visualizations')
     
     args = parser.parse_args()
     
@@ -323,6 +451,10 @@ def main():
     # Save detailed report if requested
     if args.output:
         generator.save_detailed_report(args.output)
+
+    # Generate visualizations if requested
+    if args.visualize:
+        generator.generate_visualizations()
 
 
 def quick_verification():
