@@ -1,8 +1,7 @@
 """
 Unit tests for the ExperimentRunner.
 
-We can test the core experimental logic without making any real API calls
-or writing to disk.
+
 """
 
 import pytest
