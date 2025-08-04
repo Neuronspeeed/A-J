@@ -73,7 +73,9 @@ class CsvResultWriter:
             self._file_handle = open(self.filename, 'w', newline='', encoding='utf-8')
             self._writer = csv.DictWriter(
                 self._file_handle, 
-                fieldnames=self._get_csv_headers()
+                fieldnames=self._get_csv_headers(),
+                quoting=csv.QUOTE_MINIMAL,
+                lineterminator='\n'
             )
         
         # Write headers if not done yet
@@ -81,12 +83,16 @@ class CsvResultWriter:
             self._writer.writeheader()
             self._headers_written = True
 
-        # Convert trial to CSV row
-        row = self._trial_to_csv_row(trial)
-        if self._writer:
-            self._writer.writerow(row)
-        if self._file_handle:
-            self._file_handle.flush()  # Ensure data is written immediately
+        # Convert trial to CSV row with error handling
+        try:
+            row = self._trial_to_csv_row(trial)
+            if self._writer:
+                self._writer.writerow(row)
+            if self._file_handle:
+                self._file_handle.flush()  # Ensure data is written immediately
+        except Exception as e:
+            print(f"⚠️  Warning: Failed to write trial {trial.trial_id}: {e}")
+            # Try to continue with next trial rather than crashing entire experiment
     
     def save_experiment(self, results: ExperimentResults) -> None:
         """Save all trials from an experiment."""
@@ -111,22 +117,29 @@ class CsvResultWriter:
         ]
     
     def _trial_to_csv_row(self, trial: TrialResult) -> Dict[str, Any]:
-        """Convert a TrialResult to a CSV row."""
+        """Convert a TrialResult to a CSV row with proper sanitization."""
+        def sanitize_text(text: str) -> str:
+            """Sanitize text for CSV storage."""
+            if not text:
+                return ""
+            # Replace problematic characters but preserve content
+            return str(text).replace('\r\n', ' ').replace('\n', ' ').replace('\r', ' ')
+        
         return {
             'trial_id': trial.trial_id,
             'model_name': trial.model_name,
             'condition': trial.condition.value if hasattr(trial.condition, 'value') else trial.condition,
             'phase': trial.phase.value if hasattr(trial.phase, 'value') else trial.phase,
             'problem_id': trial.problem.id,
-            'problem_question': trial.problem.question,
+            'problem_question': sanitize_text(trial.problem.question),
             'expected_answer': trial.problem.expected_answer,
-            'full_response': trial.full_response,
-            'first_answer': trial.first_answer,
-            'math_answer': trial.math_answer,
+            'full_response': sanitize_text(trial.full_response) if trial.full_response else None,
+            'first_answer': sanitize_text(trial.first_answer) if trial.first_answer else None,
+            'math_answer': sanitize_text(trial.math_answer) if trial.math_answer else None,
             'generated_numbers': json.dumps(trial.generated_numbers) if trial.generated_numbers else None,
             'transplanted_numbers': json.dumps(trial.transplanted_numbers) if trial.transplanted_numbers else None,
             'digits_correct': trial.digits_correct,
-            'error': trial.error,
+            'error': sanitize_text(trial.error) if trial.error else None,
             'timestamp': trial.timestamp.isoformat(),
             'duration_seconds': trial.duration_seconds
         }

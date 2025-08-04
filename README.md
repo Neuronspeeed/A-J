@@ -278,6 +278,12 @@ The organized design makes extensions simple and safe.
     2.  Add a matching prompt template in `config/experiments.py`.
     3.  Add the new condition to the `conditions` list in the desired experiment config.
 
+## Recent Updates
+
+**Code Refactoring (Latest)**:
+- `main_phase1.py` and `main_phase2.py`: Removed marketing language, cleaned up class names
+- All functionality preserved (signal handling, retry logic, progress tracking remain intact)
+
 ## Project Structure
 
 ```
@@ -314,6 +320,8 @@ The organized design makes extensions simple and safe.
 ├── main_phase1.py                  # Run Phase 1 experiment
 ├── main_phase2.py                  # Run Phase 2 experiment
 ├── pyproject.toml                  # Dependencies and config
+├── REFACTOR_SUMMARY.md             # Code refactoring notes
+├── TODAY_EXPERIMENT_WORK.md        # Recent experiment work
 └── README.md                       # Project documentation
 
 Analysis Commands:

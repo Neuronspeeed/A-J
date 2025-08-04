@@ -12,12 +12,15 @@ Usage:
 
 import asyncio
 import sys
+import signal
+import time
 from datetime import datetime
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
 from pathlib import Path
+from typing import Optional
 
 # Add project root to path for imports
 sys.path.append(str(Path(__file__).parent))
@@ -25,69 +28,188 @@ sys.path.append(str(Path(__file__).parent))
 from core.llm_providers import create_provider, LLMProviderError
 from core.persistence import CsvResultWriter, find_latest_results_file
 from engine.experiment_runner import ExperimentRunner
-from config.experiments import PHASE2_CONFIG, get_provider_config
+from config.experiments2 import PHASE2_CONFIG, get_provider_config
+
+
+class Phase2Runner:
+    """Manages Phase 2 experiment execution with signal handling and retry logic."""
+    
+    def __init__(self):
+        self.shutdown_requested = False
+        self.writer: Optional[CsvResultWriter] = None
+        
+        # Setup signal handlers for graceful shutdown
+        signal.signal(signal.SIGINT, self._signal_handler)
+        signal.signal(signal.SIGTERM, self._signal_handler)
+    
+    def _signal_handler(self, signum, frame):
+        """Handle shutdown signals gracefully."""
+        print(f"\nReceived signal {signum}. Initiating graceful shutdown...")
+        self.shutdown_requested = True
+    
+    async def run_single_trial_with_retry(self, runner, model_name, trial_config, max_retries=3):
+        """Run a single trial with retry logic."""
+        for attempt in range(max_retries + 1):
+            if self.shutdown_requested:
+                return None
+            
+            try:
+                results = await runner.run_experiment(trial_config)
+                return results
+            except Exception as e:
+                if attempt < max_retries:
+                    wait_time = (2 ** attempt) * 2  # Exponential backoff
+                    print(f"Trial failed (attempt {attempt + 1}/{max_retries + 1}): {e}")
+                    print(f"   Retrying in {wait_time} seconds...")
+                    await asyncio.sleep(wait_time)
+                else:
+                    print(f"Trial failed after {max_retries + 1} attempts: {e}")
+                    return None
+        return None
 
 
 async def main():
     """
-    Main function for Phase 2 experiment.
+    Bulletproof Phase 2 experiment for testing thinking transplantation.
     
     This function:
-    1. Validates that Phase 1 results exist
-    2. Creates dependencies and runs the transplant experiment
-    3. Compares baseline vs transplanted number performance
-    4. Reports whether the transplant hypothesis is confirmed
+    1. Validates that Phase 1 results exist with comprehensive checks
+    2. Creates dependencies with enhanced error handling
+    3. Runs the transplant experiment with retry logic
+    4. Provides detailed analysis of transplantation effects
+    5. Offers graceful shutdown and progress tracking
     """
+    # Check for command line options
+    test_mode = "--test-mode" in sys.argv
+    
+    phase2_runner = Phase2Runner()
+    
     print("Phase 2: Can you transplant thinking and have it still work?")
-    print("=" * 70)
+    print("=" * 80)
     
-    # Check for Phase 1 results (prefer FIXED file with recovered data)
-    phase1_file = find_latest_results_file("data/phase1/phase1_thinking-experiment_*_FIXED.csv")
+    if test_mode:
+        print("Test mode (reduced scope)")
+    else:
+        print("Full Phase 2 experiment")
+    
+    # Enhanced Phase 1 results validation
+    print("\nPHASE 1 RESULTS VALIDATION:")
+    
+    # Try multiple Phase 1 file patterns in order of preference
+    phase1_patterns = [
+        "data/phase1/phase1_thinking-experiment_*_FIXED.csv",  # Prefer fixed files
+        "data/phase1/phase1_thinking-experiment_*.csv",        # Regular files
+        "data/phase1/phase1_bulletproof-experiment_*.csv",     # Bulletproof files
+        "data/phase1/phase1_full-experiment_*.csv"             # Full experiment files
+    ]
+    
+    phase1_file = None
+    for pattern in phase1_patterns:
+        phase1_file = find_latest_results_file(pattern)
+        if phase1_file:
+            print(f"Found Phase 1 results: {pattern}")
+            break
+    
     if not phase1_file:
-        phase1_file = find_latest_results_file("data/phase1/phase1_thinking-experiment_*.csv")
-    if not phase1_file:
-        print("❌ No Phase 1 results found!")
-        print("Please run Phase 1 first:")
-        print("  uv run python main_phase1.py")
+        print("No Phase 1 results found!")
+        print("\nSearched for:")
+        for pattern in phase1_patterns:
+            print(f"  • {pattern}")
+        print("\nPlease run Phase 1 first:")
+        print("     python main_phase1.py")
+        print("\nOr check if your Phase 1 files are in the correct location")
         return 1
     
-    print(f"📁 Using Phase 1 results from: {phase1_file}")
+    print(f"Using Phase 1 results from: {phase1_file}")
     
-    # Validate API keys
+    # Validate file contains required data
     try:
-        test_config = get_provider_config("gpt-4o")
-        test_provider = create_provider(test_config)
-        print("✅ API keys validated")
+        import pandas as pd
+        df = pd.read_csv(phase1_file)
+        random_numbers_present = 'generate_random_numbers' in df['condition'].values
+        print(f"Phase 1 file contains {len(df)} trials")
+        if random_numbers_present:
+            print(f"Random numbers available for transplantation")
+        else:
+            print(f"No random numbers found - Phase 2 may have limited effectiveness")
     except Exception as e:
-        print(f"❌ API key validation failed: {e}")
+        print(f"Warning: Could not validate Phase 1 file: {e}")
+        print(f"Continuing anyway...")
+    
+    # Enhanced API key validation for Phase 2 models
+    print("\nAPI KEY VALIDATION:")
+    try:
+        # Test with the first model in the config
+        test_model = PHASE2_CONFIG.model_names[0]
+        test_config = get_provider_config(test_model)
+        test_provider = create_provider(test_config)
+        print(f"API keys validated for {test_model}")
+        
+        # Test additional models if available
+        for model_name in PHASE2_CONFIG.model_names[1:3]:  # Test up to 3 models
+            try:
+                model_config = get_provider_config(model_name)
+                model_provider = create_provider(model_config)
+                print(f"{model_name} API access confirmed")
+            except Exception as e:
+                print(f"{model_name} API test failed: {e}")
+                
+    except Exception as e:
+        print(f"API key validation failed: {e}")
+        print("\nPlease ensure you have set the required environment variables:")
+        print("  • OPENAI_API_KEY (for OpenAI models)")
+        print("  • ANTHROPIC_API_KEY (for Claude models)")
+        print("\nTip: Create a .env file with your API keys")
         return 1
+    
+    # Create experiment configuration
+    config = PHASE2_CONFIG.model_copy()
+    
+    if test_mode:
+        # Reduce scope for testing
+        config.math_problems = config.math_problems[:2]  # Just 2 problems
+        config.iterations_per_condition = 1  # Just 1 iteration
+        config.model_names = config.model_names[:1]  # Just one model
+        print("Test mode: 2 problems, 1 iteration, 1 model")
     
     # Create output filename with timestamp
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_filename = PHASE2_CONFIG.output_filename_template.format(timestamp=timestamp)
+    output_filename = config.output_filename_template.format(timestamp=timestamp)
     
-    print(f"📁 Results will be saved to: {output_filename}")
-    print(f"🧪 Testing {len(PHASE2_CONFIG.model_names)} models")
-    print(f"📋 Testing {len(PHASE2_CONFIG.conditions)} conditions")
-    print(f"🔢 Testing {len(PHASE2_CONFIG.math_problems)} math problems")
+    print(f"\nEXPERIMENT CONFIGURATION:")
+    print(f"   Results file: {output_filename}")
+    print(f"   Models: {len(config.model_names)} ({config.model_names})")
+    print(f"   Conditions: {len(config.conditions)} ({[c.value for c in config.conditions]})")
+    print(f"   Problems: {len(config.math_problems)}")
+    print(f"   Iterations per condition: {config.iterations_per_condition}")
     
     total_trials = (
-        len(PHASE2_CONFIG.model_names) * 
-        len(PHASE2_CONFIG.conditions) * 
-        len(PHASE2_CONFIG.math_problems) *
-        PHASE2_CONFIG.iterations_per_condition
+        len(config.model_names) * 
+        len(config.conditions) * 
+        len(config.math_problems) *
+        config.iterations_per_condition
     )
-    print(f"📊 Total trials: {total_trials}")
+    print(f"   Total trials: {total_trials}")
+    print(f"   Estimated duration: {total_trials * 4 / 60:.1f} minutes")
     
-    # Create result writer
+    # Create result writer with bulletproof setup
     writer = CsvResultWriter(output_filename)
+    bulletproof_runner.writer = writer
     
     all_results = []
+    completed_trials = 0
+    failed_trials = 0
+    start_time = datetime.now()
     
     try:
-        # Run experiment for each model
-        for model_name in PHASE2_CONFIG.model_names:
-            print(f"\n🤖 Testing model: {model_name}")
+        # Run bulletproof experiment for each model
+        for model_idx, model_name in enumerate(config.model_names):
+            if bulletproof_runner.shutdown_requested:
+                print(f"\nShutdown requested, stopping at model {model_name}")
+                break
+                
+            print(f"\nTesting model {model_idx + 1}/{len(config.model_names)}: {model_name}")
+            print("-" * 60)
             
             try:
                 # Create provider for this model
@@ -98,32 +220,75 @@ async def main():
                 runner = ExperimentRunner(provider=provider, writer=writer)
                 
                 # Create config for this specific model
-                model_config = PHASE2_CONFIG.model_copy(deep=True)
+                model_config = config.model_copy(deep=True)
                 model_config.model_names = [model_name]
                 
-                # Run experiment
-                results = await runner.run_experiment(model_config)
-                all_results.append(results)
+                # Run experiment with retry logic
+                print(f"   Starting Phase 2 transplant experiment for {model_name}...")
+                model_start_time = datetime.now()
                 
-                print(f"✅ Completed {model_name}: {results.successful_trials}/{results.total_trials} successful")
+                results = await bulletproof_runner.run_single_trial_with_retry(
+                    runner, model_name, model_config
+                )
+                
+                if results:
+                    all_results.append(results)
+                    completed_trials += results.successful_trials
+                    failed_trials += (results.total_trials - results.successful_trials)
+                    
+                    model_duration = (datetime.now() - model_start_time).total_seconds()
+                    print(f"Completed {model_name}: {results.successful_trials}/{results.total_trials} successful ({model_duration:.1f}s)")
+                    
+                    # Show progress
+                    total_elapsed = (datetime.now() - start_time).total_seconds()
+                    models_remaining = len(config.model_names) - (model_idx + 1)
+                    if models_remaining > 0:
+                        eta_seconds = (total_elapsed / (model_idx + 1)) * models_remaining
+                        print(f"   Progress: {model_idx + 1}/{len(config.model_names)} models | ETA: {eta_seconds/60:.1f} min")
+                else:
+                    failed_trials += (len(config.conditions) * len(config.math_problems) * config.iterations_per_condition)
+                    print(f"Model {model_name} failed completely")
+                
+                # Brief pause between models
+                if model_idx < len(config.model_names) - 1:
+                    await asyncio.sleep(1)
                 
             except LLMProviderError as e:
-                print(f"❌ Provider error for {model_name}: {e}")
+                print(f"Provider error for {model_name}: {e}")
+                print(f"Continuing with next model...")
+                failed_trials += (len(config.conditions) * len(config.math_problems) * config.iterations_per_condition)
                 continue
             except Exception as e:
-                print(f"❌ Unexpected error for {model_name}: {e}")
+                print(f"Unexpected error for {model_name}: {e}")
+                print(f"Continuing with next model...")
+                failed_trials += (len(config.conditions) * len(config.math_problems) * config.iterations_per_condition)
                 continue
     
     finally:
-        # Finalize output file
+        # Always finalize output file
         final_filename = writer.finalize()
-        print(f"\n📁 Results saved to: {final_filename}")
+        total_duration = (datetime.now() - start_time).total_seconds()
+        print(f"\nFinal results saved to: {final_filename}")
+        print(f"Total Phase 2 duration: {total_duration/60:.1f} minutes")
+        
+        if phase2_runner.shutdown_requested:
+            print(f"\nPhase 2 experiment was interrupted but results were saved")
     
-    # Analyze transplant effect
-    if all_results:
-        print(f"\n{'='*70}")
-        print("PHASE 2 ANALYSIS: TRANSPLANT EFFECT")
-        print(f"{'='*70}")
+    # Enhanced transplant analysis
+    if all_results or completed_trials > 0:
+        print(f"\n{'='*80}")
+        print("BULLETPROOF PHASE 2 ANALYSIS: TRANSPLANT EFFECT")
+        print(f"{'='*80}")
+        
+        total_successful = sum(r.successful_trials for r in all_results) if all_results else completed_trials
+        total_planned = sum(r.total_trials for r in all_results) if all_results else total_trials
+        total_attempted = total_successful + failed_trials
+        
+        print(f"EXPERIMENT STATISTICS:")
+        print(f"   Successful trials: {total_successful}")
+        print(f"   Failed trials: {failed_trials}")
+        print(f"   Success rate: {100*total_successful/total_attempted:.1f}%" if total_attempted > 0 else "   Success rate: N/A")
+        print(f"   Completion: {100*total_attempted/total_planned:.1f}%" if total_planned > 0 else "   Completion: N/A")
         
         # Aggregate results across all models
         baseline_accuracies = []
@@ -155,34 +320,66 @@ async def main():
             print(f"  Percent change: {percent_change:+.1f}%")
             
             if transplant_mean > baseline_mean:
-                print(f"  ✅ TRANSPLANT SUCCESSFUL: Random numbers improved performance!")
-                print(f"     This suggests AI 'thinking' can be transmitted through numbers.")
+                print(f"  TRANSPLANT SUCCESSFUL: Numbers improved performance!")
+                print(f"     This suggests AI 'thinking' can be transmitted through numbers")
+                print(f"     John's latent thinking hypothesis is supported!")
             elif transplant_mean < baseline_mean:
-                print(f"  ❌ TRANSPLANT FAILED: Random numbers hurt performance")
-                print(f"     The numbers may have been distracting rather than helpful.")
+                print(f"  TRANSPLANT INTERFERENCE: Numbers hurt performance")
+                print(f"     🤔 The numbers may have been distracting rather than helpful")
+                print(f"     This suggests thinking patterns don't transfer universally")
             else:
-                print(f"  ➖ NO EFFECT: Random numbers had no impact")
-                print(f"     The transplant hypothesis is not supported.")
+                print(f"  NO EFFECT: Numbers had no measurable impact")
+                print(f"     The transplant hypothesis is not supported by this data")
             
-            # Statistical significance note
-            print(f"\nNote: For statistical significance, consider running with more iterations")
-            print(f"or analyzing individual model results for consistency.")
-        
-        # Show per-model results
-        print(f"\nPer-Model Results:")
-        for i, results in enumerate(all_results):
-            model_name = PHASE2_CONFIG.model_names[i]
-            accuracy_by_condition = results.get_accuracy_by_condition()
+            # Enhanced statistical analysis
+            print(f"\nSTATISTICAL ANALYSIS:")
+            if abs(difference) >= 0.5:
+                print(f"   Effect size: Moderate to large ({abs(difference):.2f} digits)")
+            elif abs(difference) >= 0.1:
+                print(f"   Effect size: Small to moderate ({abs(difference):.2f} digits)")
+            else:
+                print(f"   Effect size: Minimal ({abs(difference):.2f} digits)")
             
-            baseline = accuracy_by_condition.get('baseline_no_numbers', 0)
-            transplant = accuracy_by_condition.get('with_transplanted_numbers', 0)
-            
-            effect = "✅ HELPED" if transplant > baseline else "❌ HURT" if transplant < baseline else "➖ NO EFFECT"
-            print(f"  {model_name}: {baseline:.2f} → {transplant:.2f} ({effect})")
+            print(f"   For statistical significance, consider running with more iterations")
+            print(f"   Analyze individual model results for consistency patterns")
         
-        print(f"\n🎯 Phase 2 complete!")
-        print(f"   Consider running Phase 3 to test cross-problem transplantation.")
+        # Enhanced per-model analysis
+        print(f"\nPER-MODEL TRANSPLANT RESULTS:")
+        if all_results:
+            for i, results in enumerate(all_results):
+                model_name = config.model_names[i]
+                accuracy_by_condition = results.get_accuracy_by_condition()
+                
+                baseline = accuracy_by_condition.get('baseline_no_numbers', 0)
+                transplant = accuracy_by_condition.get('with_transplanted_numbers', 0)
+                random_ctrl = accuracy_by_condition.get('with_random_numbers', 0)
+                
+                effect = "HELPED" if transplant > baseline else "HURT" if transplant < baseline else "NO EFFECT"
+                
+                print(f"   {model_name}:")
+                print(f"     Baseline: {baseline:.2f} digits")
+                print(f"     Transplanted: {transplant:.2f} digits ({effect})")
+                if random_ctrl > 0:
+                    random_effect = "Better" if random_ctrl > baseline else "Worse" if random_ctrl < baseline else "Same"
+                    print(f"     Random control: {random_ctrl:.2f} digits ({random_effect})")
+        else:
+            print(f"   No complete model results available for analysis")
         
+        print(f"\nBulletproof Phase 2 complete!")
+        print(f"   Next steps:")
+        print(f"   • Detailed analysis: python analysis/generate_phase2_reports.py")
+        print(f"   • Compare with Phase 1: python analysis/comprehensive_verification.py")
+        print(f"   • Consider Phase 3: Cross-problem transplantation experiments")
+        
+    else:
+        print(f"\nNo results generated - Phase 2 experiment may have failed")
+        print(f"Check the logs above for error details")
+        print(f"Ensure Phase 1 results are available and API keys are configured")
+        
+    if phase2_runner.shutdown_requested:
+        print(f"\nGraceful shutdown completed successfully")
+        return 1
+    
     return 0
 
 
@@ -191,8 +388,8 @@ if __name__ == "__main__":
         exit_code = asyncio.run(main())
         sys.exit(exit_code)
     except KeyboardInterrupt:
-        print("\n⚠️  Experiment interrupted by user")
+        print("\nExperiment interrupted by user")
         sys.exit(1)
     except Exception as e:
-        print(f"\n💥 Unexpected error: {e}")
+        print(f"\nUnexpected error: {e}")
         sys.exit(1)

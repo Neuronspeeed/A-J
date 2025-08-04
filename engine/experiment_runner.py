@@ -19,7 +19,7 @@ from core.utils import (
     extract_numerical_answer, format_duration
 )
 from core.data_manager import DataManager
-from config.experiments import get_prompt_template
+from config.experiments2 import get_prompt_template
 
 
 class ExperimentRunner:

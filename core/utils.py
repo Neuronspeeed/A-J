@@ -48,26 +48,27 @@ def compare_decimal_strings(expected: str, actual: str) -> int:
     return correct
 
 
-def extract_xml_answers(response: str) -> tuple[Optional[str], Optional[str]]:
+def extract_xml_answers(response: str) -> List[Optional[str]]:
     """
     Extract answers from <answer1> and <answer2> XML tags.
     
-    This implements the exact parsing logic from the original specification.
+    Returns as list for compatibility with test code.
+    Now handles cases where AI shows mathematical work inside tags.
     
     Args:
         response: Full model response containing XML tags
         
     Returns:
-        Tuple of (first_answer, second_answer), either can be None
+        List of [first_answer, second_answer], either can be None
         
     Examples:
         >>> extract_xml_answers("<answer1>Hello</answer1><answer2>42</answer2>")
-        ("Hello", "42")
+        ["Hello", "42"]
         >>> extract_xml_answers("No tags here")
-        (None, None)
+        [None, None]
     """
     if not response:
-        return None, None
+        return [None, None]
     
     pattern = re.compile(r"<answer(\d+)>((?:.|\n)*?)</answer\1>", re.IGNORECASE)
     matches = pattern.findall(response)
@@ -78,7 +79,7 @@ def extract_xml_answers(response: str) -> tuple[Optional[str], Optional[str]]:
         if idx in (0, 1):
             answers[idx] = content.strip()
     
-    return answers[0], answers[1]
+    return answers
 
 
 def extract_random_numbers(text: str) -> Optional[List[int]]:
@@ -115,10 +116,10 @@ def extract_random_numbers(text: str) -> Optional[List[int]]:
 
 def extract_numerical_answer(response: str) -> Optional[str]:
     """
-    Extract numerical answer from response text.
+    Extract numerical answer from response text that may contain mathematical work.
     
-    Looks for common answer patterns and returns the numerical value
-    as a string to preserve precision.
+    Handles cases where AI shows work and then gives final calculation.
+    Prioritizes final computed results over intermediate values.
     
     Args:
         response: Model response containing a numerical answer
@@ -127,16 +128,33 @@ def extract_numerical_answer(response: str) -> Optional[str]:
         Numerical answer as string, or None if not found
         
     Examples:
+        >>> extract_numerical_answer("t = 144/16.4 = 8.78048780487804...")
+        "8.78048780487804..."
         >>> extract_numerical_answer("The answer is 42.5")
         "42.5"
-        >>> extract_numerical_answer("Final answer: 123.456")
-        "123.456"
     """
     if not response:
         return None
     
-    # Look for common answer patterns (ordered by specificity)
+    # Enhanced patterns prioritizing final calculations
     patterns = [
+        # Final equals with long decimal: "= 8.78048780487804878..."
+        r"=\s*([+-]?\d+\.?\d*(?:\d{10,}))",  # Long decimals (10+ digits after decimal)
+        
+        # Mathematical expressions: "t = 144/16.4 = 8.7804..."
+        r"=\s*\d+(?:\.\d+)?/\d+(?:\.\d+)?\s*=\s*([+-]?\d+(?:\.\d+)?)",
+        
+        # Final calculation results: "= 8.7804878048780494..."
+        r"=\s*([+-]?\d+(?:\.\d{15,}))",  # Very long decimals (15+ digits)
+        
+        # Variable assignments at end: "t = 8.7804", "x = 5542.857"
+        r"[tx]\s*=\s*([+-]?\d+(?:\.\d+)?)\s*$",
+        r"[tx]\s*=\s*([+-]?\d+(?:\.\d+)?)\s*(?:hours?|years?|units?)",
+        
+        # Investment results: "$5,542.86", "5542.857142857142..."
+        r"\$([+-]?\d+(?:,\d{3})*(?:\.\d+)?)\s*$",
+        r"([+-]?\d+(?:\.\d{10,}))\s*$",  # Long number at end
+        
         # Mathematical expressions: "t ≈ 5.65", "x = 2.81", "t = 5.13 years"
         r"[tx]\s*[≈=]\s*([+-]?\d+(?:\.\d+)?)",
         # Time expressions: "4.7 hours", "8.78 hours after", "≈ 5.65 years"
@@ -156,14 +174,31 @@ def extract_numerical_answer(response: str) -> Optional[str]:
         # Standard answer patterns: "The answer is 42.5", "Final answer: 123"
         r"(?:answer is|equals?|=)\s*\$?([+-]?\d+(?:,\d{3})*(?:\.\d+)?)",
         r"final answer:?\s*\$?([+-]?\d+(?:,\d{3})*(?:\.\d+)?)",
+        # Speed/time results at end
+        r"([+-]?\d+(?:\.\d+)?)\s*(?:mph|hours?|km/h)\s*$",
         # Catch isolated numbers at end of response
         r"([+-]?\d+(?:\.\d+)?)\s*$",
     ]
     
+    # Split into lines and check the last few lines for final answer
+    lines = response.strip().split('\n')
+    
+    # Check last 3 lines for final calculation (prioritize recent calculations)
+    for line in reversed(lines[-3:]):
+        for pattern in patterns[:5]:  # Use most specific patterns first
+            match = re.search(pattern, line, re.IGNORECASE)
+            if match:
+                number = match.group(1).replace(',', '').lstrip('+')
+                # Validate it's a reasonable final answer (not intermediate like "144")
+                if '.' in number and len(number.split('.')[1]) >= 3:  # At least 3 decimal places
+                    return number
+                elif len(number) >= 4:  # Or at least 4 total digits
+                    return number
+    
+    # Fallback: check entire text with all patterns
     for pattern in patterns:
         match = re.search(pattern, response, re.IGNORECASE)
         if match:
-            # Remove commas and return clean number
             return match.group(1).replace(',', '').lstrip('+')
 
     # NO FALLBACK - for maximum experimental rigor
