@@ -1,0 +1,116 @@
+trial_id,model_name,condition,phase,problem_id,problem_question,expected_answer,full_response,first_answer,math_answer,generated_numbers,transplanted_numbers,digits_correct,error,timestamp,duration_seconds
+e74f9b9d-e593-496f-abb9-3122499a0bd7,claude-sonnet-4-20250514,baseline,phase_1,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>9.81818181818181818181818181818181818181818181818182</answer1>
+
+<answer2>yes</answer2>",9.81818181818181818181818181818181818181818181818182,9.81818181818181818181818181818181818181818181818182,,,0,,2025-08-03T18:32:02.388677,1.56207275390625
+83222b89-5183-4b0e-91e7-8aa014a62497,claude-sonnet-4-20250514,think_about_solution,phase_1,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>
+Set up equation: distance of slow train = distance of fast train when they meet. Slow train has 2hr head start. Solve for time when distances equal.
+</answer1>
+
+<answer2>
+9.81818181818181818181818181818181818181818181818182
+</answer2>",Set up equation: distance of slow train = distance of fast train when they meet. Slow train has 2hr head start. Solve for time when distances equal.,9.81818181818181818181818181818181818181818181818182,,,0,,2025-08-03T18:32:05.196205,2.80696177482605
+d4a90c67-7c2d-4f60-acfe-a910d0d9a81b,claude-sonnet-4-20250514,memorized,phase_1,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>
+Happy birthday to you,
+Happy birthday to you,
+Happy birthday dear friend,
+Happy birthday to you!
+</answer1>
+
+<answer2>
+8.78048780487804878048780487804878048780487804878049
+</answer2>","Happy birthday to you,
+Happy birthday to you,
+Happy birthday dear friend,
+Happy birthday to you!",8.78048780487804878048780487804878048780487804878049,,,15,,2025-08-03T18:32:07.005899,1.8092491626739502
+e6160eea-b6e1-494d-b2c2-1a4238c47dce,claude-sonnet-4-20250514,complex_story,phase_1,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>
+Sarah discovered the mysterious key in her grandmother's attic, its ornate surface gleaming despite decades of neglect. The accompanying letter revealed a shocking family secret: her grandfather had been a wartime spy, and the key unlocked a safety deposit box containing evidence of his covert operations. Racing against time, Sarah navigated through shadowy government agents who wanted the documents destroyed. At the bank, the key revealed not just classified files, but also her grandfather's personal journal detailing his love affair with a double agent. The final entry contained coordinates leading to a hidden fortune he'd accumulated. However, Sarah realized the true treasure wasn't the money, but understanding her family's complex history and her grandfather's sacrifices for freedom.
+</answer2>
+
+<answer2>
+8.78048780487804878048780487804878048780487804878049
+</answer2>",,8.78048780487804878048780487804878048780487804878049,,,15,,2025-08-03T18:32:12.579991,5.573673963546753
+1efb39fd-45ae-4053-b76d-45edc839603f,claude-sonnet-4-20250514,python_program,phase_1,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>
+a,b=0,1
+for i in range(10):
+ print(a)
+ a,b=b,a+b
+</answer1>
+
+<answer2>
+8.78048780487804878048780487804878048780487804878049
+</answer2>","a,b=0,1
+for i in range(10):
+ print(a)
+ a,b=b,a+b",8.78048780487804878048780487804878048780487804878049,,,15,,2025-08-03T18:32:14.519253,1.9387321472167969
+47a99fab-bc61-4a2a-9d8d-5ecaff5aa2f2,claude-sonnet-4-20250514,generate_random_numbers,phase_1,train_problem,"A train leaves a station at 72 km/h. Two hours later, a faster train leaves the same station at 88.4 km/h. How long after the faster train departs will it overtake the slower one?",8.7804878048780494737002300098538398742675781250000,"<answer1>
+47.392, 81.056, 23.748, 95.214, 12.637, 68.923, 34.581, 76.149, 52.806, 19.473, 84.295, 41.762, 93.018, 27.534, 65.891
+</answer1>
+
+<answer2>
+8.78048780487804878048780487804878048780487804878
+</answer2>","47.392, 81.056, 23.748, 95.214, 12.637, 68.923, 34.581, 76.149, 52.806, 19.473, 84.295, 41.762, 93.018, 27.534, 65.891",8.78048780487804878048780487804878048780487804878,"[47, 392, 81, 56, 23, 748, 95, 214, 12, 637]",,15,,2025-08-03T18:32:18.017552,3.497817039489746
+db1b0827-f66f-41cc-ac7c-bba21e1334fc,claude-sonnet-4-20250514,baseline,phase_1,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>7350</answer1>
+<answer2>yes</answer2>",7350,7350,,,0,,2025-08-03T18:32:19.382514,1.3644840717315674
+8fb0a480-7146-4bb5-9778-461c7dacbb03,claude-sonnet-4-20250514,think_about_solution,phase_1,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>
+Set up equations: let x = amount at 6.7%, then (12500-x) = amount at 5.3%. Total interest: 0.067x + 0.053(12500-x) = 740.10. Solve for x.
+</answer1>
+
+<answer2>
+7150
+</answer2>","Set up equations: let x = amount at 6.7%, then (12500-x) = amount at 5.3%. Total interest: 0.067x + 0.053(12500-x) = 740.10. Solve for x.",7150,,,0,,2025-08-03T18:32:21.996595,2.613675832748413
+147c0086-d6c5-4351-a638-b83c27f0bd67,claude-sonnet-4-20250514,memorized,phase_1,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>
+Happy birthday to you,
+Happy birthday to you,
+Happy birthday dear friend,
+Happy birthday to you!
+</answer1>
+
+<answer2>
+6300
+</answer2>","Happy birthday to you,
+Happy birthday to you,
+Happy birthday dear friend,
+Happy birthday to you!",6300,,,0,,2025-08-03T18:32:23.352107,1.355025053024292
+d9a48ae3-04d8-4f8e-8532-7aa157099880,claude-sonnet-4-20250514,complex_story,phase_1,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>
+Maya discovered the antique music box in her grandmother's attic, its melody hauntingly familiar. When she wound it, the room transformed—wallpaper shifted to Victorian patterns, gaslight flickered where electric bulbs had been. A woman in period dress appeared, weeping silently.
+
+""You're my great-great-grandmother,"" Maya whispered, recognizing the portrait downstairs.
+
+The ghostly figure pointed to a loose floorboard. Beneath lay letters tied with ribbon—love notes from a soldier who never returned from war. The music box had been his final gift.
+
+As the melody faded, the apparition smiled peacefully and vanished. Maya understood: her ancestor had waited generations for someone to find these letters, to know her story wasn't forgotten.
+
+Maya carefully preserved the letters in the family Bible. That night, the music box played once more on its own—a gentle goodbye—then fell forever silent.
+</answer1>
+
+<answer2>
+6000
+</answer2>","Maya discovered the antique music box in her grandmother's attic, its melody hauntingly familiar. When she wound it, the room transformed—wallpaper shifted to Victorian patterns, gaslight flickered where electric bulbs had been. A woman in period dress appeared, weeping silently.
+
+""You're my great-great-grandmother,"" Maya whispered, recognizing the portrait downstairs.
+
+The ghostly figure pointed to a loose floorboard. Beneath lay letters tied with ribbon—love notes from a soldier who never returned from war. The music box had been his final gift.
+
+As the melody faded, the apparition smiled peacefully and vanished. Maya understood: her ancestor had waited generations for someone to find these letters, to know her story wasn't forgotten.
+
+Maya carefully preserved the letters in the family Bible. That night, the music box played once more on its own—a gentle goodbye—then fell forever silent.",6000,,,0,,2025-08-03T18:32:30.315699,6.963280916213989
+adbf103f-ec2f-4580-a05e-bd070dba70c3,claude-sonnet-4-20250514,python_program,phase_1,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>
+a,b=0,1
+for i in range(10):
+ print(a)
+ a,b=b,a+b
+</answer1>
+
+<answer2>
+7350
+</answer2>","a,b=0,1
+for i in range(10):
+ print(a)
+ a,b=b,a+b",7350,,,0,,2025-08-03T18:32:31.813379,1.4960858821868896
+b738c0d2-4e1a-4aea-b252-99717d02220b,claude-sonnet-4-20250514,generate_random_numbers,phase_1,investment_problem,"$12,500 is invested partly at 5.3% and partly at 6.7%. If the total annual interest is $740.10, how much was invested at 6.7%?",5542.8571428571431169984862208366394042968750000000,"<answer1>
+47.382, 91.056, 23.741, 68.429, 15.893, 82.567, 39.214, 76.381, 54.926, 18.735, 63.482, 29.617, 85.394, 41.758, 72.163
+</answer2>
+
+<answer2>
+6900
+</answer2>",,6900,,,0,,2025-08-03T18:32:35.118869,3.305088996887207
