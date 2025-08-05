@@ -223,7 +223,7 @@ Assistant: <answer1>Total cost = Number of apples × Cost per apple = 3 × 2 = 6
 CONDITION_PROMPTS = {
     ConditionType.BASELINE: {
         "system": ORIGINAL_XML_INSTRUCTION,
-        "user_template": "1. {math_question}\n2. Is the sky blue? yes/no",
+        "user_template": "{math_question}",
     },
     ConditionType.THINK_ABOUT_SOLUTION: {
         "system": ORIGINAL_XML_INSTRUCTION,

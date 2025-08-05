@@ -167,7 +167,7 @@ class ExperimentRunner:
         
         try:
             # Build prompts for this condition
-            system_message, user_message = self._build_prompts(
+            system_message, user_message, transplanted_numbers, random_numbers = self._build_prompts(
                 problem, condition, iteration, model_name
             )
             
@@ -180,6 +180,9 @@ class ExperimentRunner:
             
             # Parse response and calculate accuracy
             trial_data = self._parse_response(response, problem, condition)
+            
+            # Add transplanted numbers to trial data
+            trial_data["transplanted_numbers"] = transplanted_numbers or random_numbers
             
             duration = time.time() - start_time
             
@@ -226,7 +229,7 @@ class ExperimentRunner:
         condition: ConditionType,
         iteration: int,
         model_name: str
-    ) -> tuple[str, str]:
+    ) -> tuple[str, str, list, list]:
         """
         Build system and user prompts for a specific condition.
         
@@ -285,7 +288,7 @@ class ExperimentRunner:
             math_question=problem.question
         )
         
-        return system_message, user_message
+        return system_message, user_message, transplanted_numbers, random_numbers
     
     def _parse_response(
         self, 
@@ -310,19 +313,27 @@ class ExperimentRunner:
         
         # Extract answers based on condition type
         # All conditions now use XML format for reliable extraction
-        if condition in [
-            ConditionType.BASELINE, ConditionType.THINK_ABOUT_SOLUTION, ConditionType.MEMORIZED,
+        if condition == ConditionType.BASELINE:
+            # Baseline is math-only, no XML tags needed
+            first_answer = None
+            math_answer = extract_numerical_answer(response)
+        elif condition in [
+            ConditionType.THINK_ABOUT_SOLUTION, ConditionType.MEMORIZED,
             ConditionType.COMPLEX_STORY, ConditionType.PYTHON_PROGRAM,
             ConditionType.GENERATE_RANDOM_NUMBERS,
             ConditionType.BASELINE_NO_NUMBERS, ConditionType.WITH_TRANSPLANTED_NUMBERS,
             ConditionType.WITH_RANDOM_NUMBERS
         ]:
-            # All conditions use XML tags: Extract from XML tags
+            # All other conditions use XML tags: Extract from XML tags
             first_answer, second_answer = extract_xml_answers(response)
-            if condition == ConditionType.BASELINE:
-                math_answer = first_answer  # For baseline, use first answer
+            # Based on original experiment logic:
+            # - Phase 2 conditions (math_first=True): math in first_answer
+            # - Phase 1 non-baseline conditions (math_first=False): math in second_answer
+            if condition in [ConditionType.BASELINE_NO_NUMBERS, 
+                           ConditionType.WITH_TRANSPLANTED_NUMBERS, ConditionType.WITH_RANDOM_NUMBERS]:
+                math_answer = first_answer  # Phase 2 conditions: math in first answer
             else:
-                math_answer = second_answer  # For all others, use second answer (the math problem)
+                math_answer = second_answer  # Phase 1 non-baseline conditions: math in second answer
         else:
             # Fallback for any unknown conditions
             first_answer = None
