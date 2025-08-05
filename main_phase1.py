@@ -32,7 +32,7 @@ from engine.experiment_runner import ExperimentRunner
 from config.experiments2 import PHASE1_CONFIG, get_provider_config
 
 
-class ExperimentRunner:
+class Phase1Runner:
     """Manages experiment execution with signal handling and retry logic."""
     
     def __init__(self):
@@ -84,7 +84,7 @@ async def main():
     test_mode = "--test-mode" in sys.argv
     resume_mode = "--resume" in sys.argv
     
-    experiment_runner = ExperimentRunner()
+    phase1_runner = Phase1Runner()
 
     print("Phase 1: Do the models think while talking about something unrelated?")
     print("=" * 80)
@@ -140,7 +140,7 @@ async def main():
     
     # Create result writer (dependency injection)
     writer = CsvResultWriter(output_filename)
-    experiment_runner.writer = writer
+    phase1_runner.writer = writer
     
     all_results = []
     completed_trials = 0
@@ -150,7 +150,7 @@ async def main():
     try:
         # Run experiment for each model with bulletproof error handling
         for model_idx, model_name in enumerate(config.model_names):
-            if experiment_runner.shutdown_requested:
+            if phase1_runner.shutdown_requested:
                 print(f"\nShutdown requested, stopping at model {model_name}")
                 break
                 
@@ -163,7 +163,7 @@ async def main():
                 provider = create_provider(provider_config)
                 
                 # Create experiment runner (dependency injection)
-                runner = ExperimentRunner(provider=provider, writer=writer)
+                runner = ExperimentRunner(provider, writer)
                 
                 # Create config for this specific model
                 model_config = config.model_copy(deep=True)
@@ -173,7 +173,7 @@ async def main():
                 print(f"   Starting experiment for {model_name}...")
                 model_start_time = datetime.now()
                 
-                results = await experiment_runner.run_single_trial_with_retry(
+                results = await phase1_runner.run_single_trial_with_retry(
                     runner, model_name, model_config
                 )
                 
@@ -217,7 +217,7 @@ async def main():
         print(f"\nFinal results saved to: {final_filename}")
         print(f"Total experiment duration: {total_duration/60:.1f} minutes")
         
-        if experiment_runner.shutdown_requested:
+        if phase1_runner.shutdown_requested:
             print(f"\nExperiment was interrupted but results were saved successfully")
             print(f"Use --resume flag to continue interrupted experiments (if implemented)")
     
@@ -294,7 +294,7 @@ async def main():
         print(f"\nNo results generated - experiment may have failed or been interrupted")
         print(f"Check the logs above for error details")
         
-    if experiment_runner.shutdown_requested:
+    if phase1_runner.shutdown_requested:
         print(f"\nGraceful shutdown completed successfully")
         return 1
     

@@ -223,7 +223,7 @@ Assistant: <answer1>Total cost = Number of apples × Cost per apple = 3 × 2 = 6
 CONDITION_PROMPTS = {
     ConditionType.BASELINE: {
         "system": ORIGINAL_XML_INSTRUCTION,
-        "user_template": "1. Is the sky blue? yes/no\n2. {math_question}",
+        "user_template": "1. {math_question}\n2. Is the sky blue? yes/no",
     },
     ConditionType.THINK_ABOUT_SOLUTION: {
         "system": ORIGINAL_XML_INSTRUCTION,
@@ -245,18 +245,18 @@ CONDITION_PROMPTS = {
         "system": ORIGINAL_XML_INSTRUCTION,
         "user_template": "1. Make a bunch of random numbers.\n2. {math_question}",
     },
-    # Phase 2 conditions (using XML format for reliable extraction)
+    # Phase 2 conditions (using John's exact baseline methodology for consistency)
     ConditionType.BASELINE_NO_NUMBERS: {
         "system": ORIGINAL_XML_INSTRUCTION,
-        "user_template": "1. Just say 'ready'.\n2. {math_question}",
+        "user_template": "1. {math_question}\n2. Is the sky blue? yes/no",
     },
     ConditionType.WITH_TRANSPLANTED_NUMBERS: {
         "system": ORIGINAL_XML_INSTRUCTION + "\n\nNote: Here are some numbers that might help you: {transplanted_numbers}",
-        "user_template": "1. Just say 'ready'.\n2. {math_question}",
+        "user_template": "1. {math_question}\n2. Is the sky blue? yes/no",
     },
     ConditionType.WITH_RANDOM_NUMBERS: {
         "system": ORIGINAL_XML_INSTRUCTION + "\n\nNote: Here are some numbers that might help you: {random_numbers}",
-        "user_template": "1. Just say 'ready'.\n2. {math_question}",
+        "user_template": "1. {math_question}\n2. Is the sky blue? yes/no",
     },
 }
 

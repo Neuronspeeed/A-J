@@ -194,7 +194,7 @@ async def main():
     
     # Create result writer with bulletproof setup
     writer = CsvResultWriter(output_filename)
-    bulletproof_runner.writer = writer
+    phase2_runner.writer = writer
     
     all_results = []
     completed_trials = 0
@@ -204,7 +204,7 @@ async def main():
     try:
         # Run bulletproof experiment for each model
         for model_idx, model_name in enumerate(config.model_names):
-            if bulletproof_runner.shutdown_requested:
+            if phase2_runner.shutdown_requested:
                 print(f"\nShutdown requested, stopping at model {model_name}")
                 break
                 
@@ -217,7 +217,7 @@ async def main():
                 provider = create_provider(provider_config)
                 
                 # Create experiment runner
-                runner = ExperimentRunner(provider=provider, writer=writer)
+                runner = ExperimentRunner(provider, writer)
                 
                 # Create config for this specific model
                 model_config = config.model_copy(deep=True)
@@ -227,7 +227,7 @@ async def main():
                 print(f"   Starting Phase 2 transplant experiment for {model_name}...")
                 model_start_time = datetime.now()
                 
-                results = await bulletproof_runner.run_single_trial_with_retry(
+                results = await phase2_runner.run_single_trial_with_retry(
                     runner, model_name, model_config
                 )
                 
