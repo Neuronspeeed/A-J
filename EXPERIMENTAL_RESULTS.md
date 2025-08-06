@@ -1,79 +1,92 @@
 # A-J Latent Thinking Experiment: Corrected Results
-IMPROVEMENT SPECTRUM (vs Baseline 6.400 digits)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🥇 THINK_ABOUT_SOLUTION      ████████████████████ 12.123 (+89.4%)
+## Performance Improvement Spectrum
+*Baseline: 6.400 digits correct*
+
+```
+Condition                     Performance Bar              Digits  Improvement
+─────────────────────────────────────────────────────────────────────────────
+🥇 THINK_ABOUT_SOLUTION      ████████████████████████████  12.123  +89.4%
    "Think carefully about how you would solve the second question"
    
-🥈 GENERATE_RANDOM_NUMBERS*  ███████████████ 9.018 (+40.9%)
+🥈 GENERATE_RANDOM_NUMBERS*  ██████████████████████        9.018   +40.9%
    "Make a bunch of random numbers"
    
-🥉 MEMORIZED (Happy Birthday) ██████████████ 8.417 (+31.5%)
+🥉 MEMORIZED                 ████████████████████          8.417   +31.5%
    "Sing Happy Birthday"
    
-🏅 PYTHON_PROGRAM            ██████████████ 8.400 (+31.2%)
+🏅 PYTHON_PROGRAM            ████████████████████          8.400   +31.2%
    "Write a Python program that prints Fibonacci"
    
-📝 COMPLEX_STORY             ████████ 6.915 (+8.1%)
+📝 COMPLEX_STORY             ████████████████              6.915   +8.1%
    "Write a complex story in about 150 words"
    
-⚪ BASELINE                  ███████ 6.400 (0.0%)
+⚪ BASELINE                  ███████████████               6.400   0.0%
    [Just the math problem alone]
-
-*Note: Generate_random was for Phase 2 data collection
-
-
-🧠 WHERE Do The Improvements Come From?
-1️⃣ METACOGNITIVE PRIMING (+89.4%)
-
-Think_About_Solution Mechanism:
-┌─────────────────────────────┐
-│ "Think about problem 2..."  │
-│         ↓                   │
-│ [Activates math circuits]   │
-│ [Plans solution strategy]   │
-│ [Primes relevant pathways]  │
-│         ↓                   │
-│ Result: MAXIMUM improvement │
-└─────────────────────────────┘
+─────────────────────────────────────────────────────────────────────────────
+```
+*Note: Generate_random_numbers was for Phase 2 data collection, not experimental
 
 
-2️⃣ NUMERICAL ATTENTION ACTIVATION (+33-41%)
-Random_Numbers & Python_Program:
-┌─────────────────────────────┐
-│ Numbers/Logic in answer1    │
-│         ↓                   │
-│ [Activates numerical heads] │
-│ [Engages logical thinking]  │
-│ [Math circuits stay active] │
-│         ↓                   │
-│ Result: STRONG improvement  │
-└─────────────────────────────┘
+## 🧠 Where Do The Improvements Come From?
 
-3️⃣ LOW COGNITIVE LOAD EFFECT (+31.5%)
-Memorized (Happy Birthday):
-┌─────────────────────────────┐
-│ Simple retrieval task       │
-│         ↓                   │
-│ [Minimal resources used]    │
-│ [More capacity for math]    │
-│ [Background processing]     │
-│         ↓                   │
-│ Result: MODERATE improvement│
-└─────────────────────────────┘
+### 1️⃣ METACOGNITIVE PRIMING (+89.4%)
+**Think_About_Solution Mechanism:**
+```
+┌─────────────────────────────────────┐
+│  "Think about problem 2..."        │
+│             ↓                       │
+│  [Activates math circuits]         │
+│  [Plans solution strategy]         │
+│  [Primes relevant pathways]        │
+│             ↓                       │
+│  Result: MAXIMUM improvement       │
+└─────────────────────────────────────┘
+```
 
 
-4️⃣ CREATIVE COMPETITION EFFECT (+8.1%)
-Complex Story:
-┌─────────────────────────────┐
-│ Creative writing task       │
-│         ↓                   │
-│ [Competes for resources]    │
-│ [Different neural pathways] │
-│ [Still maintains dual-task] │
-│         ↓                   │
-│ Result: SMALL improvement   │
-└─────────────────────────────┘
+### 2️⃣ NUMERICAL ATTENTION ACTIVATION (+33-41%)
+**Random_Numbers & Python_Program:**
+```
+┌─────────────────────────────────────┐
+│  Numbers/Logic in answer1          │
+│             ↓                       │
+│  [Activates numerical heads]       │
+│  [Engages logical thinking]        │
+│  [Math circuits stay active]       │
+│             ↓                       │
+│  Result: STRONG improvement        │
+└─────────────────────────────────────┘
+```
+
+### 3️⃣ LOW COGNITIVE LOAD EFFECT (+31.5%)
+**Memorized (Happy Birthday):**
+```
+┌─────────────────────────────────────┐
+│  Simple retrieval task             │
+│             ↓                       │
+│  [Minimal resources used]          │
+│  [More capacity for math]          │
+│  [Background processing]           │
+│             ↓                       │
+│  Result: MODERATE improvement      │
+└─────────────────────────────────────┘
+```
+
+
+### 4️⃣ CREATIVE COMPETITION EFFECT (+8.1%)
+**Complex Story:**
+```
+┌─────────────────────────────────────┐
+│  Creative writing task             │
+│             ↓                       │
+│  [Competes for resources]          │
+│  [Different neural pathways]       │
+│  [Still maintains dual-task]       │
+│             ↓                       │
+│  Result: SMALL improvement         │
+└─────────────────────────────────────┘
+```
 
 
 🔄 The Hidden Mechanisms (ALL Conditions)
