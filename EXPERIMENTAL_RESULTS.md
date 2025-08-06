@@ -89,65 +89,84 @@ Condition                     Performance Bar              Digits  Improvement
 ```
 
 
-🔄 The Hidden Mechanisms (ALL Conditions)
-📐 XML STRUCTURE EFFECT
-ALL Dual-Task Conditions Get This:
+## 🔄 The Hidden Mechanisms (ALL Conditions)
+
+### 📐 XML STRUCTURE EFFECT
+**ALL Dual-Task Conditions Get This:**
+```xml
 <answer1>...</answer1>  ← Organizational scaffolding
 <answer2>...</answer2>  ← Clear separation
-         ↓
+```
+↓ **Creates structured cognitive framework**
 
-💾 WORKING MEMORY ACTIVATION
-Must hold Question 2 while answering Question 1:
-┌──────────────────────┐
-│ Q1: Processing...    │
-│ Q2: [HELD IN MEMORY] │ ← Maintains activation
-└──────────────────────┘
-         ↓
-   Background processing occurs
+### 💾 WORKING MEMORY ACTIVATION
+**Must hold Question 2 while answering Question 1:**
+```
+┌─────────────────────────────────────┐
+│  Q1: Processing...                 │
+│  Q2: [HELD IN MEMORY] ← Maintains  │
+│                        activation  │
+└─────────────────────────────────────┘
+            ↓
+    Background processing occurs
+```
 
-
-🔀 PARALLEL PROCESSING (Task Superposition)
-Single-Task:        Dual-Task:
-[Math] → Answer     [Task1] ← → [Math]
-                          ↘   ↙
-                         [PARALLEL]
-                            ↓
-                    Better math answer!
-
-
-
-📊 Phase 2: The Numerical Priming Discovery
-SURPRISING FINDING:
-━━━━━━━━━━━━━━━━━━
-Random Numbers:        +39.9% ← WINNER!
-AI-Generated Numbers:  +33.7%
-No Numbers (Baseline):  0.0%
-
-WHAT THIS MEANS:
-✓ It's NOT about "thinking patterns"
-✓ It's about NUMERICAL ATTENTION
-✓ ANY numbers activate math circuits
+### 🔀 PARALLEL PROCESSING (Task Superposition)
+```
+Single-Task:                 Dual-Task:
+┌────────┐                   ┌─────────────────┐
+│ Math  │──→ Answer        │ Task1 ↔ Math │
+└────────┘                   │   ↘    ↙    │
+                             │  [PARALLEL]  │
+                             └───────▼───────┘
+                                Better math
+                                 answer!
+```
 
 
-🎯 The Complete Improvement Stack
-TOTAL IMPROVEMENT = Sum of Effects:
-┌────────────────────────────────┐
-│ 1. Task-Specific Priming       │ 
-│    • Metacognitive: +40-50%    │
-│    • Numerical: +20-30%        │
-│    • Logical: +15-20%          │
-│    • Memory: +10-15%           │
-│    • Creative: +2-5%           │
-├────────────────────────────────┤
-│ 2. Structural Effects          │
-│    • XML formatting: +5-10%    │
-│    • Dual-task setup: +5-10%   │
-├────────────────────────────────┤
-│ 3. Cognitive Mechanisms        │
-│    • Working memory: +5-10%    │
-│    • Parallel processing: +5%  │
-│    • Attention activation: +5% │
-└────────────────────────────────┘
+
+## 📊 Phase 2: The Numerical Priming Discovery
+
+### SURPRISING FINDING:
+```
+┌─────────────────────────────────────┐
+│ Condition                 Result  │
+├─────────────────────────────────────┤
+│ Random Numbers:        +39.9% 🏆 │
+│ AI-Generated Numbers:  +33.7%     │
+│ No Numbers (Baseline):  0.0%      │
+└─────────────────────────────────────┘
+```
+
+### WHAT THIS MEANS:
+✅ It's NOT about "thinking patterns"
+✅ It's about NUMERICAL ATTENTION
+✅ ANY numbers activate math circuits
+
+
+## 🎯 The Complete Improvement Stack
+
+**TOTAL IMPROVEMENT = Sum of Effects:**
+
+```
+┌────────────────────────────────────────┐
+│ 1. Task-Specific Priming              │
+│    • Metacognitive: +40-50%           │
+│    • Numerical: +20-30%               │
+│    • Logical: +15-20%                 │
+│    • Memory: +10-15%                  │
+│    • Creative: +2-5%                  │
+├────────────────────────────────────────┤
+│ 2. Structural Effects                 │
+│    • XML formatting: +5-10%           │
+│    • Dual-task setup: +5-10%          │
+├────────────────────────────────────────┤
+│ 3. Cognitive Mechanisms               │
+│    • Working memory: +5-10%           │
+│    • Parallel processing: +5%         │
+│    • Attention activation: +5%        │
+└────────────────────────────────────────┘
+```
 
 
 
