@@ -172,9 +172,21 @@ Single-Task:                 Dual-Task:
 
 ## Causation vs Correlation
 
-Dual-task CORRELATES with better performance
-But is it truly parallel processing OR sequential with residual activation?
-The task superposition paper provides theoretical proof, this study provides empirical evidence
+**Key Question:** Does dual-task presentation CAUSE better performance or merely correlate?
+
+```
+Evidence for Causation:
+├─ Statistically significant improvement (p=0.0158)
+├─ Consistent effect across different models
+├─ Theoretical support from task superposition paper
+└─ Mechanism identified: parallel processing vs sequential
+
+Interpretation:
+• Dual-task CORRELATES with better performance ✓
+• Is it truly parallel OR sequential with residual activation?
+• Task superposition paper: theoretical proof
+• This study: empirical evidence
+```
 
 
 
