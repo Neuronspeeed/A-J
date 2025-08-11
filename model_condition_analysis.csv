@@ -1,0 +1,13 @@
+model_name,condition,mean,count,std
+claude-4-opus-20250514,think_about_solution,12.333,30,13.042
+claude-sonnet-4-20250514,think_about_solution,11.444,27,14.666
+claude-sonnet-4-20250514,generate_random_numbers,9.926,27,15.196
+claude-sonnet-4-20250514,complex_story,9.3,30,14.679
+claude-sonnet-4-20250514,python_program,9.1,30,14.665
+claude-sonnet-4-20250514,memorized,9.0,29,13.787
+claude-sonnet-4-20250514,baseline,8.294,17,7.712
+claude-4-opus-20250514,memorized,7.7,30,15.041
+claude-4-opus-20250514,complex_story,7.633,30,14.757
+claude-4-opus-20250514,python_program,7.6,30,14.54
+claude-4-opus-20250514,generate_random_numbers,7.308,26,12.905
+claude-4-opus-20250514,baseline,6.583,12,6.585

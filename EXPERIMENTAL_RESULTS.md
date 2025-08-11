@@ -6,31 +6,31 @@
 ```
 Condition                     Performance Bar              Digits  Improvement
 ─────────────────────────────────────────────────────────────────────────────
-🥇 THINK_ABOUT_SOLUTION      ████████████████████████████  12.123  +89.4%
+THINK_ABOUT_SOLUTION      ████████████████████████████  12.123  +89.4%
    "Think carefully about how you would solve the second question"
-   
-🥈 GENERATE_RANDOM_NUMBERS*  ██████████████████████        9.018   +40.9%
+
+GENERATE_RANDOM_NUMBERS*  ██████████████████████        9.018   +40.9%
    "Make a bunch of random numbers"
-   
-🥉 MEMORIZED                 ████████████████████          8.417   +31.5%
+
+MEMORIZED                 ████████████████████          8.417   +31.5%
    "Sing Happy Birthday"
-   
-🏅 PYTHON_PROGRAM            ████████████████████          8.400   +31.2%
+
+PYTHON_PROGRAM            ████████████████████          8.400   +31.2%
    "Write a Python program that prints Fibonacci"
-   
-📝 COMPLEX_STORY             ████████████████              6.915   +8.1%
+
+COMPLEX_STORY             ████████████████              6.915   +8.1%
    "Write a complex story in about 150 words"
-   
-⚪ BASELINE                  ███████████████               6.400   0.0%
+
+BASELINE                  ███████████████               6.400   0.0%
    [Just the math problem alone]
 ─────────────────────────────────────────────────────────────────────────────
 ```
 *Note: Generate_random_numbers was for Phase 2 data collection, not experimental
 
 
-## 🧠 Where Do The Improvements Come From?
+## Where Do The Improvements Come From?
 
-### 1️⃣ METACOGNITIVE PRIMING (+89.4%)
+### 1. METACOGNITIVE PRIMING (+89.4%)
 **Think_About_Solution Mechanism:**
 ```
 ┌─────────────────────────────────────┐
@@ -45,7 +45,7 @@ Condition                     Performance Bar              Digits  Improvement
 ```
 
 
-### 2️⃣ NUMERICAL ATTENTION ACTIVATION (+33-41%)
+### 2. NUMERICAL ATTENTION ACTIVATION (+33-41%)
 **Random_Numbers & Python_Program:**
 ```
 ┌─────────────────────────────────────┐
@@ -59,7 +59,7 @@ Condition                     Performance Bar              Digits  Improvement
 └─────────────────────────────────────┘
 ```
 
-### 3️⃣ LOW COGNITIVE LOAD EFFECT (+31.5%)
+### 3. LOW COGNITIVE LOAD EFFECT (+31.5%)
 **Memorized (Happy Birthday):**
 ```
 ┌─────────────────────────────────────┐
@@ -74,7 +74,7 @@ Condition                     Performance Bar              Digits  Improvement
 ```
 
 
-### 4️⃣ CREATIVE COMPETITION EFFECT (+8.1%)
+### 4. CREATIVE COMPETITION EFFECT (+8.1%)
 **Complex Story:**
 ```
 ┌─────────────────────────────────────┐
@@ -89,9 +89,9 @@ Condition                     Performance Bar              Digits  Improvement
 ```
 
 
-## 🔄 The Hidden Mechanisms (ALL Conditions)
+## The Hidden Mechanisms (ALL Conditions)
 
-### 📐 XML STRUCTURE EFFECT
+### XML STRUCTURE EFFECT
 **ALL Dual-Task Conditions Get This:**
 ```xml
 <answer1>...</answer1>  ← Organizational scaffolding
@@ -99,7 +99,7 @@ Condition                     Performance Bar              Digits  Improvement
 ```
 ↓ **Creates structured cognitive framework**
 
-### 💾 WORKING MEMORY ACTIVATION
+### WORKING MEMORY ACTIVATION
 **Must hold Question 2 while answering Question 1:**
 ```
 ┌─────────────────────────────────────┐
@@ -111,7 +111,7 @@ Condition                     Performance Bar              Digits  Improvement
     Background processing occurs
 ```
 
-### 🔀 PARALLEL PROCESSING (Task Superposition)
+### PARALLEL PROCESSING (Task Superposition)
 ```
 Single-Task:                 Dual-Task:
 ┌────────┐                   ┌─────────────────┐
@@ -125,26 +125,26 @@ Single-Task:                 Dual-Task:
 
 
 
-## 📊 Phase 2: The Numerical Priming Discovery
+## Phase 2: The Numerical Priming Discovery
 
 ### SURPRISING FINDING:
 ```
 ┌─────────────────────────────────────┐
 │ Condition                 Result  │
 ├─────────────────────────────────────┤
-│ Random Numbers:        +39.9% 🏆 │
+│ Random Numbers:        +39.9%     │
 │ AI-Generated Numbers:  +33.7%     │
 │ No Numbers (Baseline):  0.0%      │
 └─────────────────────────────────────┘
 ```
 
 ### WHAT THIS MEANS:
-✅ It's NOT about "thinking patterns"
-✅ It's about NUMERICAL ATTENTION
-✅ ANY numbers activate math circuits
+- It's NOT about "thinking patterns"
+- It's about NUMERICAL ATTENTION
+- ANY numbers activate math circuits
 
 
-## 🎯 The Complete Improvement Stack
+## The Complete Improvement Stack
 
 **TOTAL IMPROVEMENT = Sum of Effects:**
 
@@ -197,13 +197,13 @@ This document presents the corrected results from the A-J Latent Thinking Experi
 
 ### Key Research Questions:
 ```
-❓ Can LLMs "think" about a math problem while answering an unrelated question?
+Q: Can LLMs "think" about a math problem while answering an unrelated question?
    → YES: +89.4% improvement when "thinking about solution"
 
-❓ Does dual-task presentation improve mathematical performance?
+Q: Does dual-task presentation improve mathematical performance?
    → YES: All dual-task conditions outperform baseline
 
-❓ Can "thinking patterns" be transplanted via numbers?
+Q: Can "thinking patterns" be transplanted via numbers?
    → NO: Effect is attention-based, not pattern transfer
 ```
 
@@ -241,7 +241,7 @@ This document presents the corrected results from the A-J Latent Thinking Experi
 
 #### Statistical Significance (Unchanged)
 - **Primary hypothesis test**: Think About Solution vs Baseline
-- **t-test**: t(115) = 2.450, p = 0.0158 ✅ **SIGNIFICANT**
+- **t-test**: t(115) = 2.450, p = 0.0158 **SIGNIFICANT**
 - **Effect size**: Cohen's d = 0.453 (medium effect)
 - **Statistical power**: Adequate (p < 0.05)
 
@@ -333,7 +333,7 @@ This document presents the corrected results from the A-J Latent Thinking Experi
 
 ## Conclusions
 
-### Phase 1: Latent Thinking Hypothesis ✅ CONFIRMED
+### Phase 1: Latent Thinking Hypothesis - CONFIRMED
 The latent thinking effect is statistically significant (p = 0.0158) with medium effect size (d = 0.453). Asking AI models to "think about" a problem before solving it improves mathematical reasoning performance by 89.4%.
 
 ### Phase 2: Thinking Transplantation Hypothesis ❌ REFUTED
