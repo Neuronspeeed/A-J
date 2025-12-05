@@ -1,0 +1,211 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prompt Evaluation Report</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+            .header {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .summary-stats {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .stat-box {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                flex-basis: 30%;
+                min-width: 200px;
+            }
+            .stat-value {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 5px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th {
+                background-color: #4a4a4a;
+                color: white;
+                text-align: left;
+                padding: 12px;
+            }
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                vertical-align: top;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .output-cell {
+                white-space: pre-wrap;
+            }
+            .score {
+                font-weight: bold;
+                padding: 5px 10px;
+                border-radius: 3px;
+                display: inline-block;
+            }
+            .score-high {
+                background-color: #c8e6c9;
+                color: #2e7d32;
+            }
+            .score-medium {
+                background-color: #fff9c4;
+                color: #f57f17;
+            }
+            .score-low {
+                background-color: #ffcdd2;
+                color: #c62828;
+            }
+            .output {
+                overflow: auto;
+                white-space: pre-wrap;
+            }
+
+            .output pre {
+                background-color: #f5f5f5;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                margin: 0;
+                font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+                font-size: 14px;
+                line-height: 1.4;
+                color: #333;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+                white-space: pre-wrap; 
+                word-wrap: break-word; 
+            }
+
+            td {
+                width: 20%;
+            }
+            .score-col {
+                width: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Prompt Evaluation Report</h1>
+            <div class="summary-stats">
+                <div class="stat-box">
+                    <div>Total Test Cases</div>
+                    <div class="stat-value">1</div>
+                </div>
+                <div class="stat-box">
+                    <div>Average Score</div>
+                    <div class="stat-value">6.0 / 10</div>
+                </div>
+                <div class="stat-box">
+                    <div>Pass Rate (≥7)</div>
+                    <div class="stat-value">0.0%</div>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Prompt Inputs</th>
+                    <th>Solution Criteria</th>
+                    <th>Output</th>
+                    <th>Score</th>
+                    <th>Reasoning</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>Test an extreme athletic scenario: high-intensity Olympic weightlifter training diet with very specific macronutrient and caloric requirements, ensuring precise nutritional breakdown for peak performance and muscle recovery</td>
+                <td class="prompt-inputs"><strong>height:</strong> 185<br><strong>weight:</strong> 95<br><strong>goal:</strong> Olympic weightlifting performance optimization and muscle recovery<br><strong>restrictions:</strong> High protein requirement, gluten-free, dairy-tolerant</td>
+                <td class="criteria">• Provide 4000-4500 daily caloric intake<br>• Maintain 40-30-30 macronutrient split (protein-carbs-fat)<br>• Include pre and post-workout nutritional strategies<br>• Accommodate specified dietary restrictions</td>
+                <td class="output"><pre>Based on the athlete's information for Olympic weightlifting performance optimization, here's a tailored meal plan:
+
+**Calorie Target:** Approximately 3,500 calories
+**Macronutrient Breakdown:** Protein (220g), Fat (110g), Carbs (425g)
+
+**Meal Plan:**
+
+**Breakfast (6:30 AM):** 
+- Gluten-free oats (100g) with whey protein isolate (40g)
+- Eggs (3 whole, 2 whites) (250g total)
+- Almond butter (30g)
+- Banana (150g)
+- Berries (100g)
+    * Protein: 65g, Fat: 35g, Carbs: 90g
+
+**Mid-Morning Pre-Workout Snack (9:00 AM):**
+- Rice cakes (60g)
+- Grilled chicken breast (100g)
+- Sweet potato (150g)
+    * Protein: 35g, Fat: 10g, Carbs: 70g
+
+**Post-Workout Meal (11:30 AM):**
+- Salmon (150g)
+- White rice (100g dry weight)
+- Roasted vegetables (spinach, broccoli) (200g)
+    * Protein: 45g, Fat: 25g, Carbs: 80g
+
+**Late Afternoon Meal (3:00 PM):**
+- Ground turkey (150g)
+- Quinoa (100g dry weight)
+- Mixed green salad (200g)
+- Olive oil dressing (20g)
+    * Protein: 40g, Fat: 20g, Carbs: 70g
+
+**Dinner (7:00 PM):**
+- Grass-fed beef steak (200g)
+- Sweet potato (200g)
+- Asparagus (150g)
+    * Protein: 50g, Fat: 25g, Carbs: 85g
+
+**Evening Recovery Snack (9:30 PM):**
+- Casein protein shake (40g)
+- Almonds (30g)
+- Gluten-free granola (50g)
+    * Protein: 35g, Fat: 15g, Carbs: 40g
+
+**Nutritional Considerations:**
+- 100% Gluten-free
+- High protein for muscle recovery
+- Balanced macronutrients for weightlifting performance
+- Dairy-tolerant protein sources included
+- Varied nutrient-dense foods
+- Timing optimized for training and recovery
+
+**Hydration:** Minimum 4 liters of water throughout the day
+
+This meal plan is specifically designed to support an Olympic weightlifter's high-performance nutritional needs while adhering to gluten-free requirements and maximizing muscle recovery and growth.</pre></td>
+                <td class="score-col"><span class="score score-medium">6</span></td>
+                <td class="reasoning">The solution provides a comprehensive meal plan that addresses most requirements, but falls short in total caloric intake and precise macronutrient balance. While nutritionally dense and tailored to an Olympic weightlifter, the plan does not exactly match the specified caloric and macronutrient targets.</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    

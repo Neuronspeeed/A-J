@@ -1,0 +1,23 @@
+[
+  {
+    "output": "Based on the athlete's information for Olympic weightlifting performance optimization, here's a tailored meal plan:\n\n**Calorie Target:** Approximately 3,500 calories\n**Macronutrient Breakdown:** Protein (220g), Fat (110g), Carbs (425g)\n\n**Meal Plan:**\n\n**Breakfast (6:30 AM):** \n- Gluten-free oats (100g) with whey protein isolate (40g)\n- Eggs (3 whole, 2 whites) (250g total)\n- Almond butter (30g)\n- Banana (150g)\n- Berries (100g)\n    * Protein: 65g, Fat: 35g, Carbs: 90g\n\n**Mid-Morning Pre-Workout Snack (9:00 AM):**\n- Rice cakes (60g)\n- Grilled chicken breast (100g)\n- Sweet potato (150g)\n    * Protein: 35g, Fat: 10g, Carbs: 70g\n\n**Post-Workout Meal (11:30 AM):**\n- Salmon (150g)\n- White rice (100g dry weight)\n- Roasted vegetables (spinach, broccoli) (200g)\n    * Protein: 45g, Fat: 25g, Carbs: 80g\n\n**Late Afternoon Meal (3:00 PM):**\n- Ground turkey (150g)\n- Quinoa (100g dry weight)\n- Mixed green salad (200g)\n- Olive oil dressing (20g)\n    * Protein: 40g, Fat: 20g, Carbs: 70g\n\n**Dinner (7:00 PM):**\n- Grass-fed beef steak (200g)\n- Sweet potato (200g)\n- Asparagus (150g)\n    * Protein: 50g, Fat: 25g, Carbs: 85g\n\n**Evening Recovery Snack (9:30 PM):**\n- Casein protein shake (40g)\n- Almonds (30g)\n- Gluten-free granola (50g)\n    * Protein: 35g, Fat: 15g, Carbs: 40g\n\n**Nutritional Considerations:**\n- 100% Gluten-free\n- High protein for muscle recovery\n- Balanced macronutrients for weightlifting performance\n- Dairy-tolerant protein sources included\n- Varied nutrient-dense foods\n- Timing optimized for training and recovery\n\n**Hydration:** Minimum 4 liters of water throughout the day\n\nThis meal plan is specifically designed to support an Olympic weightlifter's high-performance nutritional needs while adhering to gluten-free requirements and maximizing muscle recovery and growth.",
+    "test_case": {
+      "prompt_inputs": {
+        "height": "185",
+        "weight": "95",
+        "goal": "Olympic weightlifting performance optimization and muscle recovery",
+        "restrictions": "High protein requirement, gluten-free, dairy-tolerant"
+      },
+      "solution_criteria": [
+        "Provide 4000-4500 daily caloric intake",
+        "Maintain 40-30-30 macronutrient split (protein-carbs-fat)",
+        "Include pre and post-workout nutritional strategies",
+        "Accommodate specified dietary restrictions"
+      ],
+      "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
+      "scenario": "Test an extreme athletic scenario: high-intensity Olympic weightlifter training diet with very specific macronutrient and caloric requirements, ensuring precise nutritional breakdown for peak performance and muscle recovery"
+    },
+    "score": 6,
+    "reasoning": "The solution provides a comprehensive meal plan that addresses most requirements, but falls short in total caloric intake and precise macronutrient balance. While nutritionally dense and tailored to an Olympic weightlifter, the plan does not exactly match the specified caloric and macronutrient targets."
+  }
+]

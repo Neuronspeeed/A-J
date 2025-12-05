@@ -1,0 +1,18 @@
+[
+  {
+    "prompt_inputs": {
+      "height": "185",
+      "weight": "95",
+      "goal": "Olympic weightlifting performance optimization and muscle recovery",
+      "restrictions": "High protein requirement, gluten-free, dairy-tolerant"
+    },
+    "solution_criteria": [
+      "Provide 4000-4500 daily caloric intake",
+      "Maintain 40-30-30 macronutrient split (protein-carbs-fat)",
+      "Include pre and post-workout nutritional strategies",
+      "Accommodate specified dietary restrictions"
+    ],
+    "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
+    "scenario": "Test an extreme athletic scenario: high-intensity Olympic weightlifter training diet with very specific macronutrient and caloric requirements, ensuring precise nutritional breakdown for peak performance and muscle recovery"
+  }
+]
